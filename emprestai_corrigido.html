@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EmpresTI — Operações</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<style>
+:root{
+  --bg:#080C1A;--panel:#0B1128;--panel2:#0E1530;--sidebar:#060A16;
+  --text:#E6EAF6;--muted:#9AA3BC;--dim:#7C86A2;--subtle:#5E6884;
+  --line:#1A2340;--line2:#222C4A;--strong:#2B3450;
+  --primary:#001449;--accent:#5B7FE0;--accent2:#3C5DBE;--accent3:#8AA6EE;
+  --green:#5FD3AA;--amber:#E8B961;--red:#F0A0A5;--red2:#E08A90;
+  --shadow-md:0 0 0 1px #2B3450,0 6px 18px rgba(0,0,0,.55);
+  --shadow-lg:0 0 0 1px #454E68,0 18px 44px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:"Open Sans",system-ui,sans-serif;font-size:14px}
+body{letter-spacing:-.005em}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{color:var(--accent3);text-decoration:none}
+a:hover{color:#B4C6F6}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.app{min-height:100vh}
+.hidden{display:none!important}
+.screen{min-height:100vh}
+.login{display:grid;grid-template-columns:560px 1fr;min-height:820px}
+.hero{padding:56px;background:linear-gradient(160deg,#001449 0%,#00102F 60%,#080C1A 100%);display:flex;flex-direction:column;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600;letter-spacing:.02em}
+.brand-icon{width:34px;height:34px;border-radius:8px;background:#001449;box-shadow:0 0 0 1px #25408F;display:grid;place-items:center;color:var(--accent3);font-size:18px}
+.hero-center{display:flex;flex-direction:column;gap:22px;max-width:390px}
+.hero h1{font-size:34px;line-height:1.15;font-weight:600;letter-spacing:-.02em;max-width:20ch;margin:0}
+.hero p{font-size:14px;line-height:1.55;color:#93A0C6;max-width:38ch;margin:0}
+.rule{height:1px;background:linear-gradient(to right,#3C5DBE,rgba(60,93,190,0));width:100%}
+.stats{display:flex;gap:40px}.stat strong{display:block;font-size:24px;font-weight:600}.stat span{font-size:11.5px;color:#7C86A2}
+.hero-foot{font-size:11px;color:#5E6884}
+.login-side{display:grid;place-items:center;padding:56px}
+.login-form{width:372px;display:flex;flex-direction:column;gap:18px}
+.login-form h2{font-size:22px;line-height:1.2;margin:0;font-weight:600}
+.login-form .intro{font-size:13px;color:var(--dim);margin-top:-10px}
+.field{display:flex;flex-direction:column;gap:7px}
+label{font-size:12px;color:var(--muted)}
+input,select,textarea,.fake-select{height:42px;width:100%;padding:0 12px;border-radius:8px;border:1px solid var(--strong);background:var(--panel);color:var(--text);font-size:14px}
+textarea{height:88px;padding:10px 12px;resize:none}
+.fake-select{display:flex;align-items:center;justify-content:space-between}
+.form-actions{display:flex;gap:10px}
+.btn{height:38px;padding:0 16px;border-radius:8px;border:1px solid var(--strong);background:transparent;color:var(--muted);font-weight:600;transition:background .14s,border-color .14s,color .14s,transform .08s}
+.btn:hover{border-color:#454E68;color:var(--text)}
+.btn:active{transform:translateY(1px)}
+.btn.primary{height:44px;padding:0 20px;border-color:var(--accent);color:#B4C6F6}
+.btn.primary:hover{background:rgba(91,127,224,.12);color:#EEF2FE}
+.btn.confirm{border-color:var(--accent);background:rgba(91,127,224,.12);color:#D6E0FB}
+.btn.confirm:hover{background:rgba(91,127,224,.2)}
+.btn.danger-action{border-color:var(--accent);background:rgba(91,127,224,.14);color:#D6E0FB}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.support{border-top:1px solid transparent;background:linear-gradient(to right,rgba(230,234,246,0),#222C4A 48px,#222C4A calc(100% - 48px),rgba(230,234,246,0));padding-top:18px;text-align:center;color:var(--subtle);font-size:12px}
+
+.shell{display:grid;grid-template-columns:236px 1fr;min-height:100vh}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:236px;background:var(--sidebar);border-right:1px solid var(--line);padding:22px 14px;display:flex;flex-direction:column;gap:26px;z-index:10}
+.side-brand{display:flex;align-items:center;gap:10px;padding:0 8px;font-size:14px;font-weight:600;letter-spacing:.02em}
+.side-brand .brand-icon{width:28px;height:28px;border-radius:7px;font-size:15px}
+.nav-group{display:flex;flex-direction:column;gap:3px}
+.nav-label{padding:0 8px 6px;font-size:10px;letter-spacing:.12em;color:#454E68;text-transform:uppercase}
+.nav-label:not(:first-child){padding-top:18px}
+.nav-item{height:36px;padding:9px 10px;border-radius:8px;color:var(--muted);display:flex;align-items:center;gap:10px;transition:background .12s,color .12s}
+.nav-item:hover{background:var(--panel);color:var(--text)}
+.nav-item.active{background:var(--panel2);color:var(--text);box-shadow:inset 2px 0 0 var(--accent)}
+.nav-item i{font-size:16px}.nav-item.active i{color:var(--accent3)}
+.badge{margin-left:auto;padding:1px 7px;border-radius:99px;background:#132663;color:#B4C6F6;font-size:11px}
+.user-block{margin-top:auto;padding:12px;border-radius:10px;background:var(--panel);border:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.avatar{width:28px;height:28px;border-radius:50%;background:#132663;color:#B4C6F6;display:grid;place-items:center;font-size:11px;font-weight:600;flex:none}
+.user-name{font-size:12px;font-weight:600}.user-meta{font-size:10.5px;color:var(--subtle);margin-top:2px}
+
+.main{grid-column:2;min-width:0}
+.header{height:64px;border-bottom:1px solid var(--line);padding:0 28px;display:flex;align-items:center;gap:16px}
+.search{height:36px;max-width:420px;width:100%;border-radius:8px;background:var(--panel);border:1px solid var(--line2);display:flex;align-items:center;gap:8px;padding:0 12px;color:var(--subtle)}
+.search input{border:0;background:transparent;height:34px;padding:0;outline:none}
+.header-spacer{margin-left:auto}
+.header-meta{font-size:12px;color:var(--muted);white-space:nowrap}
+.icon-btn{height:34px;width:34px;border-radius:8px;border:1px solid var(--strong);background:transparent;color:var(--muted);display:grid;place-items:center}
+.content{padding:26px 28px 32px;display:flex;flex-direction:column;gap:20px}
+.page-head{display:flex;align-items:end;justify-content:space-between;gap:16px}
+.eyebrow{font-size:12px;color:var(--subtle);margin-bottom:5px}
+h1{font-size:24px;line-height:1.2;font-weight:600;letter-spacing:-.01em;margin:0}
+h2{font-size:17px;font-weight:600;margin:0}
+.page-sub{font-size:13px;color:var(--dim);margin-top:6px}
+.notice{padding:13px 16px;border-radius:10px;background:linear-gradient(90deg,#0E1530,#0B1128);border:1px solid #25408F;display:flex;gap:12px;align-items:flex-start}
+.notice i{font-size:17px;color:var(--accent3);margin-top:1px}.notice strong{font-size:13px}.notice span{font-size:12.5px;color:var(--muted);line-height:1.45}
+.filters{display:flex;align-items:center;gap:8px}.filter-spacer{margin-left:auto}
+.chip{height:30px;padding:0 12px;border-radius:99px;border:1px solid var(--line2);background:transparent;color:var(--muted);font-size:12px}
+.chip.active{background:#132663;color:#D6E0FB;border-color:#25408F;font-weight:600}
+.catalog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:16px;transition:border-color .16s}
+.equip-card{display:flex;flex-direction:column;gap:12px;min-height:190px}
+.equip-card.available{cursor:pointer}.equip-card.available:hover{border-color:#3C5DBE}
+.equip-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.item-icon{width:40px;height:40px;border-radius:9px;background:#0B1128;display:grid;place-items:center;color:var(--accent3);font-size:20px}
+.item-icon.big{width:64px;height:64px;font-size:30px}
+.status{font-size:11px;font-weight:600;padding:3px 9px;border-radius:99px;white-space:nowrap}
+.status.available{color:var(--green);background:rgba(63,185,140,.12);border:1px solid rgba(63,185,140,.35)}
+.status.loaned{color:#9AA3BC;background:#1A2340;border:1px solid #2B3450}
+.status.maintenance{color:var(--amber);background:rgba(224,163,63,.12);border:1px solid rgba(224,163,63,.35)}
+.status.late{color:var(--red2);background:rgba(224,91,98,.08);border:1px solid rgba(224,91,98,.4)}
+.equip-name{font-size:14.5px;font-weight:600}.meta{font-size:12px;color:var(--dim)}
+.card-footer{margin-top:auto;font-size:12px;color:var(--subtle)}.available .card-footer{color:var(--accent3)}
+
+.breadcrumb{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}.breadcrumb i{font-size:12px;color:var(--subtle)}
+.detail-grid{display:grid;grid-template-columns:1fr 356px;gap:32px}
+.detail-main{display:flex;flex-direction:column;gap:20px}
+.item-image{height:260px;border-radius:12px;background:radial-gradient(120% 120% at 20% 0%,#132663 0%,#0B1128 60%);border:1px solid var(--line);display:grid;place-items:center}
+.detail-title{display:flex;align-items:center;gap:10px}.detail-title h1{font-size:28px}
+.detail-desc{max-width:60ch;color:#8A93B2;font-size:13.5px;line-height:1.55}
+.divider{height:1px;background:linear-gradient(to right,rgba(230,234,246,0),#222C4A 48px,#222C4A calc(100% - 48px),rgba(230,234,246,0))}
+.tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.tech-item{display:flex;flex-direction:column;gap:5px}.tech-item span{font-size:11px;color:var(--subtle)}.tech-item strong{font-size:13px;font-weight:600}
+.history{display:flex;flex-direction:column;gap:0}.history-row{display:grid;grid-template-columns:90px 1fr 150px;gap:16px;padding:11px 0;border-top:1px solid #161D33;font-size:12.5px}.history-row span:first-child{color:var(--subtle)}.ok{color:var(--green)}.warn{color:var(--amber)}
+.side-stack{display:flex;flex-direction:column;gap:14px}.side-card{padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--panel);display:flex;flex-direction:column;gap:16px}
+.side-card h2{font-size:15px}.request-line{display:flex;justify-content:space-between;gap:16px;font-size:12.5px}.request-line span{color:var(--muted)}.request-line strong{font-weight:600}.deadline{color:#B4C6F6;font-size:16px}
+.limit{display:flex;gap:5px}.limit span{flex:1;height:5px;border-radius:99px;background:#222C4A}.limit span.on{background:#5B7FE0}.support-note{font-size:11.5px;color:var(--subtle);line-height:1.45}
+
+.loans-head{display:flex;align-items:center;justify-content:space-between;gap:16px}.loans-head .limit-wrap{display:flex;align-items:center;gap:14px}.limit-wrap .limit{width:180px}.loan-list{display:flex;flex-direction:column;gap:0}.loan-row{display:grid;grid-template-columns:44px 1fr 180px 100px;align-items:center;gap:18px;padding:18px 20px;border:1px solid var(--line);border-bottom:0;background:var(--panel)}.loan-row:first-child{border-radius:12px 12px 0 0}.loan-row:last-child{border-bottom:1px solid var(--line);border-radius:0 0 12px 12px}.loan-info strong{display:block;font-size:15px}.loan-info span{font-size:12px;color:var(--dim)}.deadline-wrap{display:flex;flex-direction:column;gap:7px}.deadline-wrap div{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}.progress{height:4px;background:#222C4A;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;background:#5B7FE0;border-radius:99px}.table-wrap{border:1px solid var(--line);border-radius:12px;overflow:hidden}.table-head,.table-row{display:grid;grid-template-columns:1.5fr 1fr 1fr 130px;gap:16px;align-items:center;padding:12px 18px}.table-head{background:#0B1128;color:#5E6884;font-size:11px;letter-spacing:.08em;text-transform:uppercase}.table-row{border-top:1px solid #161D33;font-size:12.5px}.table-row .muted{color:var(--dim)}
+
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.stat-card{padding:16px 18px;border:1px solid var(--line);border-radius:11px;background:var(--panel);display:flex;flex-direction:column;gap:7px}.stat-card span{font-size:11px;color:var(--subtle);text-transform:uppercase;letter-spacing:.08em}.stat-card strong{font-size:26px;font-weight:600}.stat-card.late{border-color:rgba(224,91,98,.4)}.stat-card.late strong{color:var(--red)}
+.ops-table{border:1px solid var(--line);border-radius:12px;overflow:hidden}.ops-head,.ops-row{display:grid;grid-template-columns:1.3fr 1.1fr 120px 120px 150px 110px;gap:16px;align-items:center;padding:12px 18px}.ops-head{background:#0B1128;color:#5E6884;font-size:11px;letter-spacing:.08em;text-transform:uppercase}.ops-row{padding-top:13px;padding-bottom:13px;border-top:1px solid #161D33;font-size:12px}.ops-row.late{background:rgba(224,91,98,.05)}.person strong{display:block;font-size:13px}.person span{font-size:11px;color:var(--subtle)}.pagination{display:flex;align-items:center;gap:8px}.pagination span{font-size:12px;color:var(--subtle);margin-right:auto}
+
+.form-layout{display:grid;grid-template-columns:1fr 320px;gap:40px}.form-area{max-width:620px;display:flex;flex-direction:column;gap:18px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.form-grid .wide{grid-column:span 2}.segmented{display:flex;border:1px solid var(--strong);border-radius:8px;overflow:hidden;width:fit-content}.segmented button{height:40px;padding:0 18px;border:0;border-left:1px solid var(--strong);background:transparent;color:var(--muted);font-size:13px}.segmented button:first-child{border-left:0}.segmented button.active{background:#132663;color:#D6E0FB;font-weight:600}.form-note{font-size:11.5px;color:var(--subtle);margin-top:-10px}.preview-card{display:flex;flex-direction:column;gap:12px}.preview-title{font-size:13px;font-weight:600}.recent{display:flex;flex-direction:column;gap:0}.recent-row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid #161D33;font-size:12px}.recent-row span{color:var(--subtle)}
+
+.dialog-backdrop{position:fixed;inset:0;background:rgba(4,6,14,.68);display:grid;place-items:center;z-index:30}.dialog{width:432px;padding:24px;border-radius:14px;background:#0E1530;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;gap:16px}.dialog h2{font-size:19px}.dialog p{font-size:13.5px;color:#8A93B2;line-height:1.5;margin:0}.consequence{padding:12px 14px;border-radius:9px;background:#0B1128;border:1px solid #1A2340;color:#9AA3BC;font-size:12.5px}.dialog-actions{display:flex;justify-content:flex-end;gap:10px}
+.toast{position:fixed;right:24px;bottom:24px;padding:12px 16px;border:1px solid var(--line);border-radius:9px;background:#0E1530;color:var(--muted);box-shadow:var(--shadow-md);font-size:12px;z-index:40}
+
+@media(max-width:1050px){.catalog-grid{grid-template-columns:repeat(2,1fr)}.detail-grid,.form-layout{grid-template-columns:1fr}.ops-table{overflow:auto}.ops-head,.ops-row{min-width:900px}.stats-grid{grid-template-columns:repeat(2,1fr)}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <div class="screen" data-screen-label="01 Login">
+    <div class="login">
+      <section class="hero">
+        <div class="brand">
+          <span class="brand-icon"><i class="ph ph-package"></i></span>
+          EmpresTI
+        </div>
+        <div class="hero-center">
+          <h1>Quem está com o quê</h1>
+          <p>Pedido e devolução sem planilha.</p>
+          <div class="rule"></div>
+          <div class="stats">
+            <div class="stat"><strong>3</strong><span>itens por pessoa</span></div>
+            <div class="stat"><strong>14</strong><span>dias de prazo</span></div>
+          </div>
+        </div>
+        <div class="hero-foot">Operações · v1</div>
+      </section>
+
+      <section class="login-side">
+        <form class="login-form" onsubmit="event.preventDefault();location.hash='catalogo'">
+          <h2>Entrar</h2>
+          <div class="intro">E-mail e senha do convite.</div>
+
+          <div class="field">
+            <label>E-mail</label>
+            <input type="email" placeholder="nome@empresa.com" required>
+          </div>
+
+          <div class="field">
+            <label>Senha</label>
+            <input type="password" placeholder="••••••••" required>
+          </div>
+
+          <button class="btn primary" type="submit">
+            Entrar <i class="ph ph-arrow-right"></i>
+          </button>
+
+          <div class="support">Sem acesso? Fale com Operações.</div>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div id="confirmDialog" class="dialog-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+  <div class="dialog">
+    <h2 id="dialogTitle">Confirmar empréstimo</h2>
+    <p id="dialogText">O prazo começa na confirmação. Devolver até 12/out.</p>
+    <div class="consequence">Este pedido leva a 3 de 3 itens.</div>
+    <div class="dialog-actions">
+      <button class="btn" onclick="closeDialog()">Cancelar</button>
+      <button class="btn confirm" onclick="confirmLoan()">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const equipment = [
+  {pat:'PAT-1042',name:'MacBook Pro 14"',cat:'Notebooks',state:'available',footer:'Solicitar →',icon:'ph-laptop',desc:'Notebook corporativo para desenho e build local.'},
+  {pat:'PAT-1188',name:'ThinkPad T14',cat:'Notebooks',state:'loaned',footer:'Com Marina Alves · devolve 14/set',icon:'ph-laptop'},
+  {pat:'PAT-0871',name:'Dell UltraSharp 27"',cat:'Monitores',state:'available',footer:'Solicitar →',icon:'ph-monitor'},
+  {pat:'PAT-0233',name:'Sony A7 III',cat:'Câmeras',state:'loaned',footer:'Com Rafael Lima · devolve 05/out',icon:'ph-video-camera'},
+  {pat:'PAT-0455',name:'Dock USB-C Anker',cat:'Cabos',state:'maintenance',footer:'Na assistência · peça',icon:'ph-usb'},
+  {pat:'PAT-0102',name:'Projetor Epson X49',cat:'Projetores',state:'maintenance',footer:'Na assistência · peça',icon:'ph-projector-screen'}
+];
+
+const icons = {
+  available:'Disponível',loaned:'Emprestado',maintenance:'Manutenção'
+};
+
+function shell(active, screen, content, opts={}) {
+  const ops = opts.ops || false;
+  return `<div class="screen" data-screen-label="${screen}">
+    <div class="shell">
+      <aside class="sidebar">
+        <a class="side-brand" href="#catalogo"><span class="brand-icon"><i class="ph ph-package"></i></span>EmpresTI</a>
+        <nav class="nav-group">
+          <div class="nav-label">Colaborador</div>
+          <a class="nav-item ${active==='catalogo'?'active':''}" href="#catalogo"><i class="ph ${active==='catalogo'?'ph-squares-four':'ph-squares-four'}"></i>Catálogo</a>
+          <a class="nav-item ${active==='emprestimos'?'active':''}" href="#meus-emprestimos"><i class="ph ph-hand-arrow-down"></i>Meus empréstimos <span class="badge">2</span></a>
+          <div class="nav-label">Operações</div>
+          <a class="nav-item ${active==='operacoes'?'active':''}" href="#operacoes"><i class="ph ph-list-checks"></i>Empréstimos em aberto</a>
+          <a class="nav-item ${active==='cadastro'?'active':''}" href="#cadastro"><i class="ph ph-plus-square"></i>Cadastrar equipamento</a>
+        </nav>
+        <div class="user-block">
+          <div class="avatar">${ops?'OP':'MA'}</div>
+          <div><div class="user-name">${ops?'Operações':'Marina Alves'}</div><div class="user-meta">${ops?'Balcão · 2º andar':'Design'}</div></div>
+        </div>
+      </aside>
+      <main class="main">
+        ${opts.header || `<header class="header"><div class="search"><i class="ph ph-magnifying-glass"></i><input aria-label="Buscar" placeholder="Buscar equipamento"></div><div class="header-spacer"></div><span class="header-meta">2 de 3 itens com você</span><button class="icon-btn" aria-label="Notificações"><i class="ph ph-bell"></i></button></header>`}
+        <section class="content">${content}</section>
+      </main>
+    </div>
+  </div>`;
+}
+
+function login(){
+  return `<div class="screen" data-screen-label="01 Login">
+    <div class="login">
+      <section class="hero">
+        <div class="brand"><span class="brand-icon"><i class="ph ph-package"></i></span>EmpresTI</div>
+        <div class="hero-center">
+          <h1>Quem está com o quê</h1>
+          <p>Pedido e devolução sem planilha.</p>
+          <div class="rule"></div>
+          <div class="stats"><div class="stat"><strong>3</strong><span>itens por pessoa</span></div><div class="stat"><strong>14</strong><span>dias de prazo</span></div></div>
+        </div>
+        <div class="hero-foot">Operações · v1</div>
+      </section>
+      <section class="login-side">
+        <form class="login-form" onsubmit="event.preventDefault();location.hash='catalogo'">
+          <h2>Entrar</h2><div class="intro">E-mail e senha do convite.</div>
+          <div class="field"><label>E-mail</label><input type="email" placeholder="nome@empresa.com" required></div>
+          <div class="field"><label>Senha</label><input type="password" placeholder="••••••••" required></div>
+          <button class="btn primary" type="submit">Entrar <i class="ph ph-arrow-right"></i></button>
+          <div class="support">Sem acesso? Fale com Operações.</div>
+        </form>
+      </section>
+    </div>
+  </div>`;
+}
+
+function equipCard(e){
+  const click = e.state==='available' ? `onclick="location.hash='detalhe'" tabindex="0" onkeydown="if(event.key==='Enter')location.hash='detalhe'"` : '';
+  return `<article class="card equip-card ${e.state}" ${click}>
+    <div class="equip-top"><div class="item-icon"><i class="ph ${e.icon}"></i></div><span class="status ${e.state}">${icons[e.state]}</span></div>
+    <div><div class="equip-name">${e.name}</div><div class="meta">${e.cat} · ${e.pat}</div></div>
+    <div class="card-footer">${e.footer}</div>
+  </article>`;
+}
+
+function catalog(){
+  const chips=['Todos','Notebooks','Monitores','Câmeras','Cabos','Projetores'];
+  return shell('catalogo','02 Catálogo',`
+    <div class="page-head"><div><h1>Catálogo</h1><div class="page-sub">6 equipamentos · 2 disponíveis agora</div></div></div>
+    <div class="notice"><i class="ph ph-info"></i><div><strong>Regras de empréstimo</strong><br><span>Até 3 itens por pessoa. Prazo padrão 14 dias. Atraso impede novo pedido. Item em manutenção não aparece como disponível.</span></div></div>
+    <div class="filters">${chips.map((c,i)=>`<button class="chip ${i===0?'active':''}" onclick="setChip(this)">${c}</button>`).join('')}<div class="filter-spacer"></div><button class="chip" onclick="setChip(this)">Só disponíveis</button></div>
+    <div class="catalog-grid">${equipment.map(equipCard).join('')}</div>
+  `);
+}
+
+function detail(){
+  return shell('catalogo','03 Detalhe do item',`
+    <div class="breadcrumb"><a href="#catalogo">Catálogo</a><i class="ph ph-caret-right"></i><a href="#catalogo">Notebooks</a><i class="ph ph-caret-right"></i><span>MacBook Pro 14"</span></div>
+    <div class="detail-grid">
+      <div class="detail-main">
+        <div class="item-image"><div class="item-icon big"><i class="ph ph-laptop"></i></div></div>
+        <div class="detail-title"><h1>MacBook Pro 14"</h1><span class="status available">Disponível</span></div>
+        <div class="detail-desc">Notebook corporativo para desenho e build local.</div>
+        <div class="divider"></div>
+        <div class="tech-grid">
+          <div class="tech-item"><span>Categoria</span><strong>Notebooks</strong></div>
+          <div class="tech-item"><span>Patrimônio</span><strong>PAT-1042</strong></div>
+          <div class="tech-item"><span>Local</span><strong>Balcão 2º andar</strong></div>
+          <div class="tech-item"><span>Última devolução</span><strong>02/set</strong></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px"><h2>Histórico</h2><div class="history">
+          <div class="history-row"><span>02/set</span><span>Devolução</span><span class="ok">No prazo</span></div>
+          <div class="history-row"><span>19/ago</span><span>Empréstimo</span><span>14 dias</span></div>
+          <div class="history-row"><span>05/ago</span><span>Manutenção</span><span class="warn">Concluída</span></div>
+        </div></div>
+      </div>
+      <aside class="side-stack">
+        <div class="side-card">
+          <h2>Solicitar empréstimo</h2>
+          <div class="request-line"><span>Retirada</span><strong>Balcão 2º andar</strong></div>
+          <div class="request-line"><span>Prazo padrão</span><strong>14 dias</strong></div>
+          <div><div style="font-size:12px;color:var(--muted)">Devolver até</div><div class="deadline">12/out</div></div>
+          <button class="btn primary" onclick="openDialog()">Solicitar empréstimo <i class="ph ph-arrow-right"></i></button>
+          <div class="support-note">Retirada no balcão de Operações.</div>
+        </div>
+        <div class="side-card">
+          <h2>Seus itens</h2>
+          <div style="font-size:18px;font-weight:600">2 de 3</div>
+          <div class="limit"><span class="on"></span><span class="on"></span><span></span></div>
+          <div class="support-note">Nenhum item em atraso.</div>
+        </div>
+      </aside>
+    </div>
+  `,{header:`<header class="header"><div class="breadcrumb"><a href="#catalogo">Catálogo</a><i class="ph ph-caret-right"></i><span>MacBook Pro 14"</span></div><div class="header-spacer"></div><span class="header-meta">2 de 3 itens com você</span><button class="icon-btn"><i class="ph ph-bell"></i></button></header>`});
+}
+
+function loans(){
+  return shell('emprestimos','04 Meus empréstimos',`
+    <div class="page-head"><div><h1>Meus empréstimos</h1></div><a href="#catalogo" class="btn primary" style="display:flex;align-items:center;gap:7px">Pegar emprestado <i class="ph ph-plus"></i></a></div>
+    <div class="loans-head"><div><h2>Comigo agora</h2><div class="page-sub">2 de 3 itens · nenhum em atraso</div></div><div class="limit-wrap"><div class="limit"><span class="on"></span><span class="on"></span><span></span></div></div></div>
+    <div class="loan-list">
+      <div class="loan-row"><div class="item-icon"><i class="ph ph-laptop"></i></div><div class="loan-info"><strong>ThinkPad T14</strong><span>PAT-1188 · Notebooks</span></div><div class="deadline-wrap"><div><span>Prazo</span><strong>14/set</strong></div><div class="progress"><i style="width:51%"></i></div></div><button class="btn" onclick="toast('Devolução registrada no mock.')">Devolver</button></div>
+      <div class="loan-row"><div class="item-icon"><i class="ph ph-monitor"></i></div><div class="loan-info"><strong>LG UltraFine 24"</strong><span>PAT-0910 · Monitores</span></div><div class="deadline-wrap"><div><span>Prazo</span><strong>20/set</strong></div><div class="progress"><i style="width:30%"></i></div></div><button class="btn" onclick="toast('Devolução registrada no mock.')">Devolver</button></div>
+    </div>
+    <div class="divider"></div>
+    <h2>Histórico</h2>
+    <div class="table-wrap">
+      <div class="table-head"><span>Item</span><span>Retirada</span><span>Devolução</span><span>Situação</span></div>
+      <div class="table-row"><span>MacBook Air 13" M2</span><span class="muted">20/ago</span><span class="muted">02/set</span><span class="ok">No prazo</span></div>
+      <div class="table-row"><span>Dock USB-C Anker</span><span class="muted">01/ago</span><span class="muted">19/ago</span><span class="warn">Atraso</span></div>
+    </div>
+  `);
+}
+
+const opRows=[
+ ['Marina Alves','ThinkPad T14','14/set','14 dias',false],
+ ['Rafael Lima','Sony A7 III','05/out','14 dias',false],
+ ['Camila Duarte','MacBook Pro 14"','21/set','14 dias',true],
+ ['Tiago Menezes','Dell UltraSharp 27"','18/set','14 dias',true],
+ ['Ana Sato','LG UltraFine 24"','02/out','14 dias',false],
+ ['Bruno Kato','Dock USB-C Anker','03/out','14 dias',false],
+ ['Helena Prado','MacBook Air 13" M2','17/set','14 dias',true]
+];
+
+function operations(){
+  return shell('operacoes','05 Operações — empréstimos em aberto',`
+    <div class="page-head"><div><h1>Empréstimos em aberto</h1><div class="page-sub">21 itens fora · atualizado agora</div></div><a href="#cadastro" class="btn primary" style="display:flex;align-items:center;gap:7px"><i class="ph ph-plus"></i>Cadastrar equipamento</a></div>
+    <div class="stats-grid">
+      <div class="stat-card"><span>Em aberto</span><strong>21</strong></div>
+      <div class="stat-card"><span>Vencem em 3 dias</span><strong>4</strong></div>
+      <div class="stat-card late"><span>Em atraso</span><strong>3</strong></div>
+      <div class="stat-card"><span>Em manutenção</span><strong>2</strong></div>
+    </div>
+    <div class="filters"><button class="chip active" onclick="setChip(this)">Todos</button><button class="chip" onclick="setChip(this)">Em atraso</button><button class="chip" onclick="setChip(this)">Vencem esta semana</button><button class="chip" onclick="setChip(this)">Notebooks</button></div>
+    <div class="ops-table">
+      <div class="ops-head"><span>Colaborador</span><span>Item</span><span>Retirada</span><span>Prazo</span><span>Situação</span><span>Ação</span></div>
+      ${opRows.map(r=>`<div class="ops-row ${r[4]?'late':''}"><div class="person"><strong>${r[0]}</strong><span>${r[4]?'Atrasado':'Colaborador'}</span></div><span>${r[1]}</span><span>${r[2]}</span><span>${r[3]}</span><span class="${r[4]?'warn':'ok'}">${r[4]?'Atrasado':'No prazo'}</span><button class="btn ${r[4]?'danger-action':''}" onclick="toast('Devolução registrada no mock.')">Devolver</button></div>`).join('')}
+    </div>
+    <div class="pagination"><span>7 de 21 empréstimos</span><button class="btn">Anterior</button><button class="btn">Próximo</button></div>
+  `,{ops:true,header:`<header class="header"><div class="search" style="max-width:520px"><i class="ph ph-magnifying-glass"></i><input aria-label="Buscar" placeholder="Buscar colaborador, patrimônio ou equipamento"></div><div class="header-spacer"></div><button class="icon-btn"><i class="ph ph-bell"></i></button></header>`});
+}
+
+function cadastro(){
+  return shell('cadastro','06 Cadastrar equipamento',`
+    <div class="breadcrumb"><a href="#operacoes">Operações</a><i class="ph ph-caret-right"></i><span>Cadastrar equipamento</span></div>
+    <div class="form-layout">
+      <div class="form-area">
+        <div><h1>Cadastrar equipamento</h1><div class="page-sub">Um registro por unidade física</div></div>
+        <form id="equipmentForm" onsubmit="submitEquipment(event)">
+          <div class="form-grid">
+            <div class="field wide"><label>Nome</label><input id="fName" placeholder="Ex.: MacBook Pro 14"></div>
+            <div class="field"><label>Categoria</label><select id="fCat"><option>Notebooks</option><option>Monitores</option><option>Câmeras</option><option>Cabos</option><option>Projetores</option></select></div>
+            <div class="field"><label>Patrimônio</label><input id="fPat" placeholder="PAT-0000"></div>
+            <div class="field"><label>Número de série</label><input id="fSerial" placeholder="Número de série"></div>
+            <div class="field"><label>Local de retirada</label><input id="fLocal" placeholder="Balcão 2º andar"></div>
+            <div class="field wide"><label>Situação inicial</label>
+              <div class="segmented" id="stateSegment"><button type="button" class="active" onclick="segment(this)">Disponível</button><button type="button" onclick="segment(this)">Em manutenção</button><button type="button" onclick="segment(this)">Fora de uso</button></div>
+            </div>
+            <div class="form-note wide">Em manutenção não aparece no catálogo.</div>
+            <div class="field wide"><label>Observações</label><textarea id="fObs" placeholder="Observações sobre o equipamento"></textarea></div>
+          </div>
+          <div class="form-actions"><button class="btn primary" type="submit">Cadastrar</button><button class="btn" type="button" onclick="resetForm()">Cadastrar e adicionar outro</button></div>
+        </form>
+      </div>
+      <aside class="side-stack">
+        <div class="side-card">
+          <div class="preview-title">Prévia no catálogo</div>
+          <div class="card equip-card" style="min-height:180px">
+            <div class="equip-top"><div class="item-icon"><i class="ph ph-laptop"></i></div><span class="status available">Disponível</span></div>
+            <div><div class="equip-name" id="previewName">Nome do equipamento</div><div class="meta" id="previewMeta">Notebooks · PAT-0000</div></div>
+            <div class="card-footer">Solicitar →</div>
+          </div>
+        </div>
+        <div class="side-card"><h2>Últimos cadastros</h2><div class="recent">
+          <div class="recent-row"><span>MacBook Air 13" M2</span><span>26/set</span></div>
+          <div class="recent-row"><span>Projetor Epson X49</span><span>25/set</span></div>
+          <div class="recent-row"><span>Dock USB-C Anker</span><span>24/set</span></div>
+        </div></div>
+      </aside>
+    </div>
+  `,{ops:true,header:`<header class="header"><div class="breadcrumb"><a href="#operacoes">Operações</a><i class="ph ph-caret-right"></i><span>Cadastrar equipamento</span></div><div class="header-spacer"></div><button class="icon-btn"><i class="ph ph-bell"></i></button></header>`});
+}
+
+function render(){
+  const hash=location.hash.replace('#','')||'login';
+  const map={login,catalogo,detalhe,emprestimos,operacoes,cadastro};
+  const app=document.getElementById('app');
+  if(!app) return;
+  app.innerHTML=(map[hash]||login)();
+  if(hash==='cadastro'){
+    ['fName','fCat','fPat'].forEach(id=>document.getElementById(id)?.addEventListener('input',updatePreview));
+    document.getElementById('fCat')?.addEventListener('change',updatePreview);
+  }
+}
+function setChip(el){el.parentElement.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));el.classList.add('active')}
+function openDialog(){document.getElementById('confirmDialog').classList.remove('hidden')}
+function closeDialog(){document.getElementById('confirmDialog').classList.add('hidden')}
+function confirmLoan(){closeDialog();location.hash='meus-emprestimos';toast('Empréstimo confirmado no mock.')}
+function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),2200)}
+function segment(el){el.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('active'));el.classList.add('active')}
+function resetForm(){document.getElementById('equipmentForm').reset();document.querySelectorAll('#stateSegment button').forEach((b,i)=>b.classList.toggle('active',i===0));updatePreview();toast('Formulário limpo.')}
+function submitEquipment(e){e.preventDefault();toast('Equipamento cadastrado no mock.')}
+function updatePreview(){
+  const n=document.getElementById('fName')?.value||'Nome do equipamento';
+  const c=document.getElementById('fCat')?.value||'Notebooks';
+  const p=document.getElementById('fPat')?.value||'PAT-0000';
+  const a=document.getElementById('previewName'),b=document.getElementById('previewMeta');
+  if(a)a.textContent=n;if(b)b.textContent=`${c} · ${p}`;
+}
+window.addEventListener('hashchange',()=>{render();window.scrollTo(0,0)});
+render();
+</script>
+</body>
+</html>
