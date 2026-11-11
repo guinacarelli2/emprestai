@@ -5,7 +5,7 @@
   "description": "EmpresTI — empréstimo de equipamentos, Next.js, Supabase e Vercel",
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build --webpack",
+    "build": "prisma generate && next build --webpack && node scripts/assert-built-css.mjs",
     "start": "next start",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
