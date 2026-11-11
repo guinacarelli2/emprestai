@@ -1,0 +1,1097 @@
+{
+  "schemaVersion": 1,
+  "runtime": {
+    "node": "v22.23.4",
+    "platform": "darwin"
+  },
+  "spec": "docs/specs/004-auth-persistencia/spec.md",
+  "specId": "004",
+  "round": "artifactfix1",
+  "scope": "PRELIMINAR artifactfix: manifesto sem next-env.d.ts/*.tsbuildinfo, suíte unitária completa/typecheck/build; trabalho paralelo em andamento; não FINAL",
+  "sourceHash": "1db69b129d6155bcb68f0ef836d2a502001fe0e5e5eb80f7c30e4c507c77c595",
+  "manifest": [
+    [
+      ".agents/agents/verificador-spec.md",
+      "91b1d98265a8ae8130ac0f59058ae4faa2335ab6b5193c0981f0b721a8e9ee7e"
+    ],
+    [
+      ".agents/skills/imagens-equipamentos/SKILL.md",
+      "0e0606064e97f2090e5feabaad7f286d9bd3b6e1327950b848007ca53e220180"
+    ],
+    [
+      ".agents/skills/imagens-equipamentos/references/pipeline.md",
+      "d28c65a40c854b5410a02a5a07b7f15d40db62d8eebb32b38d4b9c74e2a17885"
+    ],
+    [
+      ".agents/skills/imagens-equipamentos/references/pixabay-policy.md",
+      "f8a0b211f73bcb8096287b84113dbf87dcae8dfa7b3376e5d4503054f13a70a0"
+    ],
+    [
+      ".env.example",
+      "0d1fb373b1e3c796d9bab4d7773d66920e316b24cd69ec64a22a19b4cc8b40fd"
+    ],
+    [
+      ".github/workflows/ci.yml",
+      "0b49d8f769f1fc0cd7559a8b8dd7614a5aae6fce3c83576ac3bb4702d2ba7ab3"
+    ],
+    [
+      ".gitignore",
+      "093ed3d58bc3198fc07d5c829284618c2b6f8369940f42f4a12c6fbaa1454ba8"
+    ],
+    [
+      ".nvmrc",
+      "0c4bf84f9bedd485b2c4eac05f59e35addc86ce7dbf0d90435528e04384c6314"
+    ],
+    [
+      ".prettierignore",
+      "ea348a8e3861e523bd7ad8908567dc990fddc86a99d1256d452e3bf545f2536f"
+    ],
+    [
+      ".prettierrc.json",
+      "8bda6c5b57a0fb42c0841d3bed195d6168070736e2771921d50fe7075cd6aa8f"
+    ],
+    [
+      "AGENTS.md",
+      "a7f57f3ff9d9d79d448b7030d85de0bdb8c5edca58f64390b7d6f221688c8d31"
+    ],
+    [
+      "ENTREGA.md",
+      "49eda2516296a239774a1203b1a8f15835dde8a46c2bf4c0ec99347969fd4244"
+    ],
+    [
+      "README.md",
+      "fb392c8ef4aba786b1e016258e38a434097e6c924974e768133df218fca87e1d"
+    ],
+    [
+      "agents/verificador-spec.md",
+      "db17e42e2859068446dc8545eb0c4d35c0350499484ad14bb694f96267b6482b"
+    ],
+    [
+      "assets/equipment-list.json",
+      "f179695e3bc70efba87a941a06755ea5804135a8121d00bb91f1cb602d5a97d4"
+    ],
+    [
+      "docs/PRD.md",
+      "19921c22b898d319914150c5defa70a09e0993a7a486ff8799dc83ff33c25cc6"
+    ],
+    [
+      "docs/PUBLICACAO-HUMANA.md",
+      "80eb945537b368f5a726d88b0f60d5cd1f5e612ac8efe6833f79594201aff2ec"
+    ],
+    [
+      "docs/adr/001-stack.md",
+      "af365fa85b2518235fb749537b87542857d424cccbc415320a7bc6865788be87"
+    ],
+    [
+      "docs/adr/002-layout.md",
+      "497756f35de4b21fa8fbdd427d60238f6ef26c2f8b10a3cf338ab865aae12218"
+    ],
+    [
+      "docs/adr/003-execucao-local-aprovada.md",
+      "7ede39a6d61e96de0282f9cfa782470b0ae3050470cf34b99597273d2af45b8f"
+    ],
+    [
+      "docs/adr/004-modelo-persistencia-seguranca.md",
+      "19bb29b9db4f557ef2909b4c81e928c00972695fa9473bab562d663251714c67"
+    ],
+    [
+      "docs/specs/001-telas/plan.md",
+      "9e646fd3bdb35327f8330a748e4b9016add605574997be50445d21182d00e422"
+    ],
+    [
+      "docs/specs/001-telas/spec.md",
+      "5f1002943001efab4eda0d19e7be36456b8c652c86876ac436d8f5bf653251e2"
+    ],
+    [
+      "docs/specs/001-telas/tasks.md",
+      "a9e5ea3bb27e922ba65faeeeaa94a46cd564d987a8daad40cf0f84bf9abbc119"
+    ],
+    [
+      "docs/specs/002-dados-iniciais/plan.md",
+      "2689a0e818230319aa06dd42e65032de4387d4e61bb7351f0af7d3b4c6896fff"
+    ],
+    [
+      "docs/specs/002-dados-iniciais/spec.md",
+      "a9aa8bbf50bdc0c80a02b06eab4319b960ede6d69a7a2cd3ecf68e77c715c59a"
+    ],
+    [
+      "docs/specs/002-dados-iniciais/tasks.md",
+      "16fe8d5a446b6b8cd186b9b39dca838189ce1d4c1501977efefc4261f34a4686"
+    ],
+    [
+      "docs/specs/003-solicitar-emprestimo/plan.md",
+      "a2896237cbce6d5919761c4504ca7605f0106578d275806aa3015ecde40f836f"
+    ],
+    [
+      "docs/specs/003-solicitar-emprestimo/spec.md",
+      "5e6a19d04b09c8f615d8a4a07fb84f698d1a2cd595fc1b01d8972c28bf0892bb"
+    ],
+    [
+      "docs/specs/003-solicitar-emprestimo/tasks.md",
+      "afffb03a6e5f57add8724a88a446dc7cea2067f875a6bd3cb695d2672f5af5d8"
+    ],
+    [
+      "docs/specs/004-auth-persistencia/plan.md",
+      "3bcd989f2204f6e61fe8e814095361051697651e3ab9d8ad1cdf25a71d1db360"
+    ],
+    [
+      "docs/specs/004-auth-persistencia/spec.md",
+      "0cadabcf5f7829623d2a8eb41eab6a0868e447697a0f95dd5ec8b57a19d85fbb"
+    ],
+    [
+      "docs/specs/004-auth-persistencia/tasks.md",
+      "e696c958d67ba2c5bda1c673abc9bfdf329aaf60b5830ba81968114bd67f00e8"
+    ],
+    [
+      "docs/specs/005-operacoes-devolucao/plan.md",
+      "e88d54991af2b4626e8fb4d2d177bc2d9e50e35b502a11fd05dd786ac7d3d241"
+    ],
+    [
+      "docs/specs/005-operacoes-devolucao/spec.md",
+      "0c824a54f2baf5a067829c71f6181c5dbcbdd48e5e026eb018df2adef6b6289d"
+    ],
+    [
+      "docs/specs/005-operacoes-devolucao/tasks.md",
+      "d54a1c0938e237ddd913b5832ed0dde7d86f989625f16c27c5f0bedb34f59796"
+    ],
+    [
+      "e2e/local-boundaries.spec.ts",
+      "e4776267d4078cffd6925291c6204498c14145b812cbc24c940665f1992cfa36"
+    ],
+    [
+      "eslint.config.mjs",
+      "e988ed701d1d9a729e9d22c12cc2ceef2f91c947a20807466b2e445341626fb7"
+    ],
+    [
+      "handoff.md",
+      "11b37a02d2e6246b72da43caef3a2ecef74c92a9b3ec8dfdcd2952779f8c4564"
+    ],
+    [
+      "layout.md",
+      "77f807bfcca94acdddc9ef708ab86837af6ba7b197264289b558ed5eda3d8ba5"
+    ],
+    [
+      "next.config.ts",
+      "7d574273a53d92bc513e4ff62a299b014231087ef44125c57412f8fe3b532448"
+    ],
+    [
+      "package-lock.json",
+      "2682085d68bee3fa773cb37121bc02947fdfc571d7fa64177186401b1642814d"
+    ],
+    [
+      "package.json",
+      "170cce243e9804c6a452e1cf3bf38e00310eea034131c20e987db973be19da98"
+    ],
+    [
+      "playwright.config.ts",
+      "2a0ed4d82546aca8f9b4b4d416b4438c1f48917eb5349ab2f8057a8b65422e03"
+    ],
+    [
+      "prisma/migrations/20261110165902_auth_persistence/migration.sql",
+      "72171762655bde3202abc3eee76c6e1f03d8f80666351c7ed30eeaf94a6db645"
+    ],
+    [
+      "prisma/migrations/migration_lock.toml",
+      "99836963713b4f5b269ad49af0ed3d7b0b2e336115c2f92dc9ac683d139d0900"
+    ],
+    [
+      "prisma/schema.prisma",
+      "dcfb6c18a9b73034c9ab75f4cadb5764267945ad18a9e4d444d80e84345e83db"
+    ],
+    [
+      "prisma/seed.ts",
+      "ba04150b0dcfd86c9f75c5d2a27d4a1b5c93b15590d09349233ceff401b7fa47"
+    ],
+    [
+      "references/index.html",
+      "4d4dcac675efd4e17fa601df84d6a33084bc872bc0b394d328f6fb63d254c8df"
+    ],
+    [
+      "references/pratica-sdd.html",
+      "98af961e26fed5be1688f8eea7c9ad31cd6766ef9221c03531901aae5908f46a"
+    ],
+    [
+      "rules/checks.md",
+      "fde73b262590bc6f4c7f54b374027dcffe37e32c2dacd661d14566941caae729"
+    ],
+    [
+      "rules/handoff.md",
+      "6fe15edb13565f905a12604ccca5e464a2fbfaedf09a9988bf6fa50f8f7a0523"
+    ],
+    [
+      "rules/migration.md",
+      "5abd39bb31dbb046e01c797fb621ba4e9aca8320088e0c0d1dd65f519923e25f"
+    ],
+    [
+      "rules/restrictions.md",
+      "2d3d8c5e8e95c6afe9098a7e821c81436dc9dcef3d43cdfbeb16b8d7bdd7f87d"
+    ],
+    [
+      "rules/spec-flow.md",
+      "f7d2421970464b9b4abebb6ee9d257acb6d4a84c08c708eaa64b545ce7b83eef"
+    ],
+    [
+      "rules/tests.md",
+      "eed45208cc09cf45da175977575471f7670074cffbd0d2d7ed70316c0aa7112f"
+    ],
+    [
+      "scripts/__tests__/human-production.test.ts",
+      "6604cc6584b106a86584254c7b32105f979e48f44a68a969d4064d5b87474853"
+    ],
+    [
+      "scripts/__tests__/images.test.ts",
+      "1de8637171539e2f257f823c2a165b7b5655cc290fb10e68c4c58738c2f8c572"
+    ],
+    [
+      "scripts/__tests__/verifier.test.mjs",
+      "15288c2836563c898a388f8d8b1352a796c745fbfa80f9f355246e5fb788173b"
+    ],
+    [
+      "scripts/check-delivery.mjs",
+      "11c14258987bf908a59df921e855e07987cce5d30831c5aefe05769c4e03ce6e"
+    ],
+    [
+      "scripts/equipment-images-cli.ts",
+      "65030b89e4e3462d31ca83feb1eeec52548b76dfcc122473c987fa0c2005896d"
+    ],
+    [
+      "scripts/equipment-images.ts",
+      "98b014ba34233535121b43f1ddd611f7d80c0a27b1e3a1488d3653a94e8ece20"
+    ],
+    [
+      "scripts/human-production.ts",
+      "437c42921384ac2d0c8ab0a53b114309b096c35b38040616bd301fd0bbde49f2"
+    ],
+    [
+      "scripts/images-vitest.config.ts",
+      "0f5eb67fe7d196ce21c77f514003c31a09662c39176417487e28d91098af1112"
+    ],
+    [
+      "scripts/local-migrate.ts",
+      "15bb076c26ec5507e2d5b7d9a3000278563046b9b17b0492cad76a6535bf4165"
+    ],
+    [
+      "scripts/verify-spec.mjs",
+      "ee68b5561128906ab6437ad2d7ee3c54e8b0bc844fa1d83fddd7b6b5f6364eb1"
+    ],
+    [
+      "src/__tests__/ca-01-02-03.test.tsx.historical",
+      "d699fd911a4590e5b670063fdb9e77f1073de71ad5113a6e67e3c641fb1f74e7"
+    ],
+    [
+      "src/__tests__/ca-04-05-06.test.tsx.historical",
+      "35cec94f3e655aabdc548c2b3c6066fc6b581efb8f6f89717f513149ca0572b4"
+    ],
+    [
+      "src/__tests__/ca-07-08-09.test.tsx.historical",
+      "83b99003238e5549a32c68f4d2f8842e7008719288a1349b90031013b74a07b1"
+    ],
+    [
+      "src/__tests__/ca-10-11-12-13.test.tsx.historical",
+      "6f916e7276867bc3e3f242428515dd2afbfb019aae6b6b4bbdb03a187876d9ac"
+    ],
+    [
+      "src/__tests__/frontend-contract.test.tsx",
+      "a194d691bc6785c46e9ddf17b3a53bb1f807302cac0ade360b45993543d9a1f3"
+    ],
+    [
+      "src/__tests__/helpers.tsx",
+      "93c824386a401e0eadb98fec0a0d2a38f9946a14487417f4244a486f1e65dfed"
+    ],
+    [
+      "src/__tests__/integration/fixtures.ts",
+      "af8bfb7bc96ac6e245497a64ed481403e68b9911ee41d679f3846e91056a7f76"
+    ],
+    [
+      "src/__tests__/integration/global-setup.ts",
+      "c6ec9c453d6c562e01089fa964afe0e49355ce531e72bdbd8f3b851bd91d20e2"
+    ],
+    [
+      "src/__tests__/integration/server-only.ts",
+      "1eeef70c4cd60be32f2e2758813e46b2e6f247fd838de8fc3c67bd0f5b76ab7b"
+    ],
+    [
+      "src/__tests__/integration/spec002.integration.test.ts",
+      "6bf59a7839e9b747d277ac90ba505409d0a8b2776326ec2d29b096d8e4c73ccb"
+    ],
+    [
+      "src/__tests__/integration/spec003.integration.test.ts",
+      "7ce81cbe4aca42cde6418eebc3ef0e55e262d315040fbdbb1bf640df16e2d060"
+    ],
+    [
+      "src/__tests__/integration/spec004.integration.test.ts",
+      "a2b2d2a3dc2fa6d4c0bdbafc7b1ae1e584437a93ad62c16fb086bc451c9bec8c"
+    ],
+    [
+      "src/__tests__/integration/spec005.integration.test.ts",
+      "42c4678565a31e8d23a3ac2ed7311f8495e9b181fe8fadc1115c3fe57deb5b9b"
+    ],
+    [
+      "src/__tests__/server-api.test.ts",
+      "58f719cea1c846c8f83ee39551bae56295d93cc68dcf053e2fe8597f40a2e16f"
+    ],
+    [
+      "src/__tests__/server-context.test.ts",
+      "74094d16ff592c6f6399219bb5f807a5306c9a0680e87094501b109d0d6c0a2b"
+    ],
+    [
+      "src/__tests__/server-occupancy.test.ts",
+      "df6794c104d30a7f49ac16d6d60dc68cd344f62d9b64946e5ada52e44ff53f6e"
+    ],
+    [
+      "src/__tests__/server-rules.test.ts",
+      "2fc17b61eeda82cf93e84914ebf1ff7753412891bce9f2ac425de8109ed240a2"
+    ],
+    [
+      "src/app/api/trpc/[trpc]/route.ts",
+      "31f1832876579614320e5c65e2ed8b63891b728cb2f2cd7ff57161984ad6c6d9"
+    ],
+    [
+      "src/app/catalogo/[patrimonio]/page.tsx",
+      "53a5385d7e4cfc9017b774f08424e34b5fe93baf7912e8f956f854ccc5186b1f"
+    ],
+    [
+      "src/app/catalogo/page.tsx",
+      "e561e638b245ed17e4a06bc5ec57f95f499e7e99c091f09e7b58a5c96ddcebde"
+    ],
+    [
+      "src/app/globals.css",
+      "573b47155058f7c8d4c42b5b374257e81e78e5e917e22dd794c65add1488911e"
+    ],
+    [
+      "src/app/layout.tsx",
+      "5e3a48a1bfdbf391e0af68dbddcbcb8a88a05dc3900d103a886352a95e59ec8e"
+    ],
+    [
+      "src/app/login/page.tsx",
+      "71d089b7d6f91183b8035988d93019c1801bc7f2ab5bff419e9a3d3b858b1aaf"
+    ],
+    [
+      "src/app/meus-emprestimos/page.tsx",
+      "c7e891cbaa27c0c7b0065e99174c9036c175a4c21082cbb4916c47477e0b3b7c"
+    ],
+    [
+      "src/app/operacoes/emprestimos/page.tsx",
+      "4c6aad1a09511f45deb646e2f4d4f1be18ff9ced58ac5a6eea72c854e83ae604"
+    ],
+    [
+      "src/app/operacoes/equipamentos/novo/page.tsx",
+      "c143da2090be37eaf5491ef23168877f167e752d73286f14a9e1595a0fd780c5"
+    ],
+    [
+      "src/app/page.tsx",
+      "155fb07dd4fe92230a44b47b36bb2e3a136582fff2d5fe0d65232b929d621e9e"
+    ],
+    [
+      "src/app/providers.tsx",
+      "f12c953e79fddb6fc7dc4d67ac5ea5cf08122dd10671d3d7fdd7dbb99abca86f"
+    ],
+    [
+      "src/components/app-shell.tsx",
+      "b579bd92079f15e4c7b6dfc5ee7ab1874cfd36243b434da68fff363e1b220e49"
+    ],
+    [
+      "src/components/screens/cadastro.tsx",
+      "4d4b45f444abb67772c60e026c1d9d80f9c3f3e42bd593b2b2eafb9efbb8b11e"
+    ],
+    [
+      "src/components/screens/catalogo.tsx",
+      "2089d4b21622f31ae58b10e65a677909348b48d7d43f8cc6c5e94564833f71ed"
+    ],
+    [
+      "src/components/screens/detalhe.tsx",
+      "399947a1b31c8202a509a9867cde6526c1a6e911bd163ffcaf52b609ecdab643"
+    ],
+    [
+      "src/components/screens/login.tsx",
+      "b5d4165e3fc096af0daaa704214d05fe441e7a4f0fece8a3d62b02b8b92a99aa"
+    ],
+    [
+      "src/components/screens/meus-emprestimos.tsx",
+      "377601b47cbba6d8531b36e250b96ba40f88ec41262f72f840547693c0cb661c"
+    ],
+    [
+      "src/components/screens/operacoes.tsx",
+      "f8f5fb0bbcd75fbabaa3f94c068c7bb292f44a3071387c3f5317a4b17d0bf728"
+    ],
+    [
+      "src/components/ui/button.tsx",
+      "c6dabd3d78e441361a59d53ed39bce3696d0f534978bbae26276f69797cf2a9d"
+    ],
+    [
+      "src/components/ui/chip.tsx",
+      "7b746762650b6551f5a3244b7902c9d317ce5aaf15729ac9e972c00fcbd0f3db"
+    ],
+    [
+      "src/components/ui/dialog.tsx",
+      "d52078a16c2b8d4d7ca081c8f1431c70743f7c980d7d988acc128b5277d4e61d"
+    ],
+    [
+      "src/components/ui/equipment-card.tsx",
+      "f6014794b5dcb9bb8c435cf9e3caa4cbb1efc32fbf9755318b9378d8fc055ba4"
+    ],
+    [
+      "src/components/ui/equipment-photo.tsx",
+      "a71ccf52571785de8eeee73baacae97f77514463826cfdf103b39bec62f6ed59"
+    ],
+    [
+      "src/components/ui/input.tsx",
+      "32641400e39b2a6e67f711d7e408756063cbe384667e8efa0d25380abc4cc3f8"
+    ],
+    [
+      "src/components/ui/pill.tsx",
+      "b7d0062fdfbb8b68df25ac1d593dd317c748b168a3c25e1a37401bc62431cdb2"
+    ],
+    [
+      "src/components/ui/progress.tsx",
+      "e7e1125f9ad1f9dae10be1d8c7995bcda0f7a62275b2bec6ed0b0d700a373056"
+    ],
+    [
+      "src/components/ui/query-state.tsx",
+      "71a5e4cf2f4de52af3b707d5cdb4a052e9772d1c8c548c0885053cac860fc551"
+    ],
+    [
+      "src/components/ui/return-loan.tsx",
+      "17bdd9186689aff776522ae3e1b8d2d410e622eb7521619118281c3e6c064f27"
+    ],
+    [
+      "src/components/ui/segmented.tsx",
+      "8bfdbe0ca9e79e2d3bc72738539f256deff5da922324ac297c24fdaffd186006"
+    ],
+    [
+      "src/env.ts",
+      "6412d9b1e64d0b7c44a0272ec0d105b9bdf154840272fb46b3de7aef19dc6b4f"
+    ],
+    [
+      "src/lib/auth/server.ts",
+      "53461dc1dfb30782bedba23c53735c75e9091d8ec4fb71ac08659b7facfb5c7c"
+    ],
+    [
+      "src/lib/dates.ts",
+      "b9bb20f40b8453602e2f80f193b6bb2264c8134af284abb192db8bebbcc2af02"
+    ],
+    [
+      "src/lib/mock.ts",
+      "280b70b0b352b5d0f88ebb59bc652cdcbd6ac779e21afce60d2e6f3b6a20fc6b"
+    ],
+    [
+      "src/lib/trpc.ts",
+      "edb94ff59ace28fd6942adfdaf61f09fb8c46d9ba78546e80e68540050a4f902"
+    ],
+    [
+      "src/lib/types.ts",
+      "6da332fa64090fd6622cd1b8d1a499cbfe653f6a0742ca3d631c69c9380464ce"
+    ],
+    [
+      "src/lib/utils.ts",
+      "d1f1e0d62cb8d8d1e04c26e14de842d8a151f75812d81b046c65b5d1fe8e4b27"
+    ],
+    [
+      "src/middleware.ts",
+      "0879f5cf639d4528960e47a04de8e59a971957f42c7830593ddc3ee9d16cca05"
+    ],
+    [
+      "src/server/api/context.ts",
+      "346020ea8815b8ae3bb6286bbbbf494c9da968d318e066f7d94ace55522344f5"
+    ],
+    [
+      "src/server/api/root.ts",
+      "c84c9b7230adad5ffdcd1bf87eb7d98f85ac0f2fe335a286d68169c7e5e2c3ac"
+    ],
+    [
+      "src/server/api/routers/auth.ts",
+      "752fcced082e02288e13067a1116ce9d8dfe3618d4a6cd31bc43834c4465c0b4"
+    ],
+    [
+      "src/server/api/routers/equipment.ts",
+      "c580d2aa6d9588a8896063ee62c41c34863a1e771c2902dc7e44f0f27b3cebfa"
+    ],
+    [
+      "src/server/api/routers/loans.ts",
+      "0644b28651361627a79406ce7fea50cd7b3d85c084d57475a5702f2faa94ed1a"
+    ],
+    [
+      "src/server/api/routers/operations.ts",
+      "99d3d7ee51b1c4a79c5f61f56408d4fbfeafea29ec956484ac32ac57de373cc1"
+    ],
+    [
+      "src/server/api/schemas.ts",
+      "b6227b01b2154ba9ec81c873a678bebb5457c86f58d1e338883fc38ac54e2f50"
+    ],
+    [
+      "src/server/api/trpc.ts",
+      "c5df5dbf489917f72708c39a6b87892981eef167edd562380b9aa61d4a5fc584"
+    ],
+    [
+      "src/server/db.ts",
+      "edb8049344fa4d2b44f4ea6afeb5cb76c8067cbb78bfb0f3c62d4f2dc8f5b713"
+    ],
+    [
+      "src/server/security.ts",
+      "7c4117d111ef73d0222b244732ac0005ba86d7e018f21a9fd40fdcf4d8150eee"
+    ],
+    [
+      "src/server/services/auth.ts",
+      "cb5b842832580cc9e55b369c6d100f3d4632526eaa086b6fe69e28a3388225c6"
+    ],
+    [
+      "src/server/services/dates.ts",
+      "9714ad8c1318179f8812dd9d1fd6b8b720c182b89cc6df141523833a3e1c8230"
+    ],
+    [
+      "src/server/services/equipment.ts",
+      "1bc9177234c233bb914fccae49f69e661ed027ca36a22e0d16a6ba6b56c6c6cc"
+    ],
+    [
+      "src/server/services/loans.ts",
+      "9aab4888b4a57361ad9aaf6d2c35ec3bfb15081251d0bf9c8e022081f2508c6a"
+    ],
+    [
+      "src/server/services/occupancy.ts",
+      "1da3cd0152479619de1107f581e070a573263589b6c2c0a2e54de1ea4be8cdd5"
+    ],
+    [
+      "src/server/services/operations.ts",
+      "14eff96595b5768e870191ec7d621ffc815eed15c93be9a04d354e8d5c27f430"
+    ],
+    [
+      "src/server/services/pagination.ts",
+      "b3d678190171d658ba41ddf90c638c359d141b807ec451b6a5eb1d1d707dda7a"
+    ],
+    [
+      "src/server/services/presentation.ts",
+      "a7985d5d9244bc32dae18fa298ea435f284d386b67ec61431d8114d20eb45c61"
+    ],
+    [
+      "src/server/services/rate-limit.ts",
+      "5416562a357d2f682d9cc0f37c451761c3fdab50566aaf3e6734350a4e85602b"
+    ],
+    [
+      "src/server/services/transaction.ts",
+      "e5ba63bb40c0875126af5dff86d0364cf848245ba2c6b199b3dd5b5e13e9ec28"
+    ],
+    [
+      "stacks.md",
+      "6d1069fb4a58b71f0399f9022cf5a2e34a0a64e12e7bba47a37920bc4a786768"
+    ],
+    [
+      "tsconfig.json",
+      "b69393fa77678ccb49d9c3e6dc86155d4384b03e765428d25ec0de86533548e9"
+    ],
+    [
+      "vercel.json",
+      "f570e97cc8fba4977aed120c2cdb8b9acc783502b0f8f8e1871f1f897e6fd6b8"
+    ],
+    [
+      "vitest.config.ts",
+      "89bf4bca40ff548a147f5b6a4d38275264105df7d9e230d4c008020f36e2f5e2"
+    ],
+    [
+      "vitest.integration.config.ts",
+      "1946083a50b2ebc02ff6868c216217b53a68acb3ece38b75f7a4e456c9b428e9"
+    ],
+    [
+      "vitest.setup.ts",
+      "9408a30df297f52f573665036d4dd2b8f0b324c7b5ed37e2bd83fa6587065ae5"
+    ]
+  ],
+  "sourceHashAfter": "d4d372d7fdde9676048806bc67581cc3382a5c2358c5e2b3fc748e3e9faf99f3",
+  "snapshotHash": "1db69b129d6155bcb68f0ef836d2a502001fe0e5e5eb80f7c30e4c507c77c595",
+  "criteria": [
+    {
+      "id": "004/CA-01",
+      "text": "- **CA-01 — sessão SSR [server/HTTP].** Login Supabase validado no servidor, cookie `httpOnly` (Secure no HTTPS, SameSite e escopo seguros), refresh pelo middleware nas rotas pertinentes, sem token/senha em localStorage ou bundle. `@supabase/ssr` não é prova automática de httpOnly: configurar e testar fluxo server-only. Evidência: inspeção cookies sem valores, sessão expirada/refresh/adulterada e proteção de rotas/API; validar identidade Auth server em vez de confiar só em cookie/getSession."
+    },
+    {
+      "id": "004/CA-02",
+      "text": "- **CA-02 — cadastro fechado [Auth/autorização].** Sem signup público funcional; somente convite/provisionamento autorizado do administrador humano, membership necessária. Colaborador não vira operacoes por editar input/metadados. Evidência: tentativa de cadastro aberto e promoção negadas, usuário sem membership negado, convite local/identidade reconhecida; configuração remota fica ação humana pendente."
+    },
+    {
+      "id": "004/CA-03",
+      "text": "- **CA-03 — tenant/papéis [context/tRPC].** `createContext` resolve tenant e role por sessão e memberships server; `protectedProcedure`, `tenantProcedure` e guard operacoes/admin não aceitam confiança em tenant/user/role do cliente. Routers → service → Prisma no mesmo Next, `app/api/trpc/[trpc]/route.ts`, input Zod, erros tRPC e tipos inferidos; negar acesso entre tenants em cada procedimento. Evidência: testes `createCaller` código/corpo e IDOR, inclusive acesso operacoes de tenant distinto."
+    },
+    {
+      "id": "004/CA-04",
+      "text": "- **CA-04 — schema/migrations [Postgres local].** Criar as seis tabelas previstas, tenant columns/FKs composites, constraints, datas, índice parcial aberto e índices operacionais. Migration somente Prisma CLI e replay/reset exclusivamente local; nenhuma alteração remota. Evidência: catálogo Postgres, tentativa de FK cruzada rejeitada, índice aberto rejeita duplicação, replay local de zero e preservação de histórico."
+    },
+    {
+      "id": "004/CA-05",
+      "text": "- **CA-05 — RLS [banco/runtime].** RLS em todas as seis tabelas, deny by default com policies explícitas para escopos necessários; Auth não permite leitura direta indiscriminada. Testar tenant A/B com role não-owner, inspecionar role efetiva de runtime e relatar bypass se owner. Evidência: políticas e testes por tabela/procedimento, role emprestai_app/settings app.tenant_id/app.user_id/app.role transacionais e ausência de contexto residual no pooler; não substituir teste efetivo por flag `relrowsecurity`."
+    },
+    {
+      "id": "004/CA-06",
+      "text": "- **CA-06 — privacidade [respostas/logs].** Colaborador recebe apenas próprios loans e dados públicos de inventário, sem nomes de outros colaboradores no catálogo/detalhe/histórico, sem senhas/tokens/URL secretas em erro/audit/log. Ops pode ver nomes necessários dos tomadores somente do próprio tenant. Evidência: snapshots de corpos/serialização, busca de segredos sem imprimi-los e fixtures distintas por tenant."
+    },
+    {
+      "id": "004/CA-07",
+      "text": "- **CA-07 — rate limit [server/Postgres].** Limitar por **IP e usuário**, contadores atômicos persistidos no Postgres tenant, cobrindo login pré-auth e mutações autenticadas; usar IP de origem com proxy confiável, sem confiar em header arbitrário. Defaults realizados propostos: login 15/15min IP+e-mail, mutações 60/min IP+userId; review produção pendente sem exigir aprovação adicional para local. Evidência: requests concorrentes, dois usuários/mesmo IP, um usuário/IPs distintos, janela expira, `TOO_MANY_REQUESTS`, sem bypass por trocar instância; sem gravar IP bruto desnecessário."
+    },
+    {
+      "id": "004/CA-08",
+      "text": "- **CA-08 — auditoria [banco/service].** Eventos append-only com ator/tenant/ação/recurso; mutação bem-sucedida e audit na mesma transação, falha reverte ambos. Bloquear UPDATE/DELETE de runtime; não auditar credenciais. Evidência: tentativa de alterar/remover, FK actor cruzado e rollback induzido; distinguir poderes do owner de permissões reais de runtime."
+    },
+    {
+      "id": "004/CA-09",
+      "text": "- **CA-09 — ambiente/segredos [config].** URLs e chaves validadas server, `.env.example` sem valores reais, segredos nunca NEXT_PUBLIC, Prisma singleton com conexão runtime/pooler e migration direct conforme compatibilidade validada da versão. Versões realizadas e snapshots de audit registrados acima; não prometer clean global nem checks executados nesta correção. Evidência: validação de boot/build e inspeção do bundle. Configuração Vercel remota apenas checklist humano; não alegar env presente lá."
+    },
+    {
+      "id": "004/CA-10",
+      "text": "- **CA-10 — segurança/qualidade [integração].** CSRF/origin em mutações com cookies, CSP/cabeçalhos compatíveis com Next, erros sem detalhes internos, componentes e integração testados localmente. CI sem migrations remotas automáticas; verificação limpa sem permissão de editar teste. Evidência: requests cross-origin negados, headers, typecheck/tests/build reais e launcher com restrições efetivas quando implementado. Se launcher não implementado, registrar limitação."
+    }
+  ],
+  "inventory": [
+    {
+      "file": "e2e/local-boundaries.spec.ts",
+      "candidates": [
+        "004/CA-01",
+        "004/CA-10"
+      ]
+    },
+    {
+      "file": "scripts/__tests__/human-production.test.ts",
+      "candidates": [
+        "004/CA-07"
+      ]
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "candidates": [
+        "004/CA-05",
+        "004/CA-07"
+      ]
+    },
+    {
+      "file": "scripts/__tests__/verifier.test.mjs",
+      "candidates": [
+        "004/CA-10"
+      ]
+    },
+    {
+      "file": "src/__tests__/frontend-contract.test.tsx",
+      "candidates": [
+        "004/CA-01",
+        "004/CA-03",
+        "004/CA-06",
+        "004/CA-07",
+        "004/CA-09",
+        "004/CA-10"
+      ]
+    },
+    {
+      "file": "src/__tests__/integration/spec002.integration.test.ts",
+      "candidates": [
+        "004/CA-01"
+      ]
+    },
+    {
+      "file": "src/__tests__/integration/spec003.integration.test.ts",
+      "candidates": [
+        "004/CA-01",
+        "004/CA-02",
+        "004/CA-03",
+        "004/CA-04",
+        "004/CA-05",
+        "004/CA-06"
+      ]
+    },
+    {
+      "file": "src/__tests__/integration/spec004.integration.test.ts",
+      "candidates": [
+        "004/CA-04",
+        "004/CA-05",
+        "004/CA-07",
+        "004/CA-08"
+      ]
+    },
+    {
+      "file": "src/__tests__/integration/spec005.integration.test.ts",
+      "candidates": [
+        "004/CA-01",
+        "004/CA-02",
+        "004/CA-04",
+        "004/CA-06"
+      ]
+    },
+    {
+      "file": "src/__tests__/server-api.test.ts",
+      "candidates": [
+        "004/CA-01",
+        "004/CA-02",
+        "004/CA-03",
+        "004/CA-10"
+      ]
+    },
+    {
+      "file": "src/__tests__/server-context.test.ts",
+      "candidates": [
+        "004/CA-01",
+        "004/CA-02",
+        "004/CA-06",
+        "004/CA-08"
+      ]
+    },
+    {
+      "file": "src/__tests__/server-occupancy.test.ts",
+      "candidates": []
+    },
+    {
+      "file": "src/__tests__/server-rules.test.ts",
+      "candidates": [
+        "004/CA-03",
+        "004/CA-04",
+        "004/CA-06",
+        "004/CA-10"
+      ]
+    }
+  ],
+  "assertions": [
+    {
+      "file": "scripts/__tests__/human-production.test.ts",
+      "name": "test_ca_07_spec002_remote_actions_require_interactive_human_terminal",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_05_inventory_matches_literal_reference_html",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_07_rejects_untrusted_url_http://pixabay.com/a",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_07_rejects_untrusted_url_https://evil.test/a",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_07_rejects_untrusted_url_https://pixabay.com.evil.test/a",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_07_rejects_untrusted_url_https://127.0.0.1/a",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_07_rejects_untrusted_url_https://pixabay.com@evil.test/a",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_07_rejects_untrusted_url_https://x:y@pixabay.com/a",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_07_rejects_untrusted_url_https://pixabay.com:444/a",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_07_rejects_untrusted_url_https://cdn.pixabay.com/a?key=secret",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_07_rejects_untrusted_url_https://pixabay.com/a#fragment",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_07_rejects_untrusted_url_https://pixabay.com\\@evil.test/a",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_07_rejects_nonpublic_dns_and_allows_global",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_07_validates_each_redirect_and_caps_at_three",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_07_rejects_mime_size_errors_and_svg_decoding",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_07_timeout_covers_response_body_without_retry",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_07_transform_rotates_resizes_and_strips_exif",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_05_discover_caches_24h_sanitizes_and_no_key_or_images_in_html",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_05_download_only_explicit_cached_selection",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_07_escapes_html_labels_and_attributes",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_07_cli_blocks_authenticated_discovery_without_human_tty",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_05_manifest_binds_review_hash_provenance_and_maps_exact_seed_contract",
+      "status": "passed"
+    },
+    {
+      "file": "scripts/__tests__/images.test.ts",
+      "name": "002/CA-05 CA-07 local image pipeline test_ca_05_rejects_blank_review_template_and_changed_provenance",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/frontend-contract.test.tsx",
+      "name": "test_ca_01_spec003_busca_categoria_disponibilidade_combinadas_sem_contagem_mock",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/frontend-contract.test.tsx",
+      "name": "test_ca_01_spec004_login_erro_nao_navega_nem_simula_sucesso",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/frontend-contract.test.tsx",
+      "name": "test_ca_09_spec005_grupo_ops_oculto_para_colaborador_sem_sino_falso",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/frontend-contract.test.tsx",
+      "name": "test_ca_09_spec005_grupo_ops_visivel_somente_papel_servidor",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/frontend-contract.test.tsx",
+      "name": "test_ca_07_spec003_erro_pedido_mantem_modal_e_nao_afirma_sucesso",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/frontend-contract.test.tsx",
+      "name": "test_ca_03_spec003_atraso_bloqueia_com_motivo_explicito",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/frontend-contract.test.tsx",
+      "name": "test_ca_03_spec005_devolucao_exige_confirmar_e_erro_nao_oculta_acao",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/frontend-contract.test.tsx",
+      "name": "test_ca_07_spec005_cadastrar_adicionar_outro_grava_antes_de_limpar",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/frontend-contract.test.tsx",
+      "name": "test_ca_07_spec005_erro_adicionar_outro_preserva_valores",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/frontend-contract.test.tsx",
+      "name": "test_ca_07_spec005_cadastrar_simples_persiste_sem_limpar",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/frontend-contract.test.tsx",
+      "name": "test_ca_01_spec004_sessao_expirada_redireciona_sem_dados_protegidos",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/frontend-contract.test.tsx",
+      "name": "test_ca_10_spec003_sem_foto_nao_inventa_imagem",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/frontend-contract.test.tsx",
+      "name": "test_ca_07_spec005_envio_pendente_desabilita_ambos_cadastros",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/frontend-contract.test.tsx",
+      "name": "test_ca_03_spec005_cancelar_devolucao_nao_grava",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/frontend-contract.test.tsx",
+      "name": "test_ca_10_spec003_foto_storage_dimensoes_credito_escapado_e_link_inseguro_rejeitado",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/frontend-contract.test.tsx",
+      "name": "test_ca_06_spec005_patrimonio_sem_hifen_rejeitado_sem_persistir",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/server-api.test.ts",
+      "name": "tRPC authorization with explicit service mocks — not RLS or integration proof test_ca_03_spec004_anonymous_is_rejected_by_every_protected_procedure",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/server-api.test.ts",
+      "name": "tRPC authorization with explicit service mocks — not RLS or integration proof test_ca_02_spec004_missing_membership_is_forbidden_and_promotion_input_rejected",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/server-api.test.ts",
+      "name": "tRPC authorization with explicit service mocks — not RLS or integration proof test_ca_01_spec005_collaborator_cannot_access_operations_or_create_equipment",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/server-api.test.ts",
+      "name": "tRPC authorization with explicit service mocks — not RLS or integration proof test_ca_02_spec003_context_injected_and_response_body_preserved_without_tenant_input",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/server-api.test.ts",
+      "name": "tRPC authorization with explicit service mocks — not RLS or integration proof test_ca_03_spec004_operations_role_reaches_service_with_own_tenant_and_body",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/server-api.test.ts",
+      "name": "HTTP adapter safety — mocked context/services test_ca_10_spec004_get_mutation_rejected_and_internal_errors_sanitized",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/server-context.test.ts",
+      "name": "Verified server identity and public DTOs — pure mocks, not Auth integration test_ca_01_spec004_identity_only_uses_verified_getUser_not_session",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/server-context.test.ts",
+      "name": "Verified server identity and public DTOs — pure mocks, not Auth integration test_ca_02_spec004_metadata_cannot_promote_role_and_no_membership_is_not_tenant",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/server-context.test.ts",
+      "name": "Verified server identity and public DTOs — pure mocks, not Auth integration test_ca_06_spec004_equipment_and_loan_dto_never_return_borrower_tokens_or_tenant",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/server-context.test.ts",
+      "name": "Verified server identity and public DTOs — pure mocks, not Auth integration test_ca_08_spec005_image_url_rejects_arbitrary_host_and_path_before_env",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/server-occupancy.test.ts",
+      "name": "Occupancy helper — explicit transaction mock test_ca_privacy_occupancy_returns_only_item_booleans_and_parameterizes_tenant_ids",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/server-occupancy.test.ts",
+      "name": "Occupancy helper — explicit transaction mock test_ca_privacy_empty_batch_never_executes_sql",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/server-rules.test.ts",
+      "name": "Backend pure rules — not database integration test_ca_04_spec003_civil_date_midnight_and_calendar_boundaries",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/server-rules.test.ts",
+      "name": "Backend pure rules — not database integration test_ca_03_spec003_eligibility_is_rechecked_and_never_accepts_three_or_late",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/server-rules.test.ts",
+      "name": "Backend pure rules — not database integration test_ca_06_spec005_create_validation_rejects_unknown_role_tenant_image_and_invalid_category",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/server-rules.test.ts",
+      "name": "Backend pure rules — not database integration test_ca_04_spec005_stable_cursor_uses_timestamp_and_id_and_rejects_bad_payload",
+      "status": "passed"
+    },
+    {
+      "file": "src/__tests__/server-rules.test.ts",
+      "name": "Backend pure rules — not database integration test_ca_10_spec004_csrf_rejects_missing_origin_cross_origin_and_non_json",
+      "status": "passed"
+    }
+  ],
+  "checks": [
+    {
+      "id": "tests",
+      "command": [
+        "/Users/guilherme.nacarelli/.wolf/emprestai-pratica/emprestai/.work/runtime/node_modules/node/bin/node",
+        "/Users/guilherme.nacarelli/.wolf/emprestai-pratica/emprestai/node_modules/vitest/vitest.mjs",
+        "run",
+        "--pool=threads",
+        "--reporter=json",
+        "--outputFile=/private/var/folders/td/qfg7x9817wz92vjkclgnwcxr0000gn/T/emprestai-review-PMovdw/tests.json"
+      ],
+      "startedAt": "2026-11-10T17:23:25.982Z",
+      "finishedAt": "2026-11-10T17:23:29.689Z",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdoutHash": "68e0fa1d6dc79d1f0e8995a382c6029fa62b259e76056acfca5054596e0b78c3",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "hash": "de750ed945fb5771b746d785ca3b94078f49de8a359ac06a15754e52f60dcfa8"
+    },
+    {
+      "id": "typecheck",
+      "command": [
+        "/Users/guilherme.nacarelli/.wolf/emprestai-pratica/emprestai/.work/runtime/node_modules/node/bin/node",
+        "/Users/guilherme.nacarelli/.wolf/emprestai-pratica/emprestai/node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "startedAt": "2026-11-10T17:23:29.690Z",
+      "finishedAt": "2026-11-10T17:23:32.794Z",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdoutHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "hash": "98ad90588a857c4f05752d9d19d755e72019f187e43a9b00158da5bc0a08f5f9"
+    },
+    {
+      "id": "build",
+      "command": [
+        "/Users/guilherme.nacarelli/.wolf/emprestai-pratica/emprestai/.work/runtime/node_modules/node/bin/node",
+        "/Users/guilherme.nacarelli/.wolf/emprestai-pratica/emprestai/node_modules/next/dist/bin/next",
+        "build",
+        "--webpack"
+      ],
+      "startedAt": "2026-11-10T17:23:32.795Z",
+      "finishedAt": "2026-11-10T17:23:55.278Z",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdoutHash": "c2d6951a25ec09f4f73352621d7a760c19796eda8e83892a575e97bc93214ddd",
+      "stderrHash": "75571ce17c45328ee646c30c6616af255ea6501eea237a75c159c6ad29e31e2e",
+      "hash": "380716ce0432aab790cbf0e85a4219fc2b7ebd3b4427c4e5ceb81f08f5387a0e"
+    }
+  ],
+  "checksHash": "75c81556049407f515a3b16410ca5dafb498e906cd05b5f2b2f79cd15f835403",
+  "git": {
+    "status": "blocked",
+    "reason": "Status Git não comprovado; não executar Git no original pelo launcher de revisão"
+  },
+  "review": null,
+  "sandboxTemp": "/private/var/folders/td/qfg7x9817wz92vjkclgnwcxr0000gn/T/emprestai-review-PMovdw",
+  "problems": [
+    "Fonte mudou durante execução",
+    "Git/status/escopo não verificados",
+    "Revisão independente ausente"
+  ],
+  "localVerdict": "NÃO PRONTA",
+  "productionVerdict": "NÃO PRONTA"
+}

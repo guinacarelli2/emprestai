@@ -1,0 +1,59 @@
+TAP version 13
+# Subtest: test_ca_10_strips_credentials_and_environment
+ok 1 - test_ca_10_strips_credentials_and_environment
+  ---
+  duration_ms: 1.130916
+  type: 'test'
+  ...
+# Subtest: test_ca_10_digest_excludes_evidence_but_tracks_source_specs_schema
+ok 2 - test_ca_10_digest_excludes_evidence_but_tracks_source_specs_schema
+  ---
+  duration_ms: 23.139084
+  type: 'test'
+  ...
+# Subtest: test_ca_10_profile_deny_network_write_original_and_fixed_commands
+ok 3 - test_ca_10_profile_deny_network_write_original_and_fixed_commands
+  ---
+  duration_ms: 0.325625
+  type: 'test'
+  ...
+# Subtest: test_ca_10_no_false_pass_from_test_names
+ok 4 - test_ca_10_no_false_pass_from_test_names
+  ---
+  duration_ms: 0.351375
+  type: 'test'
+  ...
+# Subtest: test_ca_10_review_rejects_unknown_missing_stale_and_fake_assertions
+ok 5 - test_ca_10_review_rejects_unknown_missing_stale_and_fake_assertions
+  ---
+  duration_ms: 0.541959
+  type: 'test'
+  ...
+# Subtest: test_ca_10_criteria_inventory_requires_unique_scoped_ids
+ok 6 - test_ca_10_criteria_inventory_requires_unique_scoped_ids
+  ---
+  duration_ms: 0.195458
+  type: 'test'
+  ...
+# Subtest: test_ca_10_delivery_refuses_missing_artifacts
+ok 7 - test_ca_10_delivery_refuses_missing_artifacts
+  ---
+  duration_ms: 1.114
+  type: 'test'
+  ...
+# {"fixtureOnly":true,"redHash":"0ead4673235c511a0a21e7c511b93a9ecff3a1486d9e2934323ce8be8528a6bc","greenHash":"3f11bf06576c06ceb934cac042b2e5ca8c82814a409b0e4ea2dce3654bd79bb8","redExitCode":1,"greenExitCode":0,"redCheckHash":"4e964f52893f0ef3506078bcbb958c41eed48fadeb58fb089a93abce5af4c25a","greenCheckHash":"00619c4c2bb5aaa3bdb895d9b4ec949d8f6032e7e89809f26354184182a91e83"}
+# Subtest: test_ca_10_real_macos_sandbox_enforces_boundaries_and_red_green_hashes
+ok 8 - test_ca_10_real_macos_sandbox_enforces_boundaries_and_red_green_hashes
+  ---
+  duration_ms: 4619.198959
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4724.01275

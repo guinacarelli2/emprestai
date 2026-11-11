@@ -1,0 +1,195 @@
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.1.0 [39m[90m<PROJETO_LOCAL>[39m
+
+Integração: PostgreSQL standalone loopback real (Testcontainers não exercitado).
+PostgreSQL local verificado: emprestai_local_opsfix_20261110142430, loopback:54917; modo deploy.
+[2mPrisma schema loaded from prisma/schema.prisma[22m
+[2mDatasource "db": PostgreSQL database "emprestai_local_opsfix_20261110142430", schema "public" at "127.0.0.1:54917"[22m
+
+1 migration found in prisma/migrations
+
+Applying migration `20261110165902_auth_persistence`
+
+The following migration(s) have been applied:
+
+migrations/
+  └─ 20261110165902_[36m[1mauth_persistence[22m[39m/
+    └─ migration.sql
+      
+[32mAll migrations have been successfully applied.[39m
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_01_return_own_or_operations_same_tenant_only
+[22m[39m{"request_id":"26214b4f-3a04-4856-aa36-88c3ba8e0bdf","tenant_id":"d695e61a-25b1-4a80-b763-fe30d95625c0","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_01_return_own_or_operations_same_tenant_only
+[22m[39m{"request_id":"2e479593-3378-4263-8a03-25af9619dc02","tenant_id":"d695e61a-25b1-4a80-b763-fe30d95625c0","action":"loans.return","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_01_return_own_or_operations_same_tenant_only
+[22m[39m{"request_id":"db8e6bd0-b679-4ad9-b4be-0aaf75557aed","tenant_id":"71056ff1-7f26-4b57-b627-ead0fd01fe02","action":"loans.return","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_01_return_own_or_operations_same_tenant_only
+[22m[39m{"request_id":"b6839cfa-5ea8-4ad6-a0b0-21bed8968d54","tenant_id":"d695e61a-25b1-4a80-b763-fe30d95625c0","action":"loans.return","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_02_parallel_return_idempotent_timestamp_one_audit_and_maintenance_preserved
+[22m[39m{"request_id":"eee37b52-cc32-42c6-b7d8-46fc0bd77e74","tenant_id":"8f8108a3-47dd-4dc2-b498-2e7b7c573651","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_02_parallel_return_idempotent_timestamp_one_audit_and_maintenance_preserved
+[22m[39m{"request_id":"5c808cdc-1442-44f3-aeba-ac830523ac2c","tenant_id":"8f8108a3-47dd-4dc2-b498-2e7b7c573651","action":"loans.return","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_02_parallel_return_idempotent_timestamp_one_audit_and_maintenance_preserved
+[22m[39m{"request_id":"eb146565-c418-4763-88f3-52543892cae7","tenant_id":"8f8108a3-47dd-4dc2-b498-2e7b7c573651","action":"loans.return","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_02_parallel_return_idempotent_timestamp_one_audit_and_maintenance_preserved
+[22m[39m{"request_id":"455130c1-f2bf-406f-959f-3f1a778903a3","tenant_id":"8f8108a3-47dd-4dc2-b498-2e7b7c573651","action":"loans.return","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_02_failed_audit_rolls_back_return_in_real_transaction
+[22m[39m{"request_id":"9a40f881-2cb1-478d-8304-a26cf2967f88","tenant_id":"ddc16f0e-850d-4ce0-9c6a-0ab4c46a9d0f","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_ca_05_operations_list_stats_and_recent_isolate_other_tenant
+[22m[39m{"request_id":"9a1cbfbb-b732-4e59-a6f7-bbdcbf403e63","tenant_id":"3bc94cf6-0968-4244-9c7a-70e5085ef86e","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_ca_05_operations_list_stats_and_recent_isolate_other_tenant
+[22m[39m{"request_id":"31d90e46-a893-4863-9b0c-1f4029fa2e5a","tenant_id":"e77ba01d-b068-48fa-9013-f063e51d458c","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_ca_05_operations_list_stats_and_recent_isolate_other_tenant
+[22m[39m{"request_id":"652dc9c1-cf57-4f48-b9e8-37ed19bfa922","tenant_id":"3bc94cf6-0968-4244-9c7a-70e5085ef86e","action":"operations.list","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_ca_05_operations_list_stats_and_recent_isolate_other_tenant
+[22m[39m{"request_id":"9aa53d2a-95b2-4cad-8851-e079dc147fd4","tenant_id":"3bc94cf6-0968-4244-9c7a-70e5085ef86e","action":"operations.stats","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_ca_05_operations_list_stats_and_recent_isolate_other_tenant
+[22m[39m{"request_id":"42dc3af8-1ce7-4fca-8589-a23b681ec6e2","tenant_id":"3bc94cf6-0968-4244-9c7a-70e5085ef86e","action":"operations.list","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_ca_05_operations_list_stats_and_recent_isolate_other_tenant
+[22m[39m{"request_id":"42dc3af8-1ce7-4fca-8589-a23b681ec6e2","tenant_id":"3bc94cf6-0968-4244-9c7a-70e5085ef86e","action":"operations.stats","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_ca_05_operations_list_stats_and_recent_isolate_other_tenant
+[22m[39m{"request_id":"42dc3af8-1ce7-4fca-8589-a23b681ec6e2","tenant_id":"3bc94cf6-0968-4244-9c7a-70e5085ef86e","action":"equipment.recent","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_06_ca_07_ca_08_equipment_create_authorized_atomic_unique_no_image
+[22m[39m{"request_id":"de44439c-702c-43b1-a0a4-6adf71f92608","tenant_id":"c3109418-40e9-4ec7-9181-05141cc6e070","action":"equipment.create","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_06_ca_07_ca_08_equipment_create_authorized_atomic_unique_no_image
+[22m[39m{"request_id":"0cb87857-9bc6-4b31-b85e-7d80cebe40f4","tenant_id":"c3109418-40e9-4ec7-9181-05141cc6e070","action":"equipment.create","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_06_ca_07_ca_08_equipment_create_authorized_atomic_unique_no_image
+[22m[39m{"request_id":"e975e730-ed1f-44a8-ad28-59b68f70c03a","tenant_id":"c3109418-40e9-4ec7-9181-05141cc6e070","action":"equipment.create","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_06_ca_07_ca_08_equipment_create_authorized_atomic_unique_no_image
+[22m[39m{"request_id":"2c6bdd98-a4b9-491c-93f0-0697d40fddd8","tenant_id":"b181671b-91a5-492e-884c-18ba30f7b456","action":"equipment.create","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_spec005_atraso_categoria_busca_cursor_e_tenant_combinados
+[22m[39m{"request_id":"8f33ecf4-eb14-41ed-8689-94d65606dbce","tenant_id":"a8fc7a0f-c1f0-4c0e-bad9-d0926d2f7c18","action":"operations.stats","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_spec005_atraso_categoria_busca_cursor_e_tenant_combinados
+[22m[39m{"request_id":"8f33ecf4-eb14-41ed-8689-94d65606dbce","tenant_id":"a8fc7a0f-c1f0-4c0e-bad9-d0926d2f7c18","action":"operations.list","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_spec005_atraso_categoria_busca_cursor_e_tenant_combinados
+[22m[39m{"request_id":"8f33ecf4-eb14-41ed-8689-94d65606dbce","tenant_id":"a8fc7a0f-c1f0-4c0e-bad9-d0926d2f7c18","action":"operations.list","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_spec005_atraso_categoria_busca_cursor_e_tenant_combinados
+[22m[39m{"request_id":"8f33ecf4-eb14-41ed-8689-94d65606dbce","tenant_id":"a8fc7a0f-c1f0-4c0e-bad9-d0926d2f7c18","action":"operations.list","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_spec005_atraso_categoria_busca_cursor_e_tenant_combinados
+[22m[39m{"request_id":"8f33ecf4-eb14-41ed-8689-94d65606dbce","tenant_id":"a8fc7a0f-c1f0-4c0e-bad9-d0926d2f7c18","action":"operations.list","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_spec005_atraso_categoria_busca_cursor_e_tenant_combinados
+[22m[39m{"request_id":"8f33ecf4-eb14-41ed-8689-94d65606dbce","tenant_id":"a8fc7a0f-c1f0-4c0e-bad9-d0926d2f7c18","action":"operations.list","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_spec005_atraso_categoria_busca_cursor_e_tenant_combinados
+[22m[39m{"request_id":"8f33ecf4-eb14-41ed-8689-94d65606dbce","tenant_id":"a8fc7a0f-c1f0-4c0e-bad9-d0926d2f7c18","action":"operations.list","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_spec005_atraso_categoria_busca_cursor_e_tenant_combinados
+[22m[39m{"request_id":"8f33ecf4-eb14-41ed-8689-94d65606dbce","tenant_id":"a8fc7a0f-c1f0-4c0e-bad9-d0926d2f7c18","action":"operations.stats","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_spec005_atraso_categoria_busca_cursor_e_tenant_combinados
+[22m[39m{"request_id":"2112e027-9b08-4d3f-9a42-7b17a6086c5d","tenant_id":"a8fc7a0f-c1f0-4c0e-bad9-d0926d2f7c18","action":"operations.list","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_spec005_atraso_categoria_busca_cursor_e_tenant_combinados
+[22m[39m{"request_id":"8f33ecf4-eb14-41ed-8689-94d65606dbce","tenant_id":"a8fc7a0f-c1f0-4c0e-bad9-d0926d2f7c18","action":"operations.list","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_spec005_atraso_categoria_busca_cursor_e_tenant_combinados
+[22m[39m{"request_id":"8f33ecf4-eb14-41ed-8689-94d65606dbce","tenant_id":"a8fc7a0f-c1f0-4c0e-bad9-d0926d2f7c18","action":"operations.list","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_spec005_semana_categoria_busca_limites_sao_paulo_sem_afetar_kpis
+[22m[39m{"request_id":"b504f20e-8dc2-4548-9317-71a9db02e43b","tenant_id":"7cff5689-8e2d-4e15-8943-cf401677d2e7","action":"operations.stats","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_spec005_semana_categoria_busca_limites_sao_paulo_sem_afetar_kpis
+[22m[39m{"request_id":"b504f20e-8dc2-4548-9317-71a9db02e43b","tenant_id":"7cff5689-8e2d-4e15-8943-cf401677d2e7","action":"operations.list","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_spec005_semana_categoria_busca_limites_sao_paulo_sem_afetar_kpis
+[22m[39m{"request_id":"b504f20e-8dc2-4548-9317-71a9db02e43b","tenant_id":"7cff5689-8e2d-4e15-8943-cf401677d2e7","action":"operations.list","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_spec005_semana_categoria_busca_limites_sao_paulo_sem_afetar_kpis
+[22m[39m{"request_id":"b504f20e-8dc2-4548-9317-71a9db02e43b","tenant_id":"7cff5689-8e2d-4e15-8943-cf401677d2e7","action":"operations.list","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_spec005_semana_categoria_busca_limites_sao_paulo_sem_afetar_kpis
+[22m[39m{"request_id":"b504f20e-8dc2-4548-9317-71a9db02e43b","tenant_id":"7cff5689-8e2d-4e15-8943-cf401677d2e7","action":"operations.list","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_spec005_semana_categoria_busca_limites_sao_paulo_sem_afetar_kpis
+[22m[39m{"request_id":"b504f20e-8dc2-4548-9317-71a9db02e43b","tenant_id":"7cff5689-8e2d-4e15-8943-cf401677d2e7","action":"operations.list","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_spec005_semana_categoria_busca_limites_sao_paulo_sem_afetar_kpis
+[22m[39m{"request_id":"b504f20e-8dc2-4548-9317-71a9db02e43b","tenant_id":"7cff5689-8e2d-4e15-8943-cf401677d2e7","action":"operations.stats","status":"ok"}
+
+ [32m✓[39m src/__tests__/integration/spec005.integration.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 217[2mms[22m[39m
+ [32m✓[39m src/__tests__/integration/spec004.integration.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 283[2mms[22m[39m
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_02_anonymous_idor_own_loans_and_privacy
+[22m[39m{"request_id":"d2f2dc72-ffb7-488b-bd38-6b5e56d27a4b","tenant_id":"e6c63c4b-8849-4c5a-9361-096e62d94d2b","action":"loans.request","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_02_anonymous_idor_own_loans_and_privacy
+[22m[39m{"request_id":"836760a3-c95f-45da-80e3-7549d1a2ab91","tenant_id":"e6c63c4b-8849-4c5a-9361-096e62d94d2b","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_02_anonymous_idor_own_loans_and_privacy
+[22m[39m{"request_id":"20427857-e66a-48cb-8e45-10259767f092","tenant_id":"e6c63c4b-8849-4c5a-9361-096e62d94d2b","action":"loans.mine","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_02_anonymous_idor_own_loans_and_privacy
+[22m[39m{"request_id":"f4b668a4-9634-485e-99da-491d7d98265e","tenant_id":"e6c63c4b-8849-4c5a-9361-096e62d94d2b","action":"loans.mine","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_01_catalog_occupancy_of_other_borrower_and_cross_tenant_procedures
+[22m[39m{"request_id":"0aa9cbf2-8bef-4fb8-a03b-e0677829641b","tenant_id":"7614de09-0d39-4f8a-bceb-cf6a11b487c7","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_01_catalog_occupancy_of_other_borrower_and_cross_tenant_procedures
+[22m[39m{"request_id":"3315e4ee-5aeb-4796-8a1d-6acaf6599873","tenant_id":"7614de09-0d39-4f8a-bceb-cf6a11b487c7","action":"equipment.get","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_01_catalog_occupancy_of_other_borrower_and_cross_tenant_procedures
+[22m[39m{"request_id":"ec2b2635-fb24-4674-b692-7734ae0e6612","tenant_id":"7614de09-0d39-4f8a-bceb-cf6a11b487c7","action":"equipment.list","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_01_catalog_occupancy_of_other_borrower_and_cross_tenant_procedures
+[22m[39m{"request_id":"8cf5cdf0-14b5-4ac4-978f-d4a5ca705716","tenant_id":"53ef76ab-aab4-4d51-a37b-4264217ce982","action":"equipment.get","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_03_eligibility_maintenance_out_of_use_limit_and_overdue
+[22m[39m{"request_id":"d53b75c8-9a4c-4ece-8c84-a56e9c339e00","tenant_id":"42fa7488-c1bd-4067-a8ee-903c1a5d3a2e","action":"loans.request","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_03_eligibility_maintenance_out_of_use_limit_and_overdue
+[22m[39m{"request_id":"dd0e5ed9-3f9d-478a-8070-70ecc24c666c","tenant_id":"42fa7488-c1bd-4067-a8ee-903c1a5d3a2e","action":"loans.request","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_03_eligibility_maintenance_out_of_use_limit_and_overdue
+[22m[39m{"request_id":"0ba80b39-9954-4e9e-8f8a-4b1c21119e5f","tenant_id":"42fa7488-c1bd-4067-a8ee-903c1a5d3a2e","action":"loans.request","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_persists_civil_date_and_atomic_audit
+[22m[39m{"request_id":"31f22e44-3462-4a50-a1cc-de09d9d77c3f","tenant_id":"2e48fa00-b76b-4ae0-ac2e-b549342ad345","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_05_two_parallel_requests_with_two_existing_loans_exactly_one_success
+[22m[39m{"request_id":"cc3e594f-5796-4d15-87a4-d8828c668900","tenant_id":"a2846410-3fb9-482a-a298-d8c415dabd50","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_05_two_parallel_requests_with_two_existing_loans_exactly_one_success
+[22m[39m{"request_id":"bfca9186-7b3c-4d69-a11d-6bc6640f5cf8","tenant_id":"a2846410-3fb9-482a-a298-d8c415dabd50","action":"loans.request","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_06_two_users_one_item_exactly_one_success
+[22m[39m{"request_id":"f52976c2-b67d-4ca1-8589-726a7c908fbb","tenant_id":"4e983284-efbd-4228-b4cd-3082916541b5","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_06_two_users_one_item_exactly_one_success
+[22m[39m{"request_id":"b4e877cc-42ac-41a9-9347-7455c2207eea","tenant_id":"4e983284-efbd-4228-b4cd-3082916541b5","action":"loans.request","status":"error"}
+
+ [32m✓[39m src/__tests__/integration/spec003.integration.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 165[2mms[22m[39m
+ [32m✓[39m src/__tests__/integration/spec002.integration.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 59[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m4 passed[39m[22m[90m (4)[39m
+[2m      Tests [22m [1m[32m22 passed[39m[22m[90m (22)[39m
+[2m   Start at [22m 14:24:30
+[2m   Duration [22m 4.61s[2m (tests 53%, import 40%, transform 5%, worker 2%)[22m
+
+[2m    Isolate [22m [33m4 workers spawned[39m[2m · ~329ms startup each (spawn + environment, per file)[22m
+[2m            [22m [2mat least ~988ms faster with [22m[33misolate: false[39m[2m — reuses workers across files instead of one per file[22m
+
+JSON report written to <PROJETO_LOCAL>/.work/ops-fix-integration-results.json

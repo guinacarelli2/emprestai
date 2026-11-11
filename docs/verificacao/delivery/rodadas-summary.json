@@ -1,0 +1,357 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-10T17:26:58.985Z",
+  "node": "v22.23.4",
+  "frozenSourceHash": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+  "scope": "Monolito EmpresTI; unidade/typecheck/build no sandbox sem rede; integrações PostgreSQL/Auth/E2E e produção são evidências externas separadas, não executadas por este runner",
+  "status": "completed",
+  "rounds": [
+    {
+      "specId": "004",
+      "round": "final1",
+      "report": "/Users/guilherme.nacarelli/.wolf/emprestai-pratica/emprestai/docs/verificacao/harness/004/final1/report.json",
+      "exitCode": 1,
+      "sourceHash": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "sourceHashAfter": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "snapshotHash": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "supervisorHashAfter": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "frozenMatch": true,
+      "checksHash": "160422f4c53d13d4f8d7bf1e3506b1de8e56b306f575165670fd66c7fed46156",
+      "checks": [
+        {
+          "id": "tests",
+          "status": "passed",
+          "exitCode": 0,
+          "timedOut": false,
+          "startedAt": "2026-11-10T17:26:59.238Z",
+          "finishedAt": "2026-11-10T17:27:02.737Z",
+          "hash": "36e4ed83c448e5d6493ed5951a48b5b9a3018b1c09f8ffe0270cf8f432941df8"
+        },
+        {
+          "id": "typecheck",
+          "status": "passed",
+          "exitCode": 0,
+          "timedOut": false,
+          "startedAt": "2026-11-10T17:27:02.738Z",
+          "finishedAt": "2026-11-10T17:27:05.860Z",
+          "hash": "2a0582ddcb2507cf0419877e21992de5af6b103a94fecb8340fd89777def1beb"
+        },
+        {
+          "id": "build",
+          "status": "passed",
+          "exitCode": 0,
+          "timedOut": false,
+          "startedAt": "2026-11-10T17:27:05.861Z",
+          "finishedAt": "2026-11-10T17:27:28.488Z",
+          "hash": "6c07ab5d6ebc9349e9ae07367e074ffca2b454fa42fcb2557e00c76bd19c3704"
+        }
+      ],
+      "assertions": {
+        "total": 58,
+        "passed": 58,
+        "failed": 0
+      },
+      "problems": [
+        "Git/status/escopo não verificados",
+        "Revisão independente ausente"
+      ],
+      "launcherError": null,
+      "localVerdict": "NÃO PRONTA",
+      "productionVerdict": "NÃO PRONTA"
+    },
+    {
+      "specId": "002",
+      "round": "final1",
+      "report": "/Users/guilherme.nacarelli/.wolf/emprestai-pratica/emprestai/docs/verificacao/harness/002/final1/report.json",
+      "exitCode": 1,
+      "sourceHash": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "sourceHashAfter": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "snapshotHash": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "supervisorHashAfter": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "frozenMatch": true,
+      "checksHash": "5c5af30c16a24eb1c77530ea290dbdf53bb79da31292549837143100a2d7a05f",
+      "checks": [
+        {
+          "id": "tests",
+          "status": "passed",
+          "exitCode": 0,
+          "timedOut": false,
+          "startedAt": "2026-11-10T17:27:28.783Z",
+          "finishedAt": "2026-11-10T17:27:31.919Z",
+          "hash": "aac32c8739e65be285f092c3b21eff72464adeb034c4d173c4cdeb1b5fcec7ef"
+        },
+        {
+          "id": "typecheck",
+          "status": "passed",
+          "exitCode": 0,
+          "timedOut": false,
+          "startedAt": "2026-11-10T17:27:31.920Z",
+          "finishedAt": "2026-11-10T17:27:34.729Z",
+          "hash": "b8331b319533abde54a98cd7782a4858090f153628825ee0869313609bd3803a"
+        },
+        {
+          "id": "build",
+          "status": "passed",
+          "exitCode": 0,
+          "timedOut": false,
+          "startedAt": "2026-11-10T17:27:34.730Z",
+          "finishedAt": "2026-11-10T17:27:56.943Z",
+          "hash": "344acfa517bae5e37ddd664cddac3b46ef78b44140cfb0cee86c2b057e1b3d04"
+        }
+      ],
+      "assertions": {
+        "total": 58,
+        "passed": 58,
+        "failed": 0
+      },
+      "problems": [
+        "Git/status/escopo não verificados",
+        "Revisão independente ausente"
+      ],
+      "launcherError": null,
+      "localVerdict": "NÃO PRONTA",
+      "productionVerdict": "NÃO PRONTA"
+    },
+    {
+      "specId": "003",
+      "round": "final1",
+      "report": "/Users/guilherme.nacarelli/.wolf/emprestai-pratica/emprestai/docs/verificacao/harness/003/final1/report.json",
+      "exitCode": 1,
+      "sourceHash": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "sourceHashAfter": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "snapshotHash": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "supervisorHashAfter": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "frozenMatch": true,
+      "checksHash": "56ac5fd3a2b96d6bc1fe4836bab5db3395eebc4c7940f777f1f60f2511cf91f5",
+      "checks": [
+        {
+          "id": "tests",
+          "status": "passed",
+          "exitCode": 0,
+          "timedOut": false,
+          "startedAt": "2026-11-10T17:27:57.195Z",
+          "finishedAt": "2026-11-10T17:28:00.591Z",
+          "hash": "d2fbca4e47a86b408a4f3a535e5c9404fe80e4abd78357a39d08630defd2c646"
+        },
+        {
+          "id": "typecheck",
+          "status": "passed",
+          "exitCode": 0,
+          "timedOut": false,
+          "startedAt": "2026-11-10T17:28:00.594Z",
+          "finishedAt": "2026-11-10T17:28:03.545Z",
+          "hash": "e318153220e1d33ba6fd44ac327d8eae3c6459e832de4028cc55a4945a5b4f5f"
+        },
+        {
+          "id": "build",
+          "status": "passed",
+          "exitCode": 0,
+          "timedOut": false,
+          "startedAt": "2026-11-10T17:28:03.546Z",
+          "finishedAt": "2026-11-10T17:28:25.943Z",
+          "hash": "dcdbc3bf516dee04eca35c152ae57f1c0271257fa8bab1c77340221f2fdebd86"
+        }
+      ],
+      "assertions": {
+        "total": 58,
+        "passed": 58,
+        "failed": 0
+      },
+      "problems": [
+        "Git/status/escopo não verificados",
+        "Revisão independente ausente"
+      ],
+      "launcherError": null,
+      "localVerdict": "NÃO PRONTA",
+      "productionVerdict": "NÃO PRONTA"
+    },
+    {
+      "specId": "005",
+      "round": "final1",
+      "report": "/Users/guilherme.nacarelli/.wolf/emprestai-pratica/emprestai/docs/verificacao/harness/005/final1/report.json",
+      "exitCode": 1,
+      "sourceHash": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "sourceHashAfter": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "snapshotHash": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "supervisorHashAfter": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "frozenMatch": true,
+      "checksHash": "3812f9ddecfeb7bea7efafab6ff52ab8699c5ec4df12576ac1cfc1b60bd7a978",
+      "checks": [
+        {
+          "id": "tests",
+          "status": "passed",
+          "exitCode": 0,
+          "timedOut": false,
+          "startedAt": "2026-11-10T17:28:26.214Z",
+          "finishedAt": "2026-11-10T17:28:29.421Z",
+          "hash": "72c77ebe1c3411d043f715953896715c6f13b6c2a76abd6a31032ae3bb90751a"
+        },
+        {
+          "id": "typecheck",
+          "status": "passed",
+          "exitCode": 0,
+          "timedOut": false,
+          "startedAt": "2026-11-10T17:28:29.422Z",
+          "finishedAt": "2026-11-10T17:28:32.331Z",
+          "hash": "6abad104b209e37724f68fe2cfbd87eb1cc43eab00a32c4a85646f70f317889e"
+        },
+        {
+          "id": "build",
+          "status": "passed",
+          "exitCode": 0,
+          "timedOut": false,
+          "startedAt": "2026-11-10T17:28:32.332Z",
+          "finishedAt": "2026-11-10T17:28:54.916Z",
+          "hash": "1cd305950de81e35b6d8977ee0a3f8b6b69035125eb83924b77d67b8e199f9e1"
+        }
+      ],
+      "assertions": {
+        "total": 58,
+        "passed": 58,
+        "failed": 0
+      },
+      "problems": [
+        "Git/status/escopo não verificados",
+        "Revisão independente ausente"
+      ],
+      "launcherError": null,
+      "localVerdict": "NÃO PRONTA",
+      "productionVerdict": "NÃO PRONTA"
+    },
+    {
+      "specId": "002",
+      "round": "final2",
+      "report": "/Users/guilherme.nacarelli/.wolf/emprestai-pratica/emprestai/docs/verificacao/harness/002/final2/report.json",
+      "exitCode": 1,
+      "sourceHash": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "sourceHashAfter": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "snapshotHash": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "supervisorHashAfter": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "frozenMatch": true,
+      "checksHash": "79ee36176a3fdafcaf65647d59085ce09891655c9c8bc8823a523e1599a8f5d7",
+      "checks": [
+        {
+          "id": "tests",
+          "status": "passed",
+          "exitCode": 0,
+          "timedOut": false,
+          "startedAt": "2026-11-10T17:28:55.270Z",
+          "finishedAt": "2026-11-10T17:28:58.872Z",
+          "hash": "bf4c757c6299365116054bb9d6d7ed11e03570effb7a18637103c2377c96785d"
+        },
+        {
+          "id": "typecheck",
+          "status": "passed",
+          "exitCode": 0,
+          "timedOut": false,
+          "startedAt": "2026-11-10T17:28:58.873Z",
+          "finishedAt": "2026-11-10T17:29:01.727Z",
+          "hash": "47d2bd7649ab16e949188e118aac490e939fe2d3cfb2521c9fb7c22717102d2b"
+        },
+        {
+          "id": "build",
+          "status": "passed",
+          "exitCode": 0,
+          "timedOut": false,
+          "startedAt": "2026-11-10T17:29:01.728Z",
+          "finishedAt": "2026-11-10T17:29:24.955Z",
+          "hash": "2a5c15c9eed97b3e2c20db8eb381a850f65e6be299fae2e8995e587482855d91"
+        }
+      ],
+      "assertions": {
+        "total": 58,
+        "passed": 58,
+        "failed": 0
+      },
+      "problems": [
+        "Git/status/escopo não verificados",
+        "Revisão independente ausente"
+      ],
+      "launcherError": null,
+      "localVerdict": "NÃO PRONTA",
+      "productionVerdict": "NÃO PRONTA"
+    },
+    {
+      "specId": "003",
+      "round": "final2",
+      "report": "/Users/guilherme.nacarelli/.wolf/emprestai-pratica/emprestai/docs/verificacao/harness/003/final2/report.json",
+      "exitCode": 1,
+      "sourceHash": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "sourceHashAfter": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "snapshotHash": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "supervisorHashAfter": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+      "frozenMatch": true,
+      "checksHash": "303d7b886cffcff61efb90fc057f4bf03933176fb3e5b636f68020447101c9dc",
+      "checks": [
+        {
+          "id": "tests",
+          "status": "passed",
+          "exitCode": 0,
+          "timedOut": false,
+          "startedAt": "2026-11-10T17:29:25.202Z",
+          "finishedAt": "2026-11-10T17:29:28.496Z",
+          "hash": "12d9c5aca30f8678f4a501eab05292a6eacd6996c32dc32a259badec0928b795"
+        },
+        {
+          "id": "typecheck",
+          "status": "passed",
+          "exitCode": 0,
+          "timedOut": false,
+          "startedAt": "2026-11-10T17:29:28.497Z",
+          "finishedAt": "2026-11-10T17:29:31.804Z",
+          "hash": "2b7279a6f30f9b4b63d8ae853eb5668d246a6187d1d9b8633879ff2c2aae7406"
+        },
+        {
+          "id": "build",
+          "status": "passed",
+          "exitCode": 0,
+          "timedOut": false,
+          "startedAt": "2026-11-10T17:29:31.805Z",
+          "finishedAt": "2026-11-10T17:29:54.504Z",
+          "hash": "5044ca886a5062ba58ed3a5ba91739430c751173622aa2d5556bf26f0622b859"
+        }
+      ],
+      "assertions": {
+        "total": 58,
+        "passed": 58,
+        "failed": 0
+      },
+      "problems": [
+        "Git/status/escopo não verificados",
+        "Revisão independente ausente"
+      ],
+      "launcherError": null,
+      "localVerdict": "NÃO PRONTA",
+      "productionVerdict": "NÃO PRONTA"
+    }
+  ],
+  "reviewApplied": false,
+  "gateExecuted": false,
+  "productionVerdict": "NÃO PRONTA",
+  "final1CompleteAt": "2026-11-10T17:28:55.049Z",
+  "comparability": [
+    {
+      "specId": "002",
+      "sameFrozenSource": true,
+      "sameScope": true,
+      "distinctRealChecks": true,
+      "bothChecksPassed": true,
+      "checksHashes": [
+        "5c5af30c16a24eb1c77530ea290dbdf53bb79da31292549837143100a2d7a05f",
+        "79ee36176a3fdafcaf65647d59085ce09891655c9c8bc8823a523e1599a8f5d7"
+      ]
+    },
+    {
+      "specId": "003",
+      "sameFrozenSource": true,
+      "sameScope": true,
+      "distinctRealChecks": true,
+      "bothChecksPassed": true,
+      "checksHashes": [
+        "56ac5fd3a2b96d6bc1fe4836bab5db3395eebc4c7940f777f1f60f2511cf91f5",
+        "303d7b886cffcff61efb90fc057f4bf03933176fb3e5b636f68020447101c9dc"
+      ]
+    }
+  ],
+  "finishedAt": "2026-11-10T17:29:54.564Z"
+}

@@ -1,0 +1,9 @@
+{
+  "postgresTemporaryServer": "stopped",
+  "postgresPort": 54917,
+  "playwrightPort": 3107,
+  "listenersRemaining": false,
+  "userDataRemoved": false,
+  "databasesPreserved": true,
+  "productionActionPerformed": false
+}

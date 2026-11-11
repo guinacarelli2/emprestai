@@ -1,0 +1,65 @@
+{
+  "started_at": "2026-11-10T17:12:53.442143+00:00",
+  "status": "completed",
+  "node": "v22.23.4",
+  "npm": "10.9.9",
+  "checks": {
+    "lint": {
+      "status": "passed",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "log": "<PROJETO_LOCAL>/.work/release2-lint.log",
+      "exit_code": 0
+    },
+    "typecheck": {
+      "status": "passed",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "log": "<PROJETO_LOCAL>/.work/release2-typecheck.log",
+      "exit_code": 0
+    },
+    "unit": {
+      "status": "passed",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "log": "<PROJETO_LOCAL>/.work/release2-unit.log",
+      "exit_code": 0
+    },
+    "build": {
+      "status": "passed",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "log": "<PROJETO_LOCAL>/.work/release2-build.log",
+      "exit_code": 0
+    },
+    "e2e": {
+      "status": "passed",
+      "command": [
+        "npm",
+        "run",
+        "test:e2e"
+      ],
+      "log": "<PROJETO_LOCAL>/.work/release2-e2e.log",
+      "exit_code": 0
+    }
+  },
+  "integration": {
+    "status": "reused_previous_evidence",
+    "tests_passed": 20,
+    "files_passed": 4,
+    "log": "<PROJETO_LOCAL>/.work/release-integration.log",
+    "database": "emprestai_local_release_20261110141029"
+  },
+  "finished_at": "2026-11-10T17:13:32.170000+00:00"
+}

@@ -1,0 +1,59 @@
+{
+  "scope": "005/CA-04 independent category/temporal/search filters",
+  "node": "22.23.4",
+  "database": {
+    "name": "emprestai_local_opsfix_20261110142430",
+    "host": "127.0.0.1",
+    "port": 54917,
+    "username": "emprestai_migrator",
+    "new_dedicated_database": true,
+    "migration": "existing Prisma migrate deploy via integration globalSetup",
+    "reset_or_drop": false
+  },
+  "checks": {
+    "unit": {
+      "exit_code": 0,
+      "command": "node ./node_modules/vitest/vitest.mjs run --reporter=default --reporter=json --outputFile=.work/ops-fix-unit-results.json",
+      "log": "<PROJETO_LOCAL>/.work/ops-fix-unit.log",
+      "numTotalTests": 58,
+      "numPassedTests": 58,
+      "numFailedTests": 0,
+      "numPendingTests": 0,
+      "success": true,
+      "new_tests": [
+        "test_ca_04_spec005_atraso_categoria_busca_independentes_com_cursor_e_kpis_globais",
+        "test_ca_04_spec005_semana_todas_categorias_e_busca_preservam_dimensoes"
+      ]
+    },
+    "integration": {
+      "exit_code": 0,
+      "command": "TEST_DATABASE_URL=postgresql://emprestai_migrator@127.0.0.1:54917/emprestai_local_opsfix_20261110142430 node ./node_modules/vitest/vitest.mjs run --config vitest.integration.config.ts --reporter=default --reporter=json --outputFile=.work/ops-fix-integration-results.json",
+      "log": "<PROJETO_LOCAL>/.work/ops-fix-integration.log",
+      "numTotalTests": 22,
+      "numPassedTests": 22,
+      "numFailedTests": 0,
+      "numPendingTests": 0,
+      "success": true,
+      "new_tests": [
+        "test_ca_04_spec005_atraso_categoria_busca_cursor_e_tenant_combinados",
+        "test_ca_04_spec005_semana_categoria_busca_limites_sao_paulo_sem_afetar_kpis"
+      ]
+    },
+    "typecheck": {
+      "exit_code": 0,
+      "command": "node ./node_modules/typescript/bin/tsc --noEmit",
+      "log": "<PROJETO_LOCAL>/.work/ops-fix-typecheck.log"
+    },
+    "lint": {
+      "exit_code": 0,
+      "command": "node ./node_modules/eslint/bin/eslint.js src/server/api/schemas.ts src/server/services/operations.ts src/components/screens/operacoes.tsx src/__tests__/frontend-contract.test.tsx src/__tests__/integration/spec005.integration.test.ts",
+      "log": "<PROJETO_LOCAL>/.work/ops-fix-lint.log"
+    }
+  },
+  "build": "not run; parent will run separately",
+  "limits": [
+    "Frontend hook mocks are component contracts, not authenticated E2E.",
+    "Standalone local PostgreSQL exercised; Testcontainers not exercised.",
+    "No remote, network, install, Git, schema/package/docs/sandbox changes."
+  ]
+}

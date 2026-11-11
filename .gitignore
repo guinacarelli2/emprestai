@@ -1,0 +1,21 @@
+# dependências e build
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# segredos: nunca versionar. Cada pessoa cria o seu .env.local
+.env
+.env.*
+!.env.example
+
+# sistema
+.DS_Store
+
+# Trabalho local, evidências brutas e imagens em revisão
+.work/
+.local/
+playwright-report/
+test-results/
+.verification/

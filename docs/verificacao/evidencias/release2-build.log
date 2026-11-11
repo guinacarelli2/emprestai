@@ -1,0 +1,59 @@
+$ npm run build
+
+> emprestai@0.1.0 build
+> prisma generate && next build --webpack
+
+[2mPrisma schema loaded from prisma/schema.prisma[22m
+[90m[90m┌─[39m[90m[90m────────────────────────────────────────────────────────┐[39m[90m
+[90m│[39m[90m  [0m[34mUpdate available[39m[90m 6.12.0 -> 8.0.0-rc.33[0m                 [90m│[39m[90m
+[90m│[39m[90m  [0m[0m                                                       [90m│[39m[90m
+[90m│[39m[90m  [0mThis is a major update - please follow the guide at[0m    [90m│[39m[90m
+[90m│[39m[90m  [0mhttps://pris.ly/d/major-version-upgrade[0m                [90m│[39m[90m
+[90m│[39m[90m  [0m[0m                                                       [90m│[39m[90m
+[90m│[39m[90m  [0mRun the following to update[0m                            [90m│[39m[90m
+[90m│[39m[90m  [0m  [1mnpm i --save-dev prisma@latest[22m[0m                       [90m│[39m[90m
+[90m│[39m[90m  [0m  [1mnpm i @prisma/client@latest[22m[0m                          [90m│[39m[90m
+└─────────────────────────────────────────────────────────┘[39m
+
+✔ Generated [1mPrisma Client[22m (v6.12.0)[2m to ./node_modules/@prisma/client[22m in 47ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Interested in query caching in just a few lines of code? Try Accelerate today! https://pris.ly/tip-3-accelerate
+
+[1m[38;2;173;127;168m▲ Next.js 16.4.4[39m[22m (webpack)
+- Environments: .env.local
+[32m[1m✓[22m[39m Running next.config.ts took 74ms
+
+[33m[1m⚠[22m[39m The "middleware" file convention is deprecated. Please use "proxy" instead.
+
+  To migrate automatically, run:
+  npx @next/codemod@canary middleware-to-proxy .
+
+  Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[37m[1m [22m[39m Creating an optimized production build ...
+[32m[1m✓[22m[39m Compiled successfully in 5.4s
+[37m[1m [22m[39m Running TypeScript ...
+[37m[1m [22m[39m Finished TypeScript in 3.0s ...
+[37m[1m [22m[39m Collecting page data using 7 workers ...
+[37m[1m [22m[39m Generating static pages using 7 workers (0/1) ...
+[32m[1m✓[22m[39m Generating static pages using 7 workers (1/1) in 101ms
+[37m[1m [22m[39m Finalizing page optimization ...
+[37m[1m [22m[39m Collecting build traces ...
+
+[4mRoute (app)[24m
+┌ ƒ /
+├ ƒ /_not-found
+├ ƒ /api/trpc/[trpc]
+├ ƒ /catalogo
+├ ƒ /catalogo/[patrimonio]
+├ ƒ /login
+├ ƒ /meus-emprestimos
+├ ƒ /operacoes/emprestimos
+└ ƒ /operacoes/equipamentos/novo
+
+
+ƒ Proxy (Middleware)
+
+ƒ  (Dynamic)  server-rendered on demand
+

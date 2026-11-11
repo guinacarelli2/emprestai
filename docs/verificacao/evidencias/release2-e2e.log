@@ -1,0 +1,16 @@
+$ npm run test:e2e
+
+> emprestai@0.1.0 test:e2e
+> playwright test
+
+
+[2mRunning [22m6[2m tests using [22m2[2m workers[22m
+
+  [32m✓[39m  [2m1 [22m[mobile] › e2e/local-boundaries.spec.ts:4:5 › test_ca_10_spec005_login_desktop_mobile_sem_overflow_e_rotulo[2m (464ms)[22m
+  [32m✓[39m  [2m2 [22m[desktop] › e2e/local-boundaries.spec.ts:4:5 › test_ca_10_spec005_login_desktop_mobile_sem_overflow_e_rotulo[2m (464ms)[22m
+  [32m✓[39m  [2m3 [22m[mobile] › e2e/local-boundaries.spec.ts:14:5 › test_ca_01_spec004_anonimo_nao_abre_catalogo_protegido[2m (211ms)[22m
+  [32m✓[39m  [2m4 [22m[desktop] › e2e/local-boundaries.spec.ts:14:5 › test_ca_01_spec004_anonimo_nao_abre_catalogo_protegido[2m (207ms)[22m
+  [32m✓[39m  [2m5 [22m[mobile] › e2e/local-boundaries.spec.ts:20:5 › test_ca_10_spec004_csp_nonce_sem_unsafe_inline_sem_erros_de_script[2m (333ms)[22m
+  [32m✓[39m  [2m6 [22m[desktop] › e2e/local-boundaries.spec.ts:20:5 › test_ca_10_spec004_csp_nonce_sem_unsafe_inline_sem_erros_de_script[2m (339ms)[22m
+
+[32m  6 passed[39m[2m (4.8s)[22m

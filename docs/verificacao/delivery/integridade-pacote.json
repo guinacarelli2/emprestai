@@ -1,0 +1,9 @@
+{
+  "archiveName": "emprestai-pixabay-entrega-local-2026-11-10.zip",
+  "verification": "CRC, all archived bytes vs workspace, no duplicate paths, mandatory docs/lockfile/reports/gate, secret patterns and symlinks rejected",
+  "archiveSha256Location": "arquivo .zip.sha256 ao lado do ZIP; hash externo evita refer\u00eancia circular",
+  "archiveFullManifestLocation": "arquivo .zip.verification.json ao lado do ZIP",
+  "sourceHash": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+  "sourceExcludesGeneratedAndSecrets": true,
+  "productionReady": false
+}

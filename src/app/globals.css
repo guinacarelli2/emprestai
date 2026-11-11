@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+/* Tokens do layout.md §2–4. Só modo escuro. */
+@theme {
+  --font-sans: "Open Sans", system-ui, sans-serif;
+
+  /* base */
+  --color-page: #05070f;
+  --color-bg: #080c1a;
+  --color-sidebar: #060a16;
+  --color-surface: #0e1530;
+  --color-sunken: #0b1128;
+  --color-text: #e6eaf6;
+  --color-muted: #8a93b2;
+  --color-dim: #7c86a2;
+  --color-faint: #5e6884;
+  --color-ghost: #454e68;
+
+  /* bordas */
+  --color-frame: #222c4a;
+  --color-cardline: #1f2949;
+  --color-soft: #1a2340;
+  --color-rowline: #161d33;
+  --color-strong: #2b3450;
+
+  /* rampa da primária #001449 */
+  --color-accent-100: #eef2fe;
+  --color-accent-200: #d6e0fb;
+  --color-accent-300: #b4c6f6;
+  --color-accent-400: #8aa6ee;
+  --color-accent-500: #5b7fe0;
+  --color-accent-600: #3c5dbe;
+  --color-accent-700: #25408f;
+  --color-accent-800: #132663;
+  --color-accent-900: #001449;
+
+  /* neutros de interface */
+  --color-ink-100: #f2f4fa;
+  --color-ink-200: #dfe3ee;
+  --color-ink-300: #c4cadb;
+  --color-ink-400: #9aa3bc;
+  --color-ink-500: #7c86a2;
+  --color-ink-600: #5e6884;
+  --color-ink-700: #454e68;
+  --color-ink-800: #2b3450;
+  --color-ink-900: #161d33;
+
+  /* estados */
+  --color-ok: #5fd3aa;
+  --color-ok-bg: rgba(63, 185, 140, 0.12);
+  --color-ok-line: rgba(63, 185, 140, 0.35);
+  --color-warn: #e8b961;
+  --color-warn-bg: rgba(224, 163, 63, 0.12);
+  --color-warn-line: rgba(224, 163, 63, 0.35);
+  --color-late: #f0a0a5;
+  --color-late-label: #e08a90;
+  --color-late-bg: rgba(224, 91, 98, 0.05);
+  --color-late-line: rgba(224, 91, 98, 0.4);
+
+  /* elevação */
+  --shadow-sm: 0 0 0 1px #222c4a;
+  --shadow-md: 0 0 0 1px #2b3450, 0 6px 18px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 0 0 1px #454e68, 0 18px 44px rgba(0, 0, 0, 0.7);
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    letter-spacing: -0.005em;
+  }
+  a {
+    color: #8aa6ee;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #b4c6f6;
+  }
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+  button {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+  /* CA-12: foco de teclado */
+  :focus-visible {
+    outline: 2px solid #5b7fe0;
+    outline-offset: 2px;
+  }
+}
+
+/* Réguas com esmaecimento nas pontas (layout.md §2.8) */
+@utility divider-fade {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(230, 234, 246, 0),
+    #222c4a 48px,
+    #222c4a calc(100% - 48px),
+    rgba(230, 234, 246, 0)
+  );
+}
+@utility divider-brand {
+  height: 1px;
+  background: linear-gradient(to right, #3c5dbe, rgba(60, 93, 190, 0));
+}
+
+/* Animações do layout.md §8 */
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes dialog-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes backdrop-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* CA-12: movimento reduzido corta transform e opacity */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}

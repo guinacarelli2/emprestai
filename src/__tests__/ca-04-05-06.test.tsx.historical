@@ -1,0 +1,101 @@
+import { render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { beforeEach, describe, expect, test } from "vitest";
+import { push, pathname } from "./helpers";
+import { CatalogoScreen } from "@/components/screens/catalogo";
+import { DetalheScreen } from "@/components/screens/detalhe";
+import { MeusEmprestimosScreen } from "@/components/screens/meus-emprestimos";
+
+beforeEach(() => {
+  push.mockClear();
+  pathname.current = "/catalogo";
+});
+
+describe("CA-04 catálogo", () => {
+  test("test_ca_04_seis_cards_tres_estados_e_contagem", () => {
+    render(<CatalogoScreen />);
+    expect(screen.getByRole("heading", { name: "Catálogo" })).toBeInTheDocument();
+    expect(screen.getByText("6 equipamentos · 2 disponíveis agora")).toBeInTheDocument();
+    for (const n of ['MacBook Pro 14"', "ThinkPad T14", 'Dell UltraSharp 27"', "Sony A7 III", "Dock USB-C Anker", "Projetor Epson X49"]) {
+      expect(screen.getByText(n)).toBeInTheDocument();
+    }
+    expect(screen.getAllByText("Disponível")).toHaveLength(2);
+    expect(screen.getAllByText("Emprestado")).toHaveLength(2);
+    expect(screen.getAllByText("Manutenção")).toHaveLength(2);
+    expect(screen.getByText("Com Marina Alves · devolve 14/set")).toBeInTheDocument();
+    expect(screen.getByText("Com Rafael Lima · devolve 05/out")).toBeInTheDocument();
+    expect(screen.getAllByText("Na assistência · peça")).toHaveLength(2);
+  });
+  test("test_ca_04_faixa_de_regras_chips_e_so_disponiveis", async () => {
+    render(<CatalogoScreen />);
+    expect(screen.getByText("Regras de empréstimo")).toBeInTheDocument();
+    expect(screen.getByText(/Até 3 itens por pessoa\. Prazo padrão 14 dias\. Atraso impede novo pedido\./)).toBeInTheDocument();
+    for (const c of ["Todos", "Notebooks", "Monitores", "Câmeras", "Cabos", "Projetores", "Só disponíveis"]) {
+      expect(screen.getByRole("button", { name: c })).toBeInTheDocument();
+    }
+    expect(screen.getByRole("button", { name: "Todos" })).toHaveAttribute("aria-pressed", "true");
+    await userEvent.click(screen.getByRole("button", { name: "Cabos" }));
+    expect(screen.getByRole("button", { name: "Cabos" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("button", { name: "Todos" })).toHaveAttribute("aria-pressed", "false");
+    expect(screen.getAllByText(/Disponível|Emprestado|Manutenção/)).toHaveLength(6); // chip não filtra
+  });
+  test("test_ca_04_so_disponivel_e_clicavel", () => {
+    render(<CatalogoScreen />);
+    const links = screen.getAllByRole("link").filter((a) => a.getAttribute("href")?.startsWith("/catalogo/"));
+    expect(links.map((a) => a.getAttribute("href")).sort()).toEqual(["/catalogo/PAT-0871", "/catalogo/PAT-1042"]);
+  });
+});
+
+describe("CA-05 detalhe e diálogo", () => {
+  test("test_ca_05_detalhe_pat_1042", () => {
+    render(<DetalheScreen patrimonio="PAT-1042" />);
+    expect(screen.getByRole("heading", { name: 'MacBook Pro 14"' })).toBeInTheDocument();
+    expect(screen.getByText("Notebook corporativo para desenho e build local.")).toBeInTheDocument();
+    const trilha = screen.getByRole("navigation", { name: "Trilha" });
+    expect(within(trilha).getByText("Catálogo")).toBeInTheDocument();
+    expect(within(trilha).getByText("Notebooks")).toBeInTheDocument();
+    for (const t of ["PAT-1042", "Balcão 2º andar", "02/set", "14 dias", "12/out", "Retirada no balcão de Operações."]) {
+      expect(screen.getAllByText(t).length).toBeGreaterThan(0);
+    }
+    expect(screen.getByText("Histórico")).toBeInTheDocument();
+  });
+  test("test_ca_05_dialogo_copy_e_confirmar_navega", async () => {
+    render(<DetalheScreen patrimonio="PAT-1042" />);
+    await userEvent.click(screen.getByRole("button", { name: /Solicitar empréstimo/ }));
+    const dialog = await screen.findByRole("dialog");
+    expect(within(dialog).getByText("Confirmar empréstimo")).toBeInTheDocument();
+    expect(within(dialog).getByText("O prazo começa na confirmação. Devolver até 12/out.")).toBeInTheDocument();
+    expect(within(dialog).getByText("Este pedido leva a 3 de 3 itens.")).toBeInTheDocument();
+    await userEvent.click(within(dialog).getByRole("button", { name: "Cancelar" }));
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(push).not.toHaveBeenCalled();
+    await userEvent.click(screen.getByRole("button", { name: /Solicitar empréstimo/ }));
+    await userEvent.click(within(await screen.findByRole("dialog")).getByRole("button", { name: "Confirmar" }));
+    expect(push).toHaveBeenCalledWith("/meus-emprestimos");
+  });
+  test("test_ca_05_data_devolucao_e_hoje_mais_14_dias", async () => {
+    const { addDays, formatDM } = await import("@/lib/dates");
+    expect(formatDM(addDays(new Date(2026, 8, 28), 14))).toBe("12/out");
+    expect(formatDM(new Date(2026, 9, 5))).toBe("05/out");
+  });
+});
+
+describe("CA-06 meus empréstimos", () => {
+  test("test_ca_06_lista_historico_e_pegar_emprestado", () => {
+    pathname.current = "/meus-emprestimos";
+    render(<MeusEmprestimosScreen />);
+    expect(screen.getByText("Comigo agora")).toBeInTheDocument();
+    expect(screen.getByText("2 de 3 itens · nenhum em atraso")).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: "2 de 3 itens" })).toBeInTheDocument();
+    expect(screen.getByText("ThinkPad T14")).toBeInTheDocument();
+    expect(screen.getByText("14/set")).toBeInTheDocument();
+    expect(screen.getByText('LG UltraFine 24"')).toBeInTheDocument();
+    expect(screen.getByText("20/set")).toBeInTheDocument();
+    expect(screen.getAllByRole("progressbar")).toHaveLength(2);
+    expect(screen.getAllByRole("button", { name: "Devolver" })).toHaveLength(2);
+    for (const h of ["Item", "Retirada", "Devolução", "Situação"]) expect(screen.getByText(h)).toBeInTheDocument();
+    expect(screen.getByText("No prazo")).toBeInTheDocument();
+    expect(screen.getByText("Atraso")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Pegar emprestado/ })).toHaveAttribute("href", "/catalogo");
+  });
+});

@@ -1,0 +1,11 @@
+$ npm run typecheck
+
+> emprestai@0.1.0 typecheck
+> tsc --noEmit
+
+scripts/human-production.ts(45,26): error TS2304: Cannot find name 'validateManifestFiles'.
+scripts/human-production.ts(48,21): error TS2304: Cannot find name 'manifestToSeedImages'.
+scripts/human-production.ts(62,149): error TS2304: Cannot find name 'sha256'.
+scripts/human-production.ts(74,92): error TS2304: Cannot find name 'sha256'.
+scripts/human-production.ts(83,31): error TS2504: Type 'ReadableStream<Uint8Array<ArrayBuffer>>' must have a '[Symbol.asyncIterator]()' method that returns an async iterator.
+scripts/human-production.ts(88,9): error TS2304: Cannot find name 'sha256'.

@@ -1,0 +1,145 @@
+import { render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { beforeEach, describe, expect, test, vi } from "vitest";
+import { push, pathname } from "./helpers";
+import { CadastroScreen } from "@/components/screens/cadastro";
+import { CatalogoScreen } from "@/components/screens/catalogo";
+import { DetalheScreen } from "@/components/screens/detalhe";
+import { LoginScreen } from "@/components/screens/login";
+import { MeusEmprestimosScreen } from "@/components/screens/meus-emprestimos";
+import { OperacoesScreen } from "@/components/screens/operacoes";
+
+beforeEach(() => {
+  push.mockClear();
+  pathname.current = "/operacoes/emprestimos";
+});
+
+describe("CA-07 operações", () => {
+  test("test_ca_07_stats_chips_sete_linhas_paginacao", () => {
+    render(<OperacoesScreen />);
+    expect(screen.getByText("21 itens fora · atualizado agora")).toBeInTheDocument();
+    const stat = (label: string) =>
+      screen.getAllByText(label).find((el) => el.tagName === "SPAN" && el.parentElement?.hasAttribute("data-late"))!.parentElement as HTMLElement;
+    expect(within(stat("Em aberto")).getByText("21")).toBeInTheDocument();
+    expect(within(stat("Vencem em 3 dias")).getByText("4")).toBeInTheDocument();
+    expect(within(stat("Em manutenção")).getByText("2")).toBeInTheDocument();
+    expect(stat("Em atraso")).toHaveAttribute("data-late", "true");
+    expect(within(stat("Em atraso")).getByText("3")).toBeInTheDocument();
+    for (const c of ["Todos", "Em atraso", "Vencem esta semana", "Notebooks"]) {
+      expect(screen.getByRole("button", { name: c })).toBeInTheDocument();
+    }
+    const rows = screen.getAllByRole("row").slice(1);
+    expect(rows).toHaveLength(7);
+    for (const n of ["Marina Alves", "Rafael Lima", "Camila Duarte", "Tiago Menezes", "Ana Sato", "Bruno Kato", "Helena Prado"]) {
+      expect(screen.getByText(n)).toBeInTheDocument();
+    }
+    const late = rows.filter((r) => r.getAttribute("data-late") === "true");
+    expect(late.map((r) => r.textContent)).toEqual([
+      expect.stringContaining("Camila Duarte"),
+      expect.stringContaining("Tiago Menezes"),
+      expect.stringContaining("Helena Prado"),
+    ]);
+    expect(screen.getByText("7 de 21 empréstimos")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Anterior" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Próximo" })).toBeInTheDocument();
+    const cadastrar = screen.getAllByRole("link", { name: /Cadastrar equipamento/ });
+    expect(cadastrar).toHaveLength(2); // sidebar + ação do header
+    for (const a of cadastrar) expect(a).toHaveAttribute("href", "/operacoes/equipamentos/novo");
+  });
+  test("test_ca_07_paginacao_nao_muda_a_pagina", async () => {
+    render(<OperacoesScreen />);
+    await userEvent.click(screen.getByRole("button", { name: "Próximo" }));
+    expect(screen.getByText("7 de 21 empréstimos")).toBeInTheDocument();
+    expect(screen.getAllByRole("row")).toHaveLength(8);
+  });
+});
+
+describe("CA-08 cadastro", () => {
+  test("test_ca_08_labels_exatos_e_notas", () => {
+    pathname.current = "/operacoes/equipamentos/novo";
+    render(<CadastroScreen />);
+    for (const l of ["Nome", "Categoria", "Patrimônio", "Número de série", "Local de retirada", "Observações"]) {
+      expect(screen.getByLabelText(l)).toBeInTheDocument();
+    }
+    expect(screen.getByText("Situação inicial")).toBeInTheDocument();
+    for (const s of ["Disponível", "Em manutenção", "Fora de uso"]) expect(screen.getByRole("radio", { name: s })).toBeInTheDocument();
+    expect(screen.getByText("Em manutenção não aparece no catálogo.")).toBeInTheDocument();
+    expect(screen.getByText("Um registro por unidade física")).toBeInTheDocument();
+    expect(screen.getByText("Últimos cadastros")).toBeInTheDocument();
+    expect(screen.getByText("26/set")).toBeInTheDocument();
+    expect(screen.getAllByText(/\d{2}\/(set)/)).toHaveLength(3);
+  });
+  test("test_ca_08_previa_acompanha_o_form", async () => {
+    pathname.current = "/operacoes/equipamentos/novo";
+    render(<CadastroScreen />);
+    expect(screen.getByText("Nome do equipamento")).toBeInTheDocument();
+    expect(screen.getByText("Notebooks · PAT-0000")).toBeInTheDocument();
+    await userEvent.type(screen.getByLabelText("Nome"), "Mouse Logitech");
+    await userEvent.type(screen.getByLabelText("Patrimônio"), "PAT-2001");
+    await userEvent.selectOptions(screen.getByLabelText("Categoria"), "Cabos");
+    expect(screen.getByText("Mouse Logitech")).toBeInTheDocument();
+    expect(screen.getByText("Cabos · PAT-2001")).toBeInTheDocument();
+    await userEvent.click(screen.getByRole("radio", { name: "Em manutenção" }));
+    expect(screen.getAllByText("Manutenção").length).toBeGreaterThan(0);
+    expect(screen.getByText("Na assistência · peça")).toBeInTheDocument();
+  });
+  test("test_ca_08_submit_valida_e_nao_grava_e_outro_limpa", async () => {
+    pathname.current = "/operacoes/equipamentos/novo";
+    render(<CadastroScreen />);
+    await userEvent.click(screen.getByRole("button", { name: "Cadastrar" }));
+    expect(await screen.findByText("Informe o nome.")).toBeInTheDocument();
+    expect(screen.getByText("Use o formato PAT-0000.")).toBeInTheDocument();
+    await userEvent.type(screen.getByLabelText("Nome"), "Mouse Logitech");
+    await userEvent.type(screen.getByLabelText("Patrimônio"), "PAT-2001");
+    await userEvent.click(screen.getByRole("button", { name: "Cadastrar" }));
+    expect(await screen.findByRole("status")).toHaveTextContent("não gravado");
+    expect(screen.getAllByText(/\d{2}\/set/)).toHaveLength(3); // lista de últimos não cresce
+    await userEvent.click(screen.getByRole("button", { name: "Cadastrar e adicionar outro" }));
+    expect(await screen.findByText("Nome do equipamento")).toBeInTheDocument();
+    expect(screen.getByLabelText("Nome")).toHaveValue("");
+  });
+});
+
+describe("CA-09 rotas e fluxos", () => {
+  test("test_ca_09_data_screen_label_nas_seis_telas", () => {
+    const labels: Array<[React.ReactElement, string]> = [
+      [<LoginScreen key="1" />, "01 Login"],
+      [<CatalogoScreen key="2" />, "02 Catálogo"],
+      [<DetalheScreen key="3" patrimonio="PAT-1042" />, "03 Detalhe do item"],
+      [<MeusEmprestimosScreen key="4" />, "04 Meus empréstimos"],
+      [<OperacoesScreen key="5" />, "05 Empréstimos em aberto"],
+      [<CadastroScreen key="6" />, "06 Cadastrar equipamento"],
+    ];
+    for (const [el, label] of labels) {
+      const { container, unmount } = render(el);
+      expect(container.querySelector(`[data-screen-label="${label}"]`)).not.toBeNull();
+      unmount();
+    }
+  });
+  test("test_ca_09_raiz_redireciona_para_login", async () => {
+    const nav = await import("next/navigation");
+    const { default: Home } = await import("@/app/page");
+    Home();
+    expect(nav.redirect).toHaveBeenCalledWith("/login");
+  });
+  test("test_ca_09_devolver_nao_persiste_e_volta_no_reload", async () => {
+    const first = render(<OperacoesScreen />);
+    const row = screen.getByText("Marina Alves").closest('[role="row"]') as HTMLElement;
+    await userEvent.click(within(row).getByRole("button", { name: "Devolver" }));
+    expect(row).toHaveAttribute("data-removida", "true");
+    first.unmount();
+    render(<OperacoesScreen />); // "reload": estado novo, mock intacto
+    const again = screen.getByText("Marina Alves").closest('[role="row"]') as HTMLElement;
+    expect(again).toHaveAttribute("data-removida", "false");
+  });
+  test("test_ca_09_devolver_em_meus_emprestimos_nao_persiste", async () => {
+    pathname.current = "/meus-emprestimos";
+    const first = render(<MeusEmprestimosScreen />);
+    await userEvent.click(screen.getAllByRole("button", { name: "Devolver" })[0]);
+    expect(screen.getByText("1 de 3 itens · nenhum em atraso")).toBeInTheDocument();
+    first.unmount();
+    render(<MeusEmprestimosScreen />);
+    expect(screen.getByText("2 de 3 itens · nenhum em atraso")).toBeInTheDocument();
+  });
+});
+void vi;

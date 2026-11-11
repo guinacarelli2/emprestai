@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "sourceHash": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+  "verdict": "NÃO PRONTA",
+  "problems": [
+    "002: Git/status/escopo não verificados",
+    "002: Há CA não atendido",
+    "003: Git/status/escopo não verificados",
+    "003: Há CA não atendido",
+    "004: Git/status/escopo não verificados",
+    "004: Há CA não atendido",
+    "004: Achados fora de escopo",
+    "005: Git/status/escopo não verificados",
+    "005: Há CA não atendido",
+    "005: Achados fora de escopo",
+    "Produção: evidências humanas de Auth/professor/fotos/migrations/deploy e credenciais provisionadas pendentes de validação externa",
+    "Prática: dois commits reais e tag pendentes; hashes de fixtures não substituem commits; execução atual não autoriza commit/tag"
+  ]
+}

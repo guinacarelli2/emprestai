@@ -1,0 +1,350 @@
+# Revisão semântica independente — 004/005 (draft)
+
+**Veredito: NÃO PRONTA para aceite integral; produção NÃO PRONTA.**
+
+20 critérios: {'SEM TESTE': 16, 'ATENDIDO': 2, 'REPROVADO': 2}. ATENDIDO restrito ao CA inteiro; parcial é SEM TESTE, falha demonstrada é REPROVADO.
+
+Rascunho independente; não é schema final validável do harness. sourceHash/checksHash deliberadamente omitidos: seguirão rodada final real, sem copiar/inventar digest.
+
+## Qualificação das evidências
+- **unit:** 56 passed em 7 arquivos, incluindo 22 scripts de imagens sintéticos e 1 script gate humano. Não são 56+22. Mocks não são Auth/RLS real.
+- **integration:** 20 passed/4 arquivos; Postgres standalone loopback real com migrations. UUID/membership/contexto Auth sintéticos; Testcontainers não exercitado.
+- **e2e:** 6 passed = três testes em dois projetos; servidor sem env/credenciais, somente login/fronteiras anônimas.
+- **preflight:** 004/preflight1 tests spawn EPERM e build kill EPERM; typecheck passou. Não substituir falha por release2 verde nem presumir followup verde.
+- **binding:** Logs anteriores não vinculados criptograficamente à fonte congelada por esta revisão; nomes extraídos de testes realmente selecionados pelo runner e sucesso por arquivo quando log não enumera asserts.
+
+## Limites e gates
+- Auth HTTP real, Storage/Supavisor grants/pooler e Vercel humanos pendentes.
+- 12 fotos reais Pixabay, licença/revisão e aceite professor pendentes (não renumerar requisitos 002 como 004/005).
+- Nenhum commit real demonstrado; fixture red/green plantada não equivale a dois commits; nenhum git executado.
+- Nenhum novo crítico nesta leitura. Lookup owner reconhecido; env project-ref P2 gate humano; IP unavailable agregado fail-closed; grants Supavisor pendentes.
+- Não solicitar mudança material schema sem aprovação. Runtime congelado; nenhuma correção fonte/testes/config feita.
+- Subagente não é tool-sandboxed por completo; somente subprocessos harness sob sandbox.
+
+## 004/CA-01 — SEM TESTE
+Contrato integral: `docs/specs/004-auth-persistencia/spec.md:36`
+
+**CA-01 — sessão SSR [server/HTTP].** Login Supabase validado no servidor, cookie `httpOnly` (Secure no HTTPS, SameSite e escopo seguros), refresh pelo middleware nas rotas pertinentes, sem token/senha em localStorage ou bundle. `@supabase/ssr` não é prova automática de httpOnly: configurar e testar fluxo server-only. Evidência: inspeção cookies sem valores, sessão expirada/refresh/adulterada e proteção de rotas/API; validar identidade Auth server em vez de confiar só em cookie/getSession.
+
+Proteção anônima real e identidade unitária não provam sessão Supabase SSR completa.
+
+**Lacunas:**
+- Sem Auth HTTP real, cookies inspecionados, refresh de sessão expirada/adulterada nem inspeção efetiva de bundle/localStorage.
+
+**Fonte:** `src/lib/auth/server.ts:5-23`; `src/middleware.ts:30-59`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `src/__tests__/server-context.test.ts:26` — full name `Verified server identity and public DTOs — pure mocks, not Auth integration > test_ca_01_spec004_identity_only_uses_verified_getUser_not_session`. Assert: 31-39: identidade server esperada; getSession não chamado; lookup restrito a suporte_ti. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+- `e2e/local-boundaries.spec.ts:14` — full name `test_ca_01_spec004_anonimo_nao_abre_catalogo_protegido`. Assert: 15-17: /catalogo redireciona /login com heading Entrar. Runner/log: `docs/verificacao/evidencias/release2-e2e.log:9-16`.
+
+## 004/CA-02 — SEM TESTE
+Contrato integral: `docs/specs/004-auth-persistencia/spec.md:37`
+
+**CA-02 — cadastro fechado [Auth/autorização].** Sem signup público funcional; somente convite/provisionamento autorizado do administrador humano, membership necessária. Colaborador não vira operacoes por editar input/metadados. Evidência: tentativa de cadastro aberto e promoção negadas, usuário sem membership negado, convite local/identidade reconhecida; configuração remota fica ação humana pendente.
+
+Mocks negam promoção/membership ausente; configuração Auth e provisionamento não exercitados.
+
+**Lacunas:**
+- Faltam tentativa real signup público, convite local/identidade reconhecida; configuração remota humana pendente.
+
+**Fonte:** `src/server/api/context.ts:20-33`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `src/__tests__/server-context.test.ts:41` — full name `Verified server identity and public DTOs — pure mocks, not Auth integration > test_ca_02_spec004_metadata_cannot_promote_role_and_no_membership_is_not_tenant`. Assert: 46-53: tenant/role null sem membership; getUser com erro zera identidade. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+- `src/__tests__/server-api.test.ts:61` — full name `tRPC authorization with explicit service mocks — not RLS or integration proof > test_ca_02_spec004_missing_membership_is_forbidden_and_promotion_input_rejected`. Assert: 62-71: FORBIDDEN sem membership; BAD_REQUEST role e tenant injetados. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+
+## 004/CA-03 — SEM TESTE
+Contrato integral: `docs/specs/004-auth-persistencia/spec.md:38`
+
+**CA-03 — tenant/papéis [context/tRPC].** `createContext` resolve tenant e role por sessão e memberships server; `protectedProcedure`, `tenantProcedure` e guard operacoes/admin não aceitam confiança em tenant/user/role do cliente. Routers → service → Prisma no mesmo Next, `app/api/trpc/[trpc]/route.ts`, input Zod, erros tRPC e tipos inferidos; negar acesso entre tenants em cada procedimento. Evidência: testes `createCaller` código/corpo e IDOR, inclusive acesso operacoes de tenant distinto.
+
+Há guards e partes de IDOR com banco real; não há matriz integral cross-tenant por procedimento e criação real de contexto HTTP.
+
+**Lacunas:**
+- Faltam negar tenant B em cada procedimento (incluindo auth/me e fluxos contextuais), códigos/corpos completos por papel; contextos integração injetados.
+
+**Fonte:** `src/server/api/context.ts:20-44`; `src/server/api/trpc.ts:38-59`; `src/app/api/trpc/[trpc]/route.ts:17-23`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `src/__tests__/server-api.test.ts:44` — full name `tRPC authorization with explicit service mocks — not RLS or integration proof > test_ca_03_spec004_anonymous_is_rejected_by_every_protected_procedure`. Assert: 46-59: nove chamadas UNAUTHORIZED e service list não chamado; equipment.create não está nesse laço. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+- `src/__tests__/server-api.test.ts:103` — full name `tRPC authorization with explicit service mocks — not RLS or integration proof > test_ca_03_spec004_operations_role_reaches_service_with_own_tenant_and_body`. Assert: 107-118: stats e auth.me retornam corpo esperado; services mockados. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+- `src/__tests__/integration/spec005.integration.test.ts:7` — full name `005 operações/devolução — createCaller/PostgreSQL real > test_ca_01_return_own_or_operations_same_tenant_only`. Assert: 11-17: UNAUTHORIZED/NOT_FOUND e retorno ops autorizado com returnedBy. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+
+## 004/CA-04 — SEM TESTE
+Contrato integral: `docs/specs/004-auth-persistencia/spec.md:39`
+
+**CA-04 — schema/migrations [Postgres local].** Criar as seis tabelas previstas, tenant columns/FKs composites, constraints, datas, índice parcial aberto e índices operacionais. Migration somente Prisma CLI e replay/reset exclusivamente local; nenhuma alteração remota. Evidência: catálogo Postgres, tentativa de FK cruzada rejeitada, índice aberto rejeita duplicação, replay local de zero e preservação de histórico.
+
+Migração/replay e constraints reais bem evidenciados; preservação de histórico e catálogo integral de índices não demonstrados.
+
+**Lacunas:**
+- Não há assert de histórico persistido após restart/replay não destrutivo nem inspeção de todos os índices operacionais; reset vazio não prova preservação de dados.
+
+**Fonte:** `prisma/migrations/20261110165902_auth_persistence/migration.sql:90-165`; `docs/verificacao/evidencias/migration-create.log:15`; `docs/verificacao/evidencias/migration-reset-replay.log:1-13`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `src/__tests__/integration/spec004.integration.test.ts:11` — full name `004 auth/persistência — PostgreSQL real > test_ca_04_catalog_has_six_rls_tables_and_partial_unique_index`. Assert: 13-16: seis tabelas/RLS/policies; definição UNIQUE parcial. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+- `src/__tests__/integration/spec004.integration.test.ts:18` — full name `004 auth/persistência — PostgreSQL real > test_ca_04_cross_tenant_equipment_borrower_return_actor_and_audit_fks_reject`. Assert: 21-24: FKs cruzadas rejeitadas, incluindo returnedBy e audit. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+- `src/__tests__/integration/spec004.integration.test.ts:26` — full name `004 auth/persistência — PostgreSQL real > test_ca_04_unique_open_constraint_dates_required_fields_and_credit`. Assert: 30-34: P2002 duplicação aberto; datas/campos/crédito inválidos rejeitados. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+
+## 004/CA-05 — SEM TESTE
+Contrato integral: `docs/specs/004-auth-persistencia/spec.md:40`
+
+**CA-05 — RLS [banco/runtime].** RLS em todas as seis tabelas, deny by default com policies explícitas para escopos necessários; Auth não permite leitura direta indiscriminada. Testar tenant A/B com role não-owner, inspecionar role efetiva de runtime e relatar bypass se owner. Evidência: políticas e testes por tabela/procedimento, role emprestai_app/settings app.tenant_id/app.user_id/app.role transacionais e ausência de contexto residual no pooler; não substituir teste efetivo por flag `relrowsecurity`.
+
+Role restrita e seis tabelas efetivamente testadas, mas isso não comprova pooler Supavisor/Auth direto nem todos os procedimentos.
+
+**Lacunas:**
+- Standalone loopback não é pooler; faltam todos procedimentos/roles Auth diretas e limpeza residual sob Supavisor. Grants no ambiente de destino pendentes. Lookup owner fora do wrapper permanece limite declarado, não novo crítico.
+
+**Fonte:** `src/server/services/transaction.ts:10-16`; `src/server/api/context.ts:23-25`; `docs/adr/004-modelo-persistencia-seguranca.md:14-17`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `src/__tests__/integration/spec004.integration.test.ts:36` — full name `004 auth/persistência — PostgreSQL real > test_ca_05_every_table_isolates_tenants_under_real_restricted_role`. Assert: 43-61: emprestai_app sem super/bypass; tenant B invisível nas seis tabelas, contexto vazio nega, settings limpos ao sair. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+- `src/__tests__/integration/spec004.integration.test.ts:63` — full name `004 auth/persistência — PostgreSQL real > test_ca_05_own_loans_only_forged_role_denied_and_membership_locks_not_writes`. Assert: 67-76: loan alheio invisível; role forjada vazia; UPDATE proibido; occupancy sem tenant externo. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+
+## 004/CA-06 — SEM TESTE
+Contrato integral: `docs/specs/004-auth-persistencia/spec.md:41`
+
+**CA-06 — privacidade [respostas/logs].** Colaborador recebe apenas próprios loans e dados públicos de inventário, sem nomes de outros colaboradores no catálogo/detalhe/histórico, sem senhas/tokens/URL secretas em erro/audit/log. Ops pode ver nomes necessários dos tomadores somente do próprio tenant. Evidência: snapshots de corpos/serialização, busca de segredos sem imprimi-los e fixtures distintas por tenant.
+
+DTOs e privacidade parcial com Postgres reais não são snapshots completos nem varredura de segredos.
+
+**Lacunas:**
+- Faltam snapshots de todos corpos/erros/audit/log e busca redigida de segredos; lista Ops testa IDs mas não valida nomes permitidos por tenant integralmente.
+
+**Fonte:** `src/server/services/presentation.ts:29-60`; `src/server/api/trpc.ts:47-54`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `src/__tests__/server-context.test.ts:55` — full name `Verified server identity and public DTOs — pure mocks, not Auth integration > test_ca_06_spec004_equipment_and_loan_dto_never_return_borrower_tokens_or_tenant`. Assert: 79-97: DTO sem tenantId/borrowerId; não injeta token nem testa cada campo sensível. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+- `src/__tests__/integration/spec003.integration.test.ts:8` — full name `003 solicitar empréstimo — createCaller/PostgreSQL real > test_ca_02_anonymous_idor_own_loans_and_privacy`. Assert: 17-19: mine vazio e sem Private other name; outro usuário vê próprio loan. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+- `src/__tests__/integration/spec003.integration.test.ts:21` — full name `003 solicitar empréstimo — createCaller/PostgreSQL real > test_ca_01_catalog_occupancy_of_other_borrower_and_cross_tenant_procedures`. Assert: 25-32: detalhe ocupado/history vazio/sem nome e list exclui item tenant B. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+
+## 004/CA-07 — SEM TESTE
+Contrato integral: `docs/specs/004-auth-persistencia/spec.md:42`
+
+**CA-07 — rate limit [server/Postgres].** Limitar por **IP e usuário**, contadores atômicos persistidos no Postgres tenant, cobrindo login pré-auth e mutações autenticadas; usar IP de origem com proxy confiável, sem confiar em header arbitrário. Defaults realizados propostos: login 15/15min IP+e-mail, mutações 60/min IP+userId; review produção pendente sem exigir aprovação adicional para local. Evidência: requests concorrentes, dois usuários/mesmo IP, um usuário/IPs distintos, janela expira, `TOO_MANY_REQUESTS`, sem bypass por trocar instância; sem gravar IP bruto desnecessário.
+
+Teste SQL de contador concorrente não testa serviço de rate limit nem requests de abuso.
+
+**Lacunas:**
+- Faltam dois usuários/mesmo IP, um usuário/IPs distintos, expiração, TOO_MANY_REQUESTS, troca instância/restart e login HTTP. unavailable agrega origens fail-closed; não é bypass, mas disponibilidade/proxy requer review.
+
+**Fonte:** `src/server/services/rate-limit.ts:13-41`; `src/server/security.ts:5-13`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `src/__tests__/integration/spec004.integration.test.ts:78` — full name `004 auth/persistência — PostgreSQL real > test_ca_07_preauth_counters_atomic_without_membership_and_tenant_scoped`. Assert: 80-82: 12 UPSERTs SQL concorrentes produzem count=12; insert cross-tenant rejeitado. Não chama consumeLoginLimit/consumeMutationLimit. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+- `src/__tests__/server-rules.test.ts:72` — full name `Backend pure rules — not database integration > test_ca_10_spec004_csrf_rejects_missing_origin_cross_origin_and_non_json`. Assert: 87: x-forwarded-for arbitrário vira unavailable (evidência auxiliar explicitamente 004/CA-10). Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+
+## 004/CA-08 — ATENDIDO
+Contrato integral: `docs/specs/004-auth-persistencia/spec.md:43`
+
+**CA-08 — auditoria [banco/service].** Eventos append-only com ator/tenant/ação/recurso; mutação bem-sucedida e audit na mesma transação, falha reverte ambos. Bloquear UPDATE/DELETE de runtime; não auditar credenciais. Evidência: tentativa de alterar/remover, FK actor cruzado e rollback induzido; distinguir poderes do owner de permissões reais de runtime.
+
+Contrato local de auditoria coberto por banco real, constraints, mutações de service e rollback; não exige Auth remoto para este CA.
+
+**Fonte:** `src/server/services/transaction.ts:37-44`; `prisma/migrations/20261110165902_auth_persistence/migration.sql:69-77`; `prisma/migrations/20261110165902_auth_persistence/migration.sql:231-234`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `src/__tests__/integration/spec004.integration.test.ts:84` — full name `004 auth/persistência — PostgreSQL real > test_ca_08_audit_append_only_for_runtime_and_owner_and_transaction_rollback`. Assert: 87-93: UPDATE/DELETE owner/runtime rejeitados; audit inválido reverte loan; apenas evento anterior persiste. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+- `src/__tests__/integration/spec004.integration.test.ts:18` — full name `004 auth/persistência — PostgreSQL real > test_ca_04_cross_tenant_equipment_borrower_return_actor_and_audit_fks_reject`. Assert: 24: actor externo P2003 (auxiliar 004/CA-04). Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+- `src/__tests__/integration/spec003.integration.test.ts:43` — full name `003 solicitar empréstimo — createCaller/PostgreSQL real > test_ca_04_persists_civil_date_and_atomic_audit`. Assert: 50: evento loans.request com tenant/ator corretos (auxiliar 003/CA-04, não renumerado). Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+- `src/__tests__/integration/spec005.integration.test.ts:34` — full name `005 operações/devolução — createCaller/PostgreSQL real > test_ca_02_failed_audit_rolls_back_return_in_real_transaction`. Assert: 37-42: erro audit reverte returnedAt/returnedBy e nenhum loans.return criado (auxiliar 005/CA-02). Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+- `src/__tests__/integration/spec005.integration.test.ts:56` — full name `005 operações/devolução — createCaller/PostgreSQL real > test_ca_06_ca_07_ca_08_equipment_create_authorized_atomic_unique_no_image`. Assert: 62: equipment.create grava um audit com actor ops (auxiliar 005/CA-06/07/08). Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+
+## 004/CA-09 — SEM TESTE
+Contrato integral: `docs/specs/004-auth-persistencia/spec.md:44`
+
+**CA-09 — ambiente/segredos [config].** URLs e chaves validadas server, `.env.example` sem valores reais, segredos nunca NEXT_PUBLIC, Prisma singleton com conexão runtime/pooler e migration direct conforme compatibilidade validada da versão. Versões realizadas e snapshots de audit registrados acima; não prometer clean global nem checks executados nesta correção. Evidência: validação de boot/build e inspeção do bundle. Configuração Vercel remota apenas checklist humano; não alegar env presente lá.
+
+Config server e exemplo vazio existem; build release2 não exercita configuração/pooler real ou inspeção bundle.
+
+**Lacunas:**
+- Faltam boot inválido/válido parametrizado, bundle efetivamente inspecionado e compatibilidade pooler. P2: validação não cruza Auth URL/DB project ref; gate humano, não novo crítico. Vercel pendente.
+
+**Fonte:** `src/env.ts:3-38`; `src/server/db.ts:4-10`; `prisma/schema.prisma:5-9`; `.env.example:1-19`; `docs/verificacao/evidencias/release2-build.log:35-58`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- Sem teste específico efetivo encontrado para o contrato completo; inspeção estática/log de build não substituem o teste exigido.
+
+## 004/CA-10 — REPROVADO
+Contrato integral: `docs/specs/004-auth-persistencia/spec.md:45`
+
+**CA-10 — segurança/qualidade [integração].** CSRF/origin em mutações com cookies, CSP/cabeçalhos compatíveis com Next, erros sem detalhes internos, componentes e integração testados localmente. CI sem migrations remotas automáticas; verificação limpa sem permissão de editar teste. Evidência: requests cross-origin negados, headers, typecheck/tests/build reais e launcher com restrições efetivas quando implementado. Se launcher não implementado, registrar limitação.
+
+Preflight independente conhecido falhou testes/build com EPERM; sucesso release2 não substitui rodada limpa vinculada à fonte.
+
+**Lacunas:**
+- Faltam rodada final com executor corrigido e digests reais, request cross-origin no handler efetivo; helper/adaptador mockados são parciais. Sandbox limita subprocessos, não ferramentas deste subagente. Fixture red/green não equivale a dois commits reais.
+
+**Fonte:** `docs/verificacao/harness/004/preflight1/tests.stderr.log:1-22`; `docs/verificacao/harness/004/preflight1/build.stderr.log:1-23`; `.github/workflows/ci.yml:21-40`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `src/__tests__/server-rules.test.ts:72` — full name `Backend pure rules — not database integration > test_ca_10_spec004_csrf_rejects_missing_origin_cross_origin_and_non_json`. Assert: 78-86: helper nega origin ausente/cruzada, text/plain e GET; não request HTTP app real. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+- `src/__tests__/server-api.test.ts:123` — full name `HTTP adapter safety — mocked context/services > test_ca_10_spec004_get_mutation_rejected_and_internal_errors_sanitized`. Assert: 134 e 150-154: adaptador GET mutation=405, erro=500 sem private/password/stack; contexto mockado. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+- `e2e/local-boundaries.spec.ts:20` — full name `test_ca_10_spec004_csp_nonce_sem_unsafe_inline_sem_erros_de_script`. Assert: 25-34: nonce/sem unsafe-inline/frame-ancestors/nosniff e sem pageerror apenas /login. Runner/log: `docs/verificacao/evidencias/release2-e2e.log:9-16`.
+- `scripts/__tests__/verifier.test.mjs:105` — full name `test_ca_10_real_macos_sandbox_enforces_boundaries_and_red_green_hashes`. Assert: 131-144: red failed, green passed e original intacto; fixtureOnly=true, não commits. Fonte do executor em ajuste concorrente não é ligada a log por hash neste draft. Runner/log: `docs/verificacao/evidencias/release-harness-selftest.log:44-59`.
+
+## 005/CA-01 — ATENDIDO
+Contrato integral: `docs/specs/005-operacoes-devolucao/spec.md:19`
+
+**CA-01 — autorização devolução [API].** Próprio loan ou operacoes tenant somente; anônimo, outro colaborador e operacoes tenant B negados sem revelar existência/dados. Evidência: `createCaller` código/corpo por papel e fixture cross-tenant; UI não é controle primário.
+
+API local cobre anônimo, outro colaborador, ops externo, próprio e ops do tenant com códigos/corpos e persistência. Auth de fixture é sintético, conforme tipo API requerido.
+
+**Fonte:** `src/server/services/loans.ts:78-98`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `src/__tests__/integration/spec005.integration.test.ts:7` — full name `005 operações/devolução — createCaller/PostgreSQL real > test_ca_01_return_own_or_operations_same_tenant_only`. Assert: 11-17: anônimo UNAUTHORIZED; outro e tenant B NOT_FOUND; ops próprio id/alreadyReturned=false/Date/returnedBy. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+- `src/__tests__/integration/spec005.integration.test.ts:19` — full name `005 operações/devolução — createCaller/PostgreSQL real > test_ca_02_parallel_return_idempotent_timestamp_one_audit_and_maintenance_preserved`. Assert: 23-30: próprio colaborador autorizado, um retorno novo e um repetido com data igual. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+
+## 005/CA-02 — SEM TESTE
+Contrato integral: `docs/specs/005-operacoes-devolucao/spec.md:20`
+
+**CA-02 — idempotência/atomicidade [transação].** Primeira devolução grava returnedAt e um audit; repetição/duas requests simultâneas preservam timestamp e um único evento, erro audit reverte devolução. Locks compatíveis com 003 impedem corrida/deadlock de ordem invertida. Evidência: concorrência Postgres, retry, falha induzida e nova solicitação concorrente; manutenção/fora de uso não se tornam disponíveis.
+
+Idempotência/rollback e manutenção cobertos; cenário devolução versus nova solicitação e fora_de_uso faltam.
+
+**Lacunas:**
+- Sem corrida return/request, sem prova de ausência de deadlock nessa combinação, sem retorno equipamento fora_de_uso. Rollback induzido chama transação diretamente, não fault injection do returnLoan.
+
+**Fonte:** `src/server/services/loans.ts:51-54`; `src/server/services/loans.ts:85-98`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `src/__tests__/integration/spec005.integration.test.ts:19` — full name `005 operações/devolução — createCaller/PostgreSQL real > test_ca_02_parallel_return_idempotent_timestamp_one_audit_and_maintenance_preserved`. Assert: 23-32: concorrência/retry preservam timestamp, um audit e manutenção; retorno imutável. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+- `src/__tests__/integration/spec005.integration.test.ts:34` — full name `005 operações/devolução — createCaller/PostgreSQL real > test_ca_02_failed_audit_rolls_back_return_in_real_transaction`. Assert: 37-42: transação direta com audit inválido reverte retorno. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+
+## 005/CA-03 — SEM TESTE
+Contrato integral: `docs/specs/005-operacoes-devolucao/spec.md:21`
+
+**CA-03 — UI/cache próprios [cliente].** Confirmação com cancelamento, sucesso só após commit, motivos de erro, próprios abertos/histórico após reload. Revalidar catálogo/detalhe/contador/meus empréstimos/painel/KPIs e não esconder linha com sucesso fictício. Evidência: E2E devolver e repetir/reload com cache previamente populado, ausência de vazamento de nomes.
+
+Confirmação/cancelamento/erro unitários não provam E2E cache/reload após commit.
+
+**Lacunas:**
+- Falta E2E próprio/histórico, repetição/reload, cache previamente populado em catálogo/detalhe/contador/painel/KPIs e ausência de nomes.
+
+**Fonte:** `src/components/ui/return-loan.tsx:10-18`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `src/__tests__/frontend-contract.test.tsx:187` — full name `test_ca_03_spec005_devolucao_exige_confirmar_e_erro_nao_oculta_acao`. Assert: 191-195: sem mutate antes confirmar; erro alert e sem Devolvido. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+- `src/__tests__/frontend-contract.test.tsx:260` — full name `test_ca_03_spec005_cancelar_devolucao_nao_grava`. Assert: 264-265: cancelar não muta e fecha modal. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+
+## 005/CA-04 — REPROVADO
+Contrato integral: `docs/specs/005-operacoes-devolucao/spec.md:22`
+
+**CA-04 — painel real [API/UI].** Ops tenant vê abertos reais com tomador, item, retirada, prazo e ação de devolver; busca combinada com filtros atraso/semana/categoria e paginação cursor estável, loading/erro/vazio verdadeiros. Não mostrar 7/21 ou personas fixas. Evidência: mais de uma página, sort com datas empatadas, inclusão/remoção durante paginação e filtros combinados; paginação não duplica itens por empate.
+
+Divergência positiva do contrato: categoria e atraso não combinam, pois um único enum/filter exclusivo controla os dois.
+
+**Lacunas:**
+- API/UI só filter all|late|soon|notebook, sem categoria independente. Também faltam mais páginas/datas empatadas/inclusão/remoção, filtros combinados e estados UI reais.
+
+**Fonte:** `src/server/api/schemas.ts:37-43`; `src/components/screens/operacoes.tsx:12-26`; `src/components/screens/operacoes.tsx:78-83`; `src/server/services/operations.ts:20-26`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `src/__tests__/integration/spec005.integration.test.ts:44` — full name `005 operações/devolução — createCaller/PostgreSQL real > test_ca_04_ca_05_operations_list_stats_and_recent_isolate_other_tenant`. Assert: 48-54: colaborador negado; uma linha própria; stats e recent isolados. Não testa filtros/páginas. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+- `src/__tests__/server-rules.test.ts:60` — full name `Backend pure rules — not database integration > test_ca_04_spec005_stable_cursor_uses_timestamp_and_id_and_rejects_bad_payload`. Assert: 63-70: encode/decode e page puros, fim semana. Não exercita paginação de consultas reais. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+
+## 005/CA-05 — SEM TESTE
+Contrato integral: `docs/specs/005-operacoes-devolucao/spec.md:23`
+
+**CA-05 — KPIs [server/UI].** Calcular os quatro indicadores do contrato no tenant inteiro, data civil São Paulo; zero é resultado legítimo, não mock. Evidência: fixtures antes/no/depois do prazo, hoje+3/+4, fim de semana, tenant B excluído e atualização após devolução. UI distingue escopo global dos filtros da lista.
+
+Cálculo implementado e fixture simples real; matriz temporal requerida ausente.
+
+**Lacunas:**
+- Faltam antes/no/depois, +3/+4, fim semana, atualização pós-devolução e prova UI escopo global/filtros.
+
+**Fonte:** `src/server/services/operations.ts:78-91`; `src/components/screens/operacoes.tsx:53-61`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `src/__tests__/integration/spec005.integration.test.ts:44` — full name `005 operações/devolução — createCaller/PostgreSQL real > test_ca_04_ca_05_operations_list_stats_and_recent_isolate_other_tenant`. Assert: 52: stats exatamente open=1, late=0, dueSoon=0, maintenance=0; não cobre boundaries. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+
+## 005/CA-06 — SEM TESTE
+Contrato integral: `docs/specs/005-operacoes-devolucao/spec.md:24`
+
+**CA-06 — cadastro campos/categorias [form/API].** Form usa os sete campos/labels acima, categorias canônicas e projetor adicional só no cadastro, três estados operacionais; validar server via Zod e dar erro de patrimônio duplicado no tenant. Só operacoes cria. Evidência: teste de cada campo obrigatório/opcional, categorias inválidas, patrimônio TI-0013, conflito concorrente e colaborador/tenant B negados; seed continua 12 sem projetor.
+
+Validação/cadastro básico e tenant server existem; matriz integral de campos e conflito concorrente falta.
+
+**Lacunas:**
+- Sem cada obrigatório/opcional, todas categorias/estados, conflito simultâneo, tenant B forjando cadastro A e seed 12 sem projetor integralmente evidenciado neste CA. Criar no próprio B é permitido e não prova negação de B em A.
+
+**Fonte:** `src/components/screens/cadastro.tsx:104-135`; `src/server/api/schemas.ts:20-33`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `src/__tests__/server-rules.test.ts:35` — full name `Backend pure rules — not database integration > test_ca_06_spec005_create_validation_rejects_unknown_role_tenant_image_and_invalid_category`. Assert: 43-57: item válido, campos extras/categoria inválida/emprestado/PAT negados; projetor aceito. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+- `src/__tests__/frontend-contract.test.tsx:292` — full name `test_ca_06_spec005_patrimonio_sem_hifen_rejeitado_sem_persistir`. Assert: 299-301: erro formato, sem save, valor mantido. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+- `src/__tests__/integration/spec005.integration.test.ts:56` — full name `005 operações/devolução — createCaller/PostgreSQL real > test_ca_06_ca_07_ca_08_equipment_create_authorized_atomic_unique_no_image`. Assert: 59-67: colaborador FORBIDDEN, TI-0013 projetor salvo, duplicado sequencial CONFLICT, B só cria em B. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+
+## 005/CA-07 — SEM TESTE
+Contrato integral: `docs/specs/005-operacoes-devolucao/spec.md:25`
+
+**CA-07 — cadastro persistência [transação/UI].** Cadastrar cria unidade e audit atomicamente; “Cadastrar e adicionar outro” grava antes de limpar, mantém valores em erro, previne duplicidade em request; prévia acompanha form e últimos cadastros vêm do banco tenant. Evidência: commit/rollback, reload e duplo clique; nenhum botão que só limpa e afirma gravar.
+
+Mocks provam salvar/limpar e valores preservados; integração prova insert/audit/unique, não fluxo integral.
+
+**Lacunas:**
+- Faltam rollback de equipment.create por audit induzido, reload persistente UI, duplo clique real e prévia/últimos cadastros observados com banco.
+
+**Fonte:** `src/components/screens/cadastro.tsx:57-74`; `src/server/services/equipment.ts:82-100`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `src/__tests__/frontend-contract.test.tsx:202` — full name `test_ca_07_spec005_cadastrar_adicionar_outro_grava_antes_de_limpar`. Assert: 208-218: save mock chamado, campo limpo/status/invalidate. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+- `src/__tests__/frontend-contract.test.tsx:220` — full name `test_ca_07_spec005_erro_adicionar_outro_preserva_valores`. Assert: 227-231: nome/patrimônio preservados e sem status sucesso. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+- `src/__tests__/frontend-contract.test.tsx:253` — full name `test_ca_07_spec005_envio_pendente_desabilita_ambos_cadastros`. Assert: 257-258: ambos botões disabled com pending injetado, não dois eventos reais. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+- `src/__tests__/integration/spec005.integration.test.ts:56` — full name `005 operações/devolução — createCaller/PostgreSQL real > test_ca_06_ca_07_ca_08_equipment_create_authorized_atomic_unique_no_image`. Assert: 61-64: item salvo/audit único e duplicação sequencial negada. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+
+## 005/CA-08 — SEM TESTE
+Contrato integral: `docs/specs/005-operacoes-devolucao/spec.md:26`
+
+**CA-08 — imagem opcional segura [form/UI].** Criação sem foto funciona; campos upload/URL desabilitados ou ausentes até pipeline seguro, sem botão falso. Foto quando suportada apenas API Pixabay e crédito; estado sem imagem não finge fotografia. Evidência: cadastro sem imagem, rejeição URL arbitrária/upload não suportado, crédito em item com origem válida; pipeline ausente não bloqueia cadastro textual.
+
+Cadastro sem foto real no DB e ausência de upload/URL na fonte são positivos; UI com origem real/crédito não exercitada.
+
+**Lacunas:**
+- Faltam fluxo UI sem imagem e origem válida real/crédito; fixture example.org e 22 scripts sintéticos não são foto real/licença. Upload ausente é condição permitida, não exigir pipeline novo para cadastro textual.
+
+**Fonte:** `src/components/screens/cadastro.tsx:137-139`; `src/components/screens/cadastro.tsx:168-174`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `src/__tests__/integration/spec005.integration.test.ts:56` — full name `005 operações/devolução — createCaller/PostgreSQL real > test_ca_06_ca_07_ca_08_equipment_create_authorized_atomic_unique_no_image`. Assert: 60-61: cadastro sem foto devolve imageUrl=null. Runner/log: `docs/verificacao/evidencias/release-integration.log:21-137`.
+- `src/__tests__/server-context.test.ts:99` — full name `Verified server identity and public DTOs — pure mocks, not Auth integration > test_ca_08_spec005_image_url_rejects_arbitrary_host_and_path_before_env`. Assert: 100-109: storageImageUrl retorna null para URL arbitrária e paths inválidos. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+- `src/__tests__/server-rules.test.ts:35` — full name `Backend pure rules — not database integration > test_ca_06_spec005_create_validation_rejects_unknown_role_tenant_image_and_invalid_category`. Assert: 47-49: imageUrl extra rejeitado pelo schema strict (auxiliar 005/CA-06). Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+- `src/__tests__/frontend-contract.test.tsx:267` — full name `test_ca_10_spec003_foto_storage_dimensoes_credito_escapado_e_link_inseguro_rejeitado`. Assert: 283-289: dimensões/crédito e escape com imagem sintética example.org (auxiliar 003/CA-10). Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+
+## 005/CA-09 — SEM TESTE
+Contrato integral: `docs/specs/005-operacoes-devolucao/spec.md:27`
+
+**CA-09 — logout/controles reais [HTTP/UI].** Logout encerra sessão server/cookies, limpa cache/estado sensível e volta a login; refresh/back não recupera conteúdo protegido. Busca/filtros/paginação/botões têm ação real; sininho/notificação fora de escopo removido ou apresentado sem affordance interativa, não botão falso. Evidência: E2E logout/back/refresh e inspeção todos controles operáveis; grupo operacoes escondido para colaborador, sem substituir guard server.
+
+Menu condicional/ausência de sino provados com mocks; logout HTTP e controles completos não exercitados.
+
+**Lacunas:**
+- Faltam logout real, remoção cookies, cache sensível, back/refresh e inspeção todos controles operáveis.
+
+**Fonte:** `src/server/services/auth.ts:43-49`; `src/lib/auth/server.ts:25-31`; `src/components/app-shell.tsx:35-40`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `src/__tests__/frontend-contract.test.tsx:159` — full name `test_ca_09_spec005_grupo_ops_oculto_para_colaborador_sem_sino_falso`. Assert: 162-163: sem grupo Operações nem botão Notificações. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+- `src/__tests__/frontend-contract.test.tsx:165` — full name `test_ca_09_spec005_grupo_ops_visivel_somente_papel_servidor`. Assert: 166-168: papel ops mockado mostra Cadastrar equipamento. Runner/log: `docs/verificacao/evidencias/release2-unit.log:43-54`.
+
+## 005/CA-10 — SEM TESTE
+Contrato integral: `docs/specs/005-operacoes-devolucao/spec.md:28`
+
+**CA-10 — mobile/acessibilidade [UI].** Todas as seis telas/fluxos funcionais utilizáveis em 360px e 390px além do desktop referência, navegação adaptada, modal/form acessíveis por teclado, foco/labels/contraste e reduced-motion preservados; tabela pode rolar em região explícita sem estourar viewport. Evidência: E2E viewports, foco modal/retorno, teclado, sem overflow global nem ações inacessíveis; comparação desktop com layout.
+
+E2E real só login desktop/mobile; não as seis telas funcionais nem viewport 360.
+
+**Lacunas:**
+- Faltam seis telas em 360 e 390, desktop comparado layout, modal/form foco/retorno/teclado/contraste/reduced-motion e overflow em fluxos autenticados.
+
+**Fonte:** `playwright.config.ts:9-25`; `src/components/screens/operacoes.tsx:95-101`
+
+**Evidência efetiva (parcial salvo ATENDIDO):**
+- `e2e/local-boundaries.spec.ts:4` — full name `test_ca_10_spec005_login_desktop_mobile_sem_overflow_e_rotulo`. Assert: 6-11: heading/labels login visíveis, sem overflow e sem nav protegida. Dois projetos, não seis fluxos. Runner/log: `docs/verificacao/evidencias/release2-e2e.log:9-16`.
+
+## Únicos caminhos escritos nesta revisão
+- `/Users/guilherme.nacarelli/.wolf/emprestai-pratica/emprestai/docs/verificacao/reviews/semantic-004-005.json`
+- `/Users/guilherme.nacarelli/.wolf/emprestai-pratica/emprestai/docs/verificacao/reviews/semantic-004-005.md`

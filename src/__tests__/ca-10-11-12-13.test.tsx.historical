@@ -1,0 +1,119 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { beforeEach, describe, expect, test } from "vitest";
+import { push, pathname } from "./helpers";
+import { CadastroScreen } from "@/components/screens/cadastro";
+import { CatalogoScreen } from "@/components/screens/catalogo";
+import { DetalheScreen } from "@/components/screens/detalhe";
+import { LoginScreen } from "@/components/screens/login";
+import { MeusEmprestimosScreen } from "@/components/screens/meus-emprestimos";
+import { OperacoesScreen } from "@/components/screens/operacoes";
+
+const css = readFileSync(join(__dirname, "..", "app", "globals.css"), "utf8");
+
+beforeEach(() => {
+  push.mockClear();
+  pathname.current = "/catalogo";
+});
+
+describe("CA-10 regras visíveis", () => {
+  test("test_ca_10_contador_2_de_3_e_prazo_14_dias", () => {
+    render(<DetalheScreen patrimonio="PAT-1042" />);
+    expect(screen.getByText("2 de 3 itens com você")).toBeInTheDocument();
+    expect(screen.getAllByText("14 dias").length).toBeGreaterThan(0);
+    expect(screen.getByText("Nenhum item em atraso.")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Solicitar empréstimo/ })).toBeEnabled();
+  });
+  test("test_ca_10_atraso_camila_desabilita_solicitar_com_nota", async () => {
+    render(<DetalheScreen patrimonio="PAT-1042" userId="camila" />);
+    const btn = screen.getByRole("button", { name: /Solicitar empréstimo/ });
+    expect(btn).toBeDisabled();
+    expect(btn.className).toContain("disabled:opacity-45");
+    expect(screen.getByText("Bloqueado por atraso.")).toBeInTheDocument();
+    expect(screen.getByText("Há item em atraso. Novo empréstimo bloqueado.")).toBeInTheDocument();
+    await userEvent.click(btn);
+    expect(screen.queryByRole("dialog")).toBeNull();
+  });
+  test("test_ca_10_manutencao_e_emprestado_sem_solicitar", () => {
+    const { unmount } = render(<CatalogoScreen />);
+    expect(screen.getAllByText(/Solicitar →/)).toHaveLength(2); // só os dois disponíveis
+    unmount();
+    for (const pat of ["PAT-0455", "PAT-0102", "PAT-1188", "PAT-0233"]) {
+      const view = render(<DetalheScreen patrimonio={pat} />);
+      expect(screen.queryByRole("button", { name: /Solicitar empréstimo/ })).toBeNull();
+      view.unmount();
+    }
+    render(<DetalheScreen patrimonio="PAT-0455" />);
+    expect(screen.getByText("Em manutenção. Não aparece como disponível.")).toBeInTheDocument();
+  });
+});
+
+describe("CA-11 mock e copy", () => {
+  test("test_ca_11_datas_dd_mmm_e_sem_reserva_email_importacao", () => {
+    const telas: React.ReactElement[] = [
+      <LoginScreen key="1" />,
+      <CatalogoScreen key="2" />,
+      <DetalheScreen key="3" patrimonio="PAT-1042" />,
+      <MeusEmprestimosScreen key="4" />,
+      <OperacoesScreen key="5" />,
+      <CadastroScreen key="6" />,
+    ];
+    for (const el of telas) {
+      const { container, unmount } = render(el);
+      const text = container.textContent ?? "";
+      expect(text).not.toMatch(/reserv|notifica|importa|planilha de|enviamos/i);
+      expect(text).not.toMatch(/!|\p{Extended_Pictographic}/u);
+      // toda data da tela segue dd/mmm
+      expect(text).not.toMatch(/\b\d{1,2}\/\d{1,2}\/\d{2,4}\b/);
+      unmount();
+    }
+  });
+  test("test_ca_11_mock_marina_e_equipamentos", async () => {
+    const mock = await import("@/lib/mock");
+    expect(mock.currentUserId).toBe("marina");
+    expect(mock.getUser().loans).toHaveLength(2);
+    expect(mock.equipment.map((e) => e.patrimonio)).toEqual(["PAT-1042", "PAT-1188", "PAT-0871", "PAT-0233", "PAT-0455", "PAT-0102"]);
+    expect(mock.returnByLabel).toBe("12/out");
+    expect(mock.opsLoans).toHaveLength(7);
+    expect(mock.opsLoans.filter((l) => l.overdue).map((l) => l.person)).toEqual(["Camila Duarte", "Tiago Menezes", "Helena Prado"]);
+  });
+});
+
+describe("CA-12 foco e movimento", () => {
+  test("test_ca_12_foco_2px_5b7fe0_offset_2", () => {
+    expect(css).toMatch(/:focus-visible\s*{[^}]*outline:\s*2px solid #5b7fe0;[^}]*outline-offset:\s*2px/i);
+  });
+  test("test_ca_12_reduced_motion_corta_transform_e_opacity", () => {
+    const block = css.slice(css.indexOf("@media (prefers-reduced-motion: reduce)"));
+    expect(block).toContain("transition: none !important");
+    expect(block).toContain("animation: none !important");
+    expect(block).toContain("transform: none !important");
+  });
+  test("test_ca_12_nenhuma_animacao_acima_de_240ms", () => {
+    const src = [
+      "components/ui/button.tsx",
+      "components/ui/dialog.tsx",
+      "components/ui/progress.tsx",
+      "components/ui/chip.tsx",
+      "components/app-shell.tsx",
+    ].map((f) => readFileSync(join(__dirname, "..", f), "utf8")).join("\n");
+    const ms = [...src.matchAll(/duration-\[(\d+)ms\]|animate-\[[a-z-]+_(\d+)ms/g)].map((m) => Number(m[1] ?? m[2]));
+    expect(ms.length).toBeGreaterThan(0);
+    expect(Math.max(...ms)).toBeLessThanOrEqual(240);
+  });
+});
+
+describe("CA-13 sino inerte", () => {
+  test("test_ca_13_sino_visivel_sem_painel", async () => {
+    render(<CatalogoScreen />);
+    const bell = screen.getByRole("button", { name: "Notificações" });
+    expect(bell).toBeVisible();
+    await userEvent.click(bell);
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(screen.queryByRole("menu")).toBeNull();
+    expect(bell).not.toHaveAttribute("aria-expanded");
+    expect(push).not.toHaveBeenCalled();
+  });
+});

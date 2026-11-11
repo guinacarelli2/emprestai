@@ -1,0 +1,87 @@
+import { readFileSync, existsSync, readdirSync } from "node:fs";
+import { join } from "node:path";
+import { render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { beforeEach, describe, expect, test } from "vitest";
+import { push, pathname } from "./helpers";
+import { LoginScreen } from "@/components/screens/login";
+import { CatalogoScreen } from "@/components/screens/catalogo";
+import { MeusEmprestimosScreen } from "@/components/screens/meus-emprestimos";
+import { OperacoesScreen } from "@/components/screens/operacoes";
+
+const root = join(__dirname, "..", "..");
+const css = readFileSync(join(root, "src/app/globals.css"), "utf8");
+const layoutTsx = readFileSync(join(root, "src/app/layout.tsx"), "utf8");
+
+beforeEach(() => {
+  push.mockClear();
+  pathname.current = "/catalogo";
+});
+
+describe("CA-01 tema", () => {
+  test("test_ca_01_tokens_do_layout_no_tema_tailwind", () => {
+    for (const token of ["#080c1a", "#060a16", "#0e1530", "#0b1128", "#001449", "#5b7fe0", "#b4c6f6", "#5fd3aa", "#e8b961", "#f0a0a5"]) {
+      expect(css.toLowerCase()).toContain(token);
+    }
+    expect(css).toContain("@theme");
+  });
+  test("test_ca_01_so_escuro_e_open_sans", () => {
+    expect(css).toContain("color-scheme: dark");
+    expect(css).not.toMatch(/prefers-color-scheme/);
+    expect(layoutTsx).toContain("@fontsource/open-sans/400.css");
+    expect(layoutTsx).toContain("@fontsource/open-sans/600.css");
+    expect(css).toContain('"Open Sans"');
+  });
+  test("test_ca_01_sem_arquivo_ds_nocturne", () => {
+    const all = readdirSync(root, { recursive: true }) as string[];
+    expect(all.filter((p) => !p.startsWith("node_modules") && !p.startsWith(".git") && !p.startsWith(".next")).some((p) => /nocturne|_ds/i.test(p))).toBe(false);
+  });
+});
+
+describe("CA-02 login", () => {
+  test("test_ca_02_copy_da_spec", () => {
+    render(<LoginScreen />);
+    expect(screen.getByRole("heading", { name: "Quem está com o quê" })).toBeInTheDocument();
+    expect(screen.getByText("Pedido e devolução sem planilha.")).toBeInTheDocument();
+    expect(screen.getByText("E-mail e senha do convite.")).toBeInTheDocument();
+    expect(screen.getByText("Sem acesso? Fale com Operações.")).toBeInTheDocument();
+    expect(screen.getByText("EmpresTI")).toBeInTheDocument();
+    expect(screen.getByLabelText("E-mail")).toBeInTheDocument();
+    expect(screen.getByLabelText("Senha")).toBeInTheDocument();
+    expect(screen.queryByRole("navigation", { name: "Principal" })).toBeNull(); // sem sidebar
+  });
+  test("test_ca_02_submit_vai_para_catalogo", async () => {
+    render(<LoginScreen />);
+    await userEvent.click(screen.getByRole("button", { name: /Entrar/ }));
+    expect(push).toHaveBeenCalledWith("/catalogo");
+  });
+});
+
+describe("CA-03 shell", () => {
+  test("test_ca_03_sidebar_236_header_64_grupos_e_badge", () => {
+    const { container } = render(<CatalogoScreen />);
+    expect(container.querySelector("aside")?.className).toContain("w-[236px]");
+    expect(container.querySelector("header")?.className).toContain("h-16");
+    const nav = screen.getByRole("navigation", { name: "Principal" });
+    for (const t of ["Colaborador", "Operações", "Catálogo", "Meus empréstimos", "Empréstimos em aberto", "Cadastrar equipamento"]) {
+      expect(within(nav).getByText(t)).toBeInTheDocument();
+    }
+    expect(within(nav).getByText("2")).toBeInTheDocument();
+    expect(screen.getByText("Marina Alves")).toBeInTheDocument();
+    expect(screen.getByText("MA")).toBeInTheDocument();
+  });
+  test("test_ca_03_item_ativo_marcado_e_persona_operacoes", () => {
+    pathname.current = "/operacoes/emprestimos";
+    render(<OperacoesScreen />);
+    expect(screen.getByRole("link", { name: "Empréstimos em aberto" })).toHaveAttribute("aria-current", "page");
+    expect(screen.getByRole("link", { name: /Meus empréstimos/ })).not.toHaveAttribute("aria-current");
+    expect(screen.getByText("Balcão · 2º andar")).toBeInTheDocument();
+    expect(screen.getByText("OP")).toBeInTheDocument();
+  });
+  test("test_ca_03_persona_marina_fora_de_operacoes", () => {
+    pathname.current = "/meus-emprestimos";
+    render(<MeusEmprestimosScreen />);
+    expect(screen.getByRole("link", { name: /Meus empréstimos/ })).toHaveAttribute("aria-current", "page");
+    expect(existsSync(join(root, "src/components/app-shell.tsx"))).toBe(true);
+  });
+});

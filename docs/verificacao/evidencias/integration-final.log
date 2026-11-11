@@ -1,0 +1,434 @@
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.1.0 [39m[90m<PROJETO_LOCAL>[39m
+
+Integração: PostgreSQL standalone loopback real (Testcontainers não exercitado).
+PostgreSQL local verificado: emprestai_local_final, loopback:54917; modo deploy.
+[2mPrisma schema loaded from prisma/schema.prisma[22m
+[2mDatasource "db": PostgreSQL database "emprestai_local_final", schema "public" at "127.0.0.1:54917"[22m
+
+1 migration found in prisma/migrations
+
+Applying migration `20261110165902_auth_persistence`
+
+The following migration(s) have been applied:
+
+migrations/
+  └─ 20261110165902_[36m[1mauth_persistence[22m[39m/
+    └─ migration.sql
+      
+[32mAll migrations have been successfully applied.[39m
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_02_anonymous_idor_own_loans_and_privacy
+[22m[39m{"request_id":"27df0a62-c5a6-4bb7-9d5f-37b190b19e39","tenant_id":"318b9713-b486-4d01-be43-10d8c08923e7","action":"loans.request","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_02_anonymous_idor_own_loans_and_privacy
+[22m[39m{"request_id":"f4ab6de9-4fcb-40cf-ba00-d8cdde646531","tenant_id":"318b9713-b486-4d01-be43-10d8c08923e7","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_02_anonymous_idor_own_loans_and_privacy
+[22m[39m{"request_id":"5df8b785-66f4-4f20-9109-169ae305f29c","tenant_id":"318b9713-b486-4d01-be43-10d8c08923e7","action":"loans.mine","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_02_anonymous_idor_own_loans_and_privacy
+[22m[39m{"request_id":"0a7b5ad2-0bb0-42cb-84c9-b3702798493d","tenant_id":"318b9713-b486-4d01-be43-10d8c08923e7","action":"loans.mine","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_01_catalog_occupancy_of_other_borrower_and_cross_tenant_procedures
+[22m[39m{"request_id":"594746ef-9dc0-4153-bff8-01afb7b12445","tenant_id":"4fcf1110-e51a-4dd2-9d09-9996714c9b61","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_01_catalog_occupancy_of_other_borrower_and_cross_tenant_procedures
+[22m[39m{"request_id":"70ad9cdb-a00c-4ada-b5b9-b698776f4022","tenant_id":"4fcf1110-e51a-4dd2-9d09-9996714c9b61","action":"equipment.get","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_01_catalog_occupancy_of_other_borrower_and_cross_tenant_procedures
+[22m[39m{"request_id":"b39d196b-1424-425e-a3af-132aeea1401b","tenant_id":"4fcf1110-e51a-4dd2-9d09-9996714c9b61","action":"equipment.list","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_01_catalog_occupancy_of_other_borrower_and_cross_tenant_procedures
+[22m[39m{"request_id":"29774653-2693-4d8c-a66d-fda6869cb6e0","tenant_id":"e375ae4c-b299-4c22-b010-163b3c977434","action":"equipment.get","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_03_eligibility_maintenance_out_of_use_limit_and_overdue
+[22m[39m{"request_id":"9b729b02-2601-44fc-9f00-b682a4a0862b","tenant_id":"82e3c532-7a96-4d8e-80ee-57af44396993","action":"loans.request","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_03_eligibility_maintenance_out_of_use_limit_and_overdue
+[22m[39m{"request_id":"e0500373-a0cc-413b-b3b6-b978e72b190e","tenant_id":"82e3c532-7a96-4d8e-80ee-57af44396993","action":"loans.request","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_03_eligibility_maintenance_out_of_use_limit_and_overdue
+[22m[39m{"request_id":"3d0cc49b-19e7-4839-a946-5d9a14515071","tenant_id":"82e3c532-7a96-4d8e-80ee-57af44396993","action":"loans.request","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_persists_civil_date_and_atomic_audit
+[22m[39m{"request_id":"880ba97a-3486-405d-ab73-63bccd14ee54","tenant_id":"adca941d-7777-4ff0-b210-7526d47bef09","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_05_two_parallel_requests_with_two_existing_loans_exactly_one_success
+[22m[39m{"request_id":"4e2fe129-1acd-4b48-8ad3-cd66dbecc0f8","tenant_id":"58a55fa8-dbe0-49fc-8465-8f823de16f56","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_05_two_parallel_requests_with_two_existing_loans_exactly_one_success
+[22m[39m{"request_id":"94db10af-b3f6-43fe-a2ed-64a6ec497918","tenant_id":"58a55fa8-dbe0-49fc-8465-8f823de16f56","action":"loans.request","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_06_two_users_one_item_exactly_one_success
+[22m[39m{"request_id":"c78be844-7289-4c1a-91d7-088a8e85aad4","tenant_id":"b91f57ab-3770-4afd-b42f-9d7e56a28a99","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec003.integration.test.ts[2m > [22m[2m003 solicitar empréstimo — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_06_two_users_one_item_exactly_one_success
+[22m[39m{"request_id":"3975ec6f-ae89-44f6-8058-75068f015bf4","tenant_id":"b91f57ab-3770-4afd-b42f-9d7e56a28a99","action":"loans.request","status":"error"}
+
+ [32m✓[39m src/__tests__/integration/spec003.integration.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 189[2mms[22m[39m
+ [32m✓[39m src/__tests__/integration/spec004.integration.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 479[2mms[22m[39m
+   [32m✓[39m 004 auth/persistência — PostgreSQL real [2m(8)[22m
+     [33m[2m✓[22m[39m test_ca_07_preauth_counters_atomic_without_membership_and_tenant_scoped[33m 368[2mms[22m[39m
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_01_return_own_or_operations_same_tenant_only
+[22m[39m{"request_id":"3203bca1-65b2-4ed4-a63b-bf72a3763433","tenant_id":"3fb56cdb-d622-4aba-8c78-bcc62da9c51c","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_01_return_own_or_operations_same_tenant_only
+[22m[39m{"request_id":"dc42ed4b-751f-43d3-9968-0793dd2f50a9","tenant_id":"3fb56cdb-d622-4aba-8c78-bcc62da9c51c","action":"loans.return","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_01_return_own_or_operations_same_tenant_only
+[22m[39m{"request_id":"668f07ae-7b36-494e-a1c0-8d49458710c1","tenant_id":"74a1857e-e003-44e7-94a0-3d2281daa0bc","action":"loans.return","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_01_return_own_or_operations_same_tenant_only
+[22m[39m{"request_id":"33757856-d20a-4eb8-85cf-910a2cbd634e","tenant_id":"3fb56cdb-d622-4aba-8c78-bcc62da9c51c","action":"loans.return","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_02_parallel_return_idempotent_timestamp_one_audit_and_maintenance_preserved
+[22m[39m{"request_id":"bdd608ef-f891-4343-b970-12d43e316275","tenant_id":"38b4cbde-6b07-48d9-a06b-7962c711bf11","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_02_parallel_return_idempotent_timestamp_one_audit_and_maintenance_preserved
+[22m[39m{"request_id":"6ea3f7b8-14d2-4856-9c54-5b7482ef32a3","tenant_id":"38b4cbde-6b07-48d9-a06b-7962c711bf11","action":"loans.return","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_02_parallel_return_idempotent_timestamp_one_audit_and_maintenance_preserved
+[22m[39m{"request_id":"b935dc5d-16b9-4e65-bea6-1ff8cfd823e5","tenant_id":"38b4cbde-6b07-48d9-a06b-7962c711bf11","action":"loans.return","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_02_parallel_return_idempotent_timestamp_one_audit_and_maintenance_preserved
+[22m[39m{"request_id":"b02eb6cc-5537-4046-95ff-bafdb60dba60","tenant_id":"38b4cbde-6b07-48d9-a06b-7962c711bf11","action":"loans.return","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_ca_05_operations_list_stats_and_recent_isolate_other_tenant
+[22m[39m{"request_id":"07aa7875-8951-4a9e-8ac0-c191c9ceec70","tenant_id":"fc73b97d-a0c2-495b-ac95-4e72159e4b95","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_ca_05_operations_list_stats_and_recent_isolate_other_tenant
+[22m[39m{"request_id":"e3f7a030-30ca-4b5b-95ab-75a9f3193024","tenant_id":"6f3d8f00-2c99-4442-bed0-0687df4654df","action":"loans.request","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_ca_05_operations_list_stats_and_recent_isolate_other_tenant
+[22m[39m{"request_id":"68d41708-7de5-4eec-bb4d-2dfd7c334fa8","tenant_id":"fc73b97d-a0c2-495b-ac95-4e72159e4b95","action":"operations.list","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_ca_05_operations_list_stats_and_recent_isolate_other_tenant
+[22m[39m{"request_id":"3a43bc82-3817-47e7-afc5-bd9791e7759d","tenant_id":"fc73b97d-a0c2-495b-ac95-4e72159e4b95","action":"operations.stats","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_ca_05_operations_list_stats_and_recent_isolate_other_tenant
+[22m[39m{"request_id":"208584ef-00b4-423e-9e65-0f2fdb1006ed","tenant_id":"fc73b97d-a0c2-495b-ac95-4e72159e4b95","action":"operations.list","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_ca_05_operations_list_stats_and_recent_isolate_other_tenant
+[22m[39m{"request_id":"208584ef-00b4-423e-9e65-0f2fdb1006ed","tenant_id":"fc73b97d-a0c2-495b-ac95-4e72159e4b95","action":"operations.stats","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_04_ca_05_operations_list_stats_and_recent_isolate_other_tenant
+[22m[39m{"request_id":"208584ef-00b4-423e-9e65-0f2fdb1006ed","tenant_id":"fc73b97d-a0c2-495b-ac95-4e72159e4b95","action":"equipment.recent","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_06_ca_07_ca_08_equipment_create_authorized_atomic_unique_no_image
+[22m[39m{"request_id":"1f99e21a-b4a3-421c-8793-18b2052b3430","tenant_id":"d183b347-ca9a-452f-8474-1d27cf3b1ea7","action":"equipment.create","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_06_ca_07_ca_08_equipment_create_authorized_atomic_unique_no_image
+[22m[39m{"request_id":"2e5714cf-420a-45c8-96bd-b550c249a46d","tenant_id":"d183b347-ca9a-452f-8474-1d27cf3b1ea7","action":"equipment.create","status":"ok"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_06_ca_07_ca_08_equipment_create_authorized_atomic_unique_no_image
+[22m[39m{"request_id":"e590788e-aaaa-439e-b95f-c72ef66def28","tenant_id":"d183b347-ca9a-452f-8474-1d27cf3b1ea7","action":"equipment.create","status":"error"}
+
+[90mstdout[2m | src/__tests__/integration/spec005.integration.test.ts[2m > [22m[2m005 operações/devolução — createCaller/PostgreSQL real[2m > [22m[2mtest_ca_06_ca_07_ca_08_equipment_create_authorized_atomic_unique_no_image
+[22m[39m{"request_id":"feaa2cfa-0a53-4326-ba4e-dda2b4411557","tenant_id":"7ce4e7fa-3a3e-46a8-9ed9-4f896d858560","action":"equipment.create","status":"ok"}
+
+ [32m✓[39m src/__tests__/integration/spec005.integration.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 204[2mms[22m[39m
+ [31m❯[39m src/__tests__/integration/spec002.integration.test.ts [2m([22m[2m1 test[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 8[2mms[22m[39m
+   [31m❯[39m 002 dados iniciais — seed real local [2m(1)[22m
+[31m     [31m×[31m test_ca_01_ca_02_ca_03_ca_04_ca_08_seed_exact_idempotent_preserves_legitimate_data[39m[32m 7[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 1 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/__tests__/integration/spec002.integration.test.ts[2m > [22m002 dados iniciais — seed real local[2m > [22mtest_ca_01_ca_02_ca_03_ca_04_ca_08_seed_exact_idempotent_preserves_legitimate_data
+[31m[1mZodError[22m[39m: [
+  {
+    "origin": "string",
+    "code": "invalid_format",
+    "format": "regex",
+    "pattern": "/^TI-\\d{4}$/",
+    "path": [
+      0,
+      "patrimonio"
+    ],
+    "message": "Invalid string: must match pattern /^TI-\\d{4}$/"
+  },
+  {
+    "code": "invalid_value",
+    "values": [
+      "disponivel",
+      "manutencao"
+    ],
+    "path": [
+      0,
+      "situacao"
+    ],
+    "message": "Invalid option: expected one of \"disponivel\"|\"manutencao\""
+  },
+  {
+    "origin": "string",
+    "code": "invalid_format",
+    "format": "regex",
+    "pattern": "/^TI-\\d{4}$/",
+    "path": [
+      1,
+      "patrimonio"
+    ],
+    "message": "Invalid string: must match pattern /^TI-\\d{4}$/"
+  },
+  {
+    "code": "invalid_value",
+    "values": [
+      "disponivel",
+      "manutencao"
+    ],
+    "path": [
+      1,
+      "situacao"
+    ],
+    "message": "Invalid option: expected one of \"disponivel\"|\"manutencao\""
+  },
+  {
+    "origin": "string",
+    "code": "invalid_format",
+    "format": "regex",
+    "pattern": "/^TI-\\d{4}$/",
+    "path": [
+      2,
+      "patrimonio"
+    ],
+    "message": "Invalid string: must match pattern /^TI-\\d{4}$/"
+  },
+  {
+    "code": "invalid_value",
+    "values": [
+      "disponivel",
+      "manutencao"
+    ],
+    "path": [
+      2,
+      "situacao"
+    ],
+    "message": "Invalid option: expected one of \"disponivel\"|\"manutencao\""
+  },
+  {
+    "origin": "string",
+    "code": "invalid_format",
+    "format": "regex",
+    "pattern": "/^TI-\\d{4}$/",
+    "path": [
+      3,
+      "patrimonio"
+    ],
+    "message": "Invalid string: must match pattern /^TI-\\d{4}$/"
+  },
+  {
+    "code": "invalid_value",
+    "values": [
+      "disponivel",
+      "manutencao"
+    ],
+    "path": [
+      3,
+      "situacao"
+    ],
+    "message": "Invalid option: expected one of \"disponivel\"|\"manutencao\""
+  },
+  {
+    "origin": "string",
+    "code": "invalid_format",
+    "format": "regex",
+    "pattern": "/^TI-\\d{4}$/",
+    "path": [
+      4,
+      "patrimonio"
+    ],
+    "message": "Invalid string: must match pattern /^TI-\\d{4}$/"
+  },
+  {
+    "code": "invalid_value",
+    "values": [
+      "disponivel",
+      "manutencao"
+    ],
+    "path": [
+      4,
+      "situacao"
+    ],
+    "message": "Invalid option: expected one of \"disponivel\"|\"manutencao\""
+  },
+  {
+    "origin": "string",
+    "code": "invalid_format",
+    "format": "regex",
+    "pattern": "/^TI-\\d{4}$/",
+    "path": [
+      5,
+      "patrimonio"
+    ],
+    "message": "Invalid string: must match pattern /^TI-\\d{4}$/"
+  },
+  {
+    "code": "invalid_value",
+    "values": [
+      "disponivel",
+      "manutencao"
+    ],
+    "path": [
+      5,
+      "situacao"
+    ],
+    "message": "Invalid option: expected one of \"disponivel\"|\"manutencao\""
+  },
+  {
+    "origin": "string",
+    "code": "invalid_format",
+    "format": "regex",
+    "pattern": "/^TI-\\d{4}$/",
+    "path": [
+      6,
+      "patrimonio"
+    ],
+    "message": "Invalid string: must match pattern /^TI-\\d{4}$/"
+  },
+  {
+    "code": "invalid_value",
+    "values": [
+      "disponivel",
+      "manutencao"
+    ],
+    "path": [
+      6,
+      "situacao"
+    ],
+    "message": "Invalid option: expected one of \"disponivel\"|\"manutencao\""
+  },
+  {
+    "origin": "string",
+    "code": "invalid_format",
+    "format": "regex",
+    "pattern": "/^TI-\\d{4}$/",
+    "path": [
+      7,
+      "patrimonio"
+    ],
+    "message": "Invalid string: must match pattern /^TI-\\d{4}$/"
+  },
+  {
+    "code": "invalid_value",
+    "values": [
+      "disponivel",
+      "manutencao"
+    ],
+    "path": [
+      7,
+      "situacao"
+    ],
+    "message": "Invalid option: expected one of \"disponivel\"|\"manutencao\""
+  },
+  {
+    "origin": "string",
+    "code": "invalid_format",
+    "format": "regex",
+    "pattern": "/^TI-\\d{4}$/",
+    "path": [
+      8,
+      "patrimonio"
+    ],
+    "message": "Invalid string: must match pattern /^TI-\\d{4}$/"
+  },
+  {
+    "code": "invalid_value",
+    "values": [
+      "disponivel",
+      "manutencao"
+    ],
+    "path": [
+      8,
+      "situacao"
+    ],
+    "message": "Invalid option: expected one of \"disponivel\"|\"manutencao\""
+  },
+  {
+    "origin": "string",
+    "code": "invalid_format",
+    "format": "regex",
+    "pattern": "/^TI-\\d{4}$/",
+    "path": [
+      9,
+      "patrimonio"
+    ],
+    "message": "Invalid string: must match pattern /^TI-\\d{4}$/"
+  },
+  {
+    "code": "invalid_value",
+    "values": [
+      "disponivel",
+      "manutencao"
+    ],
+    "path": [
+      9,
+      "situacao"
+    ],
+    "message": "Invalid option: expected one of \"disponivel\"|\"manutencao\""
+  },
+  {
+    "origin": "string",
+    "code": "invalid_format",
+    "format": "regex",
+    "pattern": "/^TI-\\d{4}$/",
+    "path": [
+      10,
+      "patrimonio"
+    ],
+    "message": "Invalid string: must match pattern /^TI-\\d{4}$/"
+  },
+  {
+    "code": "invalid_value",
+    "values": [
+      "disponivel",
+      "manutencao"
+    ],
+    "path": [
+      10,
+      "situacao"
+    ],
+    "message": "Invalid option: expected one of \"disponivel\"|\"manutencao\""
+  },
+  {
+    "origin": "string",
+    "code": "invalid_format",
+    "format": "regex",
+    "pattern": "/^TI-\\d{4}$/",
+    "path": [
+      11,
+      "patrimonio"
+    ],
+    "message": "Invalid string: must match pattern /^TI-\\d{4}$/"
+  },
+  {
+    "code": "invalid_value",
+    "values": [
+      "disponivel",
+      "manutencao"
+    ],
+    "path": [
+      11,
+      "situacao"
+    ],
+    "message": "Invalid option: expected one of \"disponivel\"|\"manutencao\""
+  }
+]
+[36m [2m❯[22m seedInventory prisma/seed.ts:[2m33:45[22m[39m
+    [90m 31|[39m   const ids = z.object({ teacher: z.string().uuid(), operations: z.str…
+    [90m 32|[39m   if (new Set(Object.values(ids)).size !== 3) throw new Error("Profess…
+    [90m 33|[39m   const list = z.array(seedItem).length(12).parse(JSON.parse(await rea…
+    [90m   |[39m                                             [31m^[39m
+    [90m 34|[39m   const expected = Array.from({ length: 12 }, (_, i) => `TI-${String(i…
+    [90m 35|[39m   if (list.some((item, i) => item.patrimonio !== expected[i])) throw n…
+[90m [2m❯[22m src/__tests__/integration/spec002.integration.test.ts:[2m10:19[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m3 passed[39m[22m[90m (4)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m18 passed[39m[22m[90m (19)[39m
+[2m   Start at [22m 14:02:42
+[2m   Duration [22m 4.57s[2m (tests 59%, import 36%, transform 5%, worker 1%)[22m
+
+[2m    Isolate [22m [33m4 workers spawned[39m[2m · ~366ms startup each (spawn + environment, per file)[22m
+[2m            [22m [2mat least ~1.10s faster with [22m[33misolate: false[39m[2m — reuses workers across files instead of one per file[22m
+

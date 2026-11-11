@@ -1,0 +1,59 @@
+TAP version 13
+# Subtest: test_ca_10_strips_credentials_and_environment
+ok 1 - test_ca_10_strips_credentials_and_environment
+  ---
+  duration_ms: 0.920708
+  type: 'test'
+  ...
+# Subtest: test_ca_10_digest_excludes_evidence_but_tracks_source_specs_schema
+ok 2 - test_ca_10_digest_excludes_evidence_but_tracks_source_specs_schema
+  ---
+  duration_ms: 17.426333
+  type: 'test'
+  ...
+# Subtest: test_ca_10_profile_deny_network_write_original_and_fixed_commands
+ok 3 - test_ca_10_profile_deny_network_write_original_and_fixed_commands
+  ---
+  duration_ms: 0.276667
+  type: 'test'
+  ...
+# Subtest: test_ca_10_no_false_pass_from_test_names
+ok 4 - test_ca_10_no_false_pass_from_test_names
+  ---
+  duration_ms: 0.374792
+  type: 'test'
+  ...
+# Subtest: test_ca_10_review_rejects_unknown_missing_stale_and_fake_assertions
+ok 5 - test_ca_10_review_rejects_unknown_missing_stale_and_fake_assertions
+  ---
+  duration_ms: 0.85175
+  type: 'test'
+  ...
+# Subtest: test_ca_10_criteria_inventory_requires_unique_scoped_ids
+ok 6 - test_ca_10_criteria_inventory_requires_unique_scoped_ids
+  ---
+  duration_ms: 0.205
+  type: 'test'
+  ...
+# Subtest: test_ca_10_delivery_refuses_missing_artifacts
+ok 7 - test_ca_10_delivery_refuses_missing_artifacts
+  ---
+  duration_ms: 1.192375
+  type: 'test'
+  ...
+# {"fixtureOnly":true,"redHash":"0ead4673235c511a0a21e7c511b93a9ecff3a1486d9e2934323ce8be8528a6bc","greenHash":"3f11bf06576c06ceb934cac042b2e5ca8c82814a409b0e4ea2dce3654bd79bb8","redExitCode":1,"greenExitCode":0,"redCheckHash":"b5ee0fe2c17f94a1e2623939eb1a5651a53c8805c151fc56617e0a8141bc1d7d","greenCheckHash":"c6ce20ab8a04e79aa27a4c290ee2ed9894d92ec599284410c9a8b985edb58d38"}
+# Subtest: test_ca_10_real_macos_sandbox_enforces_boundaries_and_red_green_hashes
+ok 8 - test_ca_10_real_macos_sandbox_enforces_boundaries_and_red_green_hashes
+  ---
+  duration_ms: 4765.200083
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4855.186208

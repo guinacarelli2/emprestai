@@ -1,0 +1,73 @@
+{
+  "typescript-eslint": {
+    "version": "8.72.1",
+    "published": "2026-10-26T17:09:43.677Z",
+    "engines": {
+      "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+    }
+  },
+  "@typescript-eslint/eslint-plugin": {
+    "version": "8.72.1",
+    "published": "2026-10-26T17:10:26.925Z",
+    "engines": {
+      "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+    }
+  },
+  "@typescript-eslint/parser": {
+    "version": "8.72.1",
+    "published": "2026-10-26T17:09:27.302Z",
+    "engines": {
+      "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+    }
+  },
+  "@typescript-eslint/type-utils": {
+    "version": "8.72.1",
+    "published": "2026-10-26T17:10:04.095Z",
+    "engines": {
+      "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+    }
+  },
+  "@typescript-eslint/typescript-estree": {
+    "version": "8.72.1",
+    "published": "2026-10-26T17:08:21.828Z",
+    "engines": {
+      "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+    }
+  },
+  "@typescript-eslint/utils": {
+    "version": "8.72.1",
+    "published": "2026-10-26T17:09:24.673Z",
+    "engines": {
+      "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+    }
+  },
+  "glob": {
+    "version": "14.0.3",
+    "published": "2026-10-28T04:08:39.624Z",
+    "engines": {
+      "node": "18 || 20 || >=22"
+    }
+  },
+  "minimatch": {
+    "version": "11.0.4",
+    "published": "2026-11-02T04:50:40.232Z",
+    "engines": {
+      "node": "20 || >=22"
+    }
+  },
+  "archiver": {
+    "version": "8.0.0",
+    "published": "2026-05-08T08:05:23.358Z",
+    "engines": {
+      "node": ">=18"
+    }
+  },
+  "archiver-utils": {},
+  "zip-stream": {
+    "version": "7.0.5",
+    "published": "2026-05-08T07:57:47.987Z",
+    "engines": {
+      "node": ">=18"
+    }
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "spec": "docs/specs/003-solicitar-emprestimo/spec.md",
+  "round": "final1",
+  "sourceHash": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+  "checksHash": "56ac5fd3a2b96d6bc1fe4836bab5db3395eebc4c7940f777f1f60f2511cf91f5",
+  "reviewer": {
+    "id": "agent4a9d2",
+    "independent": true,
+    "kind": "subagent"
+  },
+  "scope": "Monolito EmpresTI; unidade/typecheck/build no sandbox sem rede; integrações PostgreSQL/Auth/E2E e produção são evidências externas separadas, não executadas por este runner",
+  "criteria": [
+    {
+      "id": "003/CA-01",
+      "status": "SEM TESTE",
+      "evidence": [
+        {
+          "file": "src/__tests__/frontend-contract.test.tsx",
+          "line": 161,
+          "test": "test_ca_01_spec003_busca_categoria_disponibilidade_combinadas_sem_contagem_mock",
+          "assertion": "L166–171 hook mock recebeu search=TI-0001/category=notebook/onlyAvailable=true/limit=12; L172–173 contagem zero e estado vazio. Não consulta banco."
+        }
+      ],
+      "observation": "Consulta Postgres prova ocupação e segregação; combinação só é verificada no argumento do hook mockado. Fixture integração tem 7 disponíveis; não 12/9/3. Cobertura acima é somente parcial e efetivamente passada na final1; não satisfaz o critério inteiro. Falta: Queries reais combinadas nome/patrimônio/categoria/disponíveis usando inventário 12/9/3.; E2E autenticado catálogo→detalhe real, indisponibilidade, loading/erro/vazio e contagens. Final1 tem 58 unitários e checks tests/typecheck/build exit0, mas não executa banco/Auth HTTP/E2E/reload/reinício; Git permanece blocked e pacote/produção NÃO PRONTOS. O draft histórico permanece separado e não alterado."
+    },
+    {
+      "id": "003/CA-02",
+      "status": "SEM TESTE",
+      "evidence": [
+        {
+          "file": "src/__tests__/server-api.test.ts",
+          "line": 92,
+          "test": "tRPC authorization with explicit service mocks — not RLS or integration proof test_ca_02_spec003_context_injected_and_response_body_preserved_without_tenant_input",
+          "assertion": "L96 corpo equipment.list preservado; L97 ctx recebido; L100–101 corpo mine history e ctx, services mockados."
+        },
+        {
+          "file": "src/__tests__/server-api.test.ts",
+          "line": 61,
+          "test": "tRPC authorization with explicit service mocks — not RLS or integration proof test_ca_02_spec004_missing_membership_is_forbidden_and_promotion_input_rejected",
+          "assertion": "L64 sem membership FORBIDDEN; L66–71 role/tenant input BAD_REQUEST; auxiliar da 004."
+        }
+      ],
+      "observation": "Há createCaller código/corpo e isolamento parcial, mas contexto Auth/tenant/role é construído pelo fixture; cobertura por procedimento não é completa. Cobertura acima é somente parcial e efetivamente passada na final1; não satisfaz o critério inteiro. Falta: Matriz createCaller anônimo/A/outro colaborador/B/IDOR em equipment.list/get e loans.mine/request, incluindo history próprio/de outro e tentativas borrower/role/tenant input.; Sessão verificada real não é coberta por fixture; Auth HTTP local pendente da dependência004. Final1 tem 58 unitários e checks tests/typecheck/build exit0, mas não executa banco/Auth HTTP/E2E/reload/reinício; Git permanece blocked e pacote/produção NÃO PRONTOS. O draft histórico permanece separado e não alterado."
+    },
+    {
+      "id": "003/CA-03",
+      "status": "SEM TESTE",
+      "evidence": [
+        {
+          "file": "src/__tests__/server-rules.test.ts",
+          "line": 24,
+          "test": "Backend pure rules — not database integration test_ca_03_spec003_eligibility_is_rechecked_and_never_accepts_three_or_late",
+          "assertion": "L26 dois aceitos; L27–30 três/atraso rejeitados; L31–33 manutenção/fora de uso/ocupado rejeitados."
+        },
+        {
+          "file": "src/__tests__/frontend-contract.test.tsx",
+          "line": 212,
+          "test": "test_ca_03_spec003_atraso_bloqueia_com_motivo_explicito",
+          "assertion": "L215 botão desabilitado; L216 motivo Bloqueado por atraso, com hook mockado."
+        }
+      ],
+      "observation": "Boa cobertura parcial do service. Teste integração de elegibilidade não testa limite apesar do nome; corrida verifica limite=3, não toda matriz UI antiga/rollback. Cobertura acima é somente parcial e efetivamente passada na final1; não satisfaz o critério inteiro. Falta: Integração serial 0/2/3 com asserts de loan/audit sem mutação parcial para todas as rejeições.; UI antiga permitindo clique e servidor revalidando todos os casos, sem sucesso falso. Final1 tem 58 unitários e checks tests/typecheck/build exit0, mas não executa banco/Auth HTTP/E2E/reload/reinício; Git permanece blocked e pacote/produção NÃO PRONTOS. O draft histórico permanece separado e não alterado."
+    },
+    {
+      "id": "003/CA-04",
+      "status": "SEM TESTE",
+      "evidence": [
+        {
+          "file": "src/__tests__/server-rules.test.ts",
+          "line": 15,
+          "test": "Backend pure rules — not database integration test_ca_04_spec003_civil_date_midnight_and_calendar_boundaries",
+          "assertion": "L16–17 fronteira UTC/São Paulo; L18 bissexto; L19 ano; L20 no vencimento false; L21 dia seguinte true; L22 devolvido false."
+        },
+        {
+          "file": "src/__tests__/frontend-contract.test.tsx",
+          "line": 201,
+          "test": "test_ca_07_spec003_erro_pedido_mantem_modal_e_nao_afirma_sucesso",
+          "assertion": "L206 prazo 24/nov da sessão mockada; L208 mutate equipmentId; L209 alert conflito; L210 nenhum sucesso. Não testa commit nem cancelamento."
+        }
+      ],
+      "observation": "Persistência DATE e funções puras corretas no escopo testado; request usa agora real, não relógio congelado nas fronteiras. Teste modal CA07 não vira prova inteira de CA04. Cobertura acima é somente parcial e efetivamente passada na final1; não satisfaz o critério inteiro. Falta: Relógio controlado no request/router/persistência e UI em meia-noite SP/UTC/mês/ano/bissexto.; Antes/no/depois com pedidos reais e cliente em outro fuso; confirmação igual prazo gravado. Final1 tem 58 unitários e checks tests/typecheck/build exit0, mas não executa banco/Auth HTTP/E2E/reload/reinício; Git permanece blocked e pacote/produção NÃO PRONTOS. O draft histórico permanece separado e não alterado."
+    },
+    {
+      "id": "003/CA-05",
+      "status": "SEM TESTE",
+      "evidence": [],
+      "observation": "Corrida real cumpre exatamente um sucesso/total3/audit1. Inspeção confirma membership antes de equipment em request e return; contagem/revalidação após ambos. Não existem retries automáticos (zero tentativas adicionais é limite finito); P2034 retorna CONFLICT, não retry ilimitado. Aceite semântico histórico, ainda sem vínculo à rodada final. O ATENDIDO semântico histórico do draft NÃO é promovido nesta review: o teste de integração pertinente não consta em report.assertions da final1; falta executor independente de integração PostgreSQL aprovado/isolado e evidência separada assinada/revisada vinculada à fonte congelada. Exigida corrida real PostgreSQL e, no CA06, constraint direta; nenhum teste unitário homônimo de outra spec é substituto. Final1 tem 58 unitários e checks tests/typecheck/build exit0, mas não executa banco/Auth HTTP/E2E/reload/reinício; Git permanece blocked e pacote/produção NÃO PRONTOS. O draft histórico permanece separado e não alterado."
+    },
+    {
+      "id": "003/CA-06",
+      "status": "SEM TESTE",
+      "evidence": [],
+      "observation": "Corrida Postgres, duplicação direta e predicado do índice demonstrados. CA04 da spec004 é evidência auxiliar sem renomear IDs. Wrapper converte P2002/P2034 a TRPCError CONFLICT sem SQL; corrida perdedora afirma CONFLICT. Sem exigência nova de retry ou remotos. O ATENDIDO semântico histórico do draft NÃO é promovido nesta review: o teste de integração pertinente não consta em report.assertions da final1; falta executor independente de integração PostgreSQL aprovado/isolado e evidência separada assinada/revisada vinculada à fonte congelada. Exigida corrida real PostgreSQL e, no CA06, constraint direta; nenhum teste unitário homônimo de outra spec é substituto. Final1 tem 58 unitários e checks tests/typecheck/build exit0, mas não executa banco/Auth HTTP/E2E/reload/reinício; Git permanece blocked e pacote/produção NÃO PRONTOS. O draft histórico permanece separado e não alterado."
+    },
+    {
+      "id": "003/CA-07",
+      "status": "SEM TESTE",
+      "evidence": [
+        {
+          "file": "src/__tests__/frontend-contract.test.tsx",
+          "line": 201,
+          "test": "test_ca_07_spec003_erro_pedido_mantem_modal_e_nao_afirma_sucesso",
+          "assertion": "L206 prazo 24/nov da sessão mockada; L208 mutate equipmentId; L209 alert conflito; L210 nenhum sucesso. Não testa commit nem cancelamento."
+        },
+        {
+          "file": "src/__tests__/frontend-contract.test.tsx",
+          "line": 212,
+          "test": "test_ca_03_spec003_atraso_bloqueia_com_motivo_explicito",
+          "assertion": "L215 botão desabilitado; L216 motivo Bloqueado por atraso, com hook mockado."
+        }
+      ],
+      "observation": "Teste real de componente prova conflito/erro, não cancelamento de pedido/sucesso após commit nem todos os motivos. Cancelar devolução pertence a spec005; não o mapear como cancelar solicitação 003. Cobertura acima é somente parcial e efetivamente passada na final1; não satisfaz o critério inteiro. Falta: Componentes cobrindo todos motivos, sessão expirada, cancelar pedido sem mutate, pending sem duplicar e sucesso callback só depois de commit.; E2E autenticado erro/sucesso com prazo verdadeiro e privacidade. Final1 tem 58 unitários e checks tests/typecheck/build exit0, mas não executa banco/Auth HTTP/E2E/reload/reinício; Git permanece blocked e pacote/produção NÃO PRONTOS. O draft histórico permanece separado e não alterado."
+    },
+    {
+      "id": "003/CA-08",
+      "status": "SEM TESTE",
+      "evidence": [],
+      "observation": "Atomicidade e append-only possuem integração auxiliar real, mas falha induzida não percorre requestLoan/createCaller. Mine mostra aberto de fixture; histórico/reload/reinício ausentes. Cobertura acima é somente parcial e efetivamente passada na final1; não há assertion pertinente nesta rodada. Falta: Falha induzida audit e inserção no procedimento loans.request, com retorno tipado/erro e loan/audit revertidos.; Meus loans abertos/histórico somente próprios após reload e reinício real. Final1 tem 58 unitários e checks tests/typecheck/build exit0, mas não executa banco/Auth HTTP/E2E/reload/reinício; Git permanece blocked e pacote/produção NÃO PRONTOS. O draft histórico permanece separado e não alterado."
+    },
+    {
+      "id": "003/CA-09",
+      "status": "SEM TESTE",
+      "evidence": [],
+      "observation": "Runtime chama invalidate global tanto onSuccess quanto onError. Nenhum teste efetivo da solicitação afirma invalidação e refetch de consultas múltiplas; assert invalidate de cadastro spec005 não prova este CA. Cobertura acima é somente parcial e efetivamente passada na final1; não há assertion pertinente nesta rodada. Falta: Catálogo/detalhe/mine/contador/operacoes pré-cacheados, sucesso e conflito, refetch e dados atualizados.; Segunda sessão disputa item recém-ocupado e reload; ausência de promoção otimista falsa. Final1 tem 58 unitários e checks tests/typecheck/build exit0, mas não executa banco/Auth HTTP/E2E/reload/reinício; Git permanece blocked e pacote/produção NÃO PRONTOS. O draft histórico permanece separado e não alterado."
+    },
+    {
+      "id": "003/CA-10",
+      "status": "SEM TESTE",
+      "evidence": [
+        {
+          "file": "src/__tests__/frontend-contract.test.tsx",
+          "line": 278,
+          "test": "test_ca_10_spec003_sem_foto_nao_inventa_imagem",
+          "assertion": "L280 mensagem Foto ainda não disponibilizada; L281 ausência de img. Item fixture sem URL."
+        },
+        {
+          "file": "src/__tests__/frontend-contract.test.tsx",
+          "line": 298,
+          "test": "test_ca_10_spec003_foto_storage_dimensoes_credito_escapado_e_link_inseguro_rejeitado",
+          "assertion": "L314–316 width800/height600/aspect4:3; L317 noreferrer; L318–320 texto escapado, sem script/link inseguro. URL Storage sintética; não verifica 12 fotos nem crédito global."
+        }
+      ],
+      "observation": "Imagem Storage é URL fixture, não upload nem 12 associações. Teste isolado EquipmentPhoto não renderiza PhotoCredit global nem afirma alt/link raiz Fotos: Pixabay do catálogo/detalhe. Cobertura acima é somente parcial e efetivamente passada na final1; não satisfaz o critério inteiro. Falta: 12 associações reais da002 no catálogo/detalhe, alt e proporção com arquivos válidos.; Crédito Fotos: Pixabay e href=https://pixabay.com/ acessível nas telas; falha de imagem/fallback sem outra fonte.; Storage real pendente de ação humana; não usar fixture como confirmação de upload. Final1 tem 58 unitários e checks tests/typecheck/build exit0, mas não executa banco/Auth HTTP/E2E/reload/reinício; Git permanece blocked e pacote/produção NÃO PRONTOS. O draft histórico permanece separado e não alterado."
+    }
+  ],
+  "outOfScope": []
+}

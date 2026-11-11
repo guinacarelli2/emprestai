@@ -1,0 +1,57 @@
+$ npm test
+
+> emprestai@0.1.0 test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.1.0 [39m[90m<PROJETO_LOCAL>[39m
+
+ [32m✓[39m src/__tests__/server-occupancy.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+[90mstdout[2m | src/__tests__/server-api.test.ts[2m > [22m[2mtRPC authorization with explicit service mocks — not RLS or integration proof[2m > [22m[2mtest_ca_02_spec004_missing_membership_is_forbidden_and_promotion_input_rejected
+[22m[39m{"request_id":"request-test","tenant_id":"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa","action":"equipment.list","status":"error"}
+
+[90mstdout[2m | src/__tests__/server-api.test.ts[2m > [22m[2mtRPC authorization with explicit service mocks — not RLS or integration proof[2m > [22m[2mtest_ca_02_spec004_missing_membership_is_forbidden_and_promotion_input_rejected
+[22m[39m{"request_id":"request-test","tenant_id":"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa","action":"loans.request","status":"error"}
+
+[90mstdout[2m | src/__tests__/server-api.test.ts[2m > [22m[2mtRPC authorization with explicit service mocks — not RLS or integration proof[2m > [22m[2mtest_ca_01_spec005_collaborator_cannot_access_operations_or_create_equipment
+[22m[39m{"request_id":"request-test","tenant_id":"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa","action":"operations.list","status":"error"}
+
+[90mstdout[2m | src/__tests__/server-api.test.ts[2m > [22m[2mtRPC authorization with explicit service mocks — not RLS or integration proof[2m > [22m[2mtest_ca_01_spec005_collaborator_cannot_access_operations_or_create_equipment
+[22m[39m{"request_id":"request-test","tenant_id":"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa","action":"operations.stats","status":"error"}
+
+[90mstdout[2m | src/__tests__/server-api.test.ts[2m > [22m[2mtRPC authorization with explicit service mocks — not RLS or integration proof[2m > [22m[2mtest_ca_01_spec005_collaborator_cannot_access_operations_or_create_equipment
+[22m[39m{"request_id":"request-test","tenant_id":"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa","action":"equipment.recent","status":"error"}
+
+[90mstdout[2m | src/__tests__/server-api.test.ts[2m > [22m[2mtRPC authorization with explicit service mocks — not RLS or integration proof[2m > [22m[2mtest_ca_01_spec005_collaborator_cannot_access_operations_or_create_equipment
+[22m[39m{"request_id":"request-test","tenant_id":"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa","action":"equipment.create","status":"error"}
+
+[90mstdout[2m | src/__tests__/server-api.test.ts[2m > [22m[2mtRPC authorization with explicit service mocks — not RLS or integration proof[2m > [22m[2mtest_ca_02_spec003_context_injected_and_response_body_preserved_without_tenant_input
+[22m[39m{"request_id":"request-test","tenant_id":"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa","action":"equipment.list","status":"ok"}
+
+[90mstdout[2m | src/__tests__/server-api.test.ts[2m > [22m[2mtRPC authorization with explicit service mocks — not RLS or integration proof[2m > [22m[2mtest_ca_02_spec003_context_injected_and_response_body_preserved_without_tenant_input
+[22m[39m{"request_id":"request-test","tenant_id":"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa","action":"loans.mine","status":"ok"}
+
+[90mstdout[2m | src/__tests__/server-api.test.ts[2m > [22m[2mtRPC authorization with explicit service mocks — not RLS or integration proof[2m > [22m[2mtest_ca_03_spec004_operations_role_reaches_service_with_own_tenant_and_body
+[22m[39m{"request_id":"request-test","tenant_id":"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa","action":"operations.stats","status":"ok"}
+
+[90mstdout[2m | src/__tests__/server-api.test.ts[2m > [22m[2mtRPC authorization with explicit service mocks — not RLS or integration proof[2m > [22m[2mtest_ca_03_spec004_operations_role_reaches_service_with_own_tenant_and_body
+[22m[39m{"request_id":"request-test","tenant_id":"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa","action":"auth.me","status":"ok"}
+
+[90mstdout[2m | src/__tests__/server-api.test.ts[2m > [22m[2mHTTP adapter safety — mocked context/services[2m > [22m[2mtest_ca_10_spec004_get_mutation_rejected_and_internal_errors_sanitized
+[22m[39m{"request_id":"request-test","tenant_id":"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa","action":"auth.me","status":"error"}
+
+ [32m✓[39m src/__tests__/server-api.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 38[2mms[22m[39m
+ [32m✓[39m src/__tests__/server-context.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m scripts/__tests__/human-production.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m src/__tests__/server-rules.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+ [32m✓[39m scripts/__tests__/images.test.ts [2m([22m[2m22 tests[22m[2m)[22m[33m 1959[2mms[22m[39m
+   [32m✓[39m 002/CA-05 CA-07 local image pipeline [2m(22)[22m
+     [33m[2m✓[22m[39m test_ca_05_manifest_binds_review_hash_provenance_and_maps_exact_seed_contract[33m 1154[2mms[22m[39m
+     [33m[2m✓[22m[39m test_ca_05_rejects_blank_review_template_and_changed_provenance[33m 688[2mms[22m[39m
+ [32m✓[39m src/__tests__/frontend-contract.test.tsx [2m([22m[2m18 tests[22m[2m)[22m[33m 1059[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m7 passed[39m[22m[90m (7)[39m
+[2m      Tests [22m [1m[32m58 passed[39m[22m[90m (58)[39m
+[2m   Start at [22m 14:25:36
+[2m   Duration [22m 5.60s[2m (transform 41%, tests 22%, import 19%, setup 13%, environment 4%, worker 1%)[22m
+

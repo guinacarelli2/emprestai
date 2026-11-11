@@ -1,0 +1,15 @@
+PostgreSQL local verificado: emprestai_local_migration, loopback:54917; modo deploy.
+[2mPrisma schema loaded from prisma/schema.prisma[22m
+[2mDatasource "db": PostgreSQL database "emprestai_local_migration", schema "public" at "127.0.0.1:54917"[22m
+
+1 migration found in prisma/migrations
+
+Applying migration `20261110165902_auth_persistence`
+
+The following migration(s) have been applied:
+
+migrations/
+  └─ 20261110165902_[36m[1mauth_persistence[22m[39m/
+    └─ migration.sql
+      
+[32mAll migrations have been successfully applied.[39m

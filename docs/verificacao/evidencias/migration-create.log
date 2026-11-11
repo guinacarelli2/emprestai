@@ -1,0 +1,17 @@
+PostgreSQL local verificado: emprestai_local_migration, loopback:54917; modo create-only.
+[2mPrisma schema loaded from prisma/schema.prisma[22m
+[2mDatasource "db": PostgreSQL database "emprestai_local_migration", schema "public" at "127.0.0.1:54917"[22m
+
+[90m[90m┌─[39m[90m[90m────────────────────────────────────────────────────────┐[39m[90m
+[90m│[39m[90m  [0m[34mUpdate available[39m[90m 6.12.0 -> 8.0.0-rc.33[0m                 [90m│[39m[90m
+[90m│[39m[90m  [0m[0m                                                       [90m│[39m[90m
+[90m│[39m[90m  [0mThis is a major update - please follow the guide at[0m    [90m│[39m[90m
+[90m│[39m[90m  [0mhttps://pris.ly/d/major-version-upgrade[0m                [90m│[39m[90m
+[90m│[39m[90m  [0m[0m                                                       [90m│[39m[90m
+[90m│[39m[90m  [0mRun the following to update[0m                            [90m│[39m[90m
+[90m│[39m[90m  [0m  [1mnpm i --save-dev prisma@latest[22m[0m                       [90m│[39m[90m
+[90m│[39m[90m  [0m  [1mnpm i @prisma/client@latest[22m[0m                          [90m│[39m[90m
+└─────────────────────────────────────────────────────────┘[39m
+Prisma Migrate created the following migration without applying it 20261110165902_[36m[1mauth_persistence[22m[39m
+
+You can now edit it and apply it by running [32mprisma migrate dev[39m.

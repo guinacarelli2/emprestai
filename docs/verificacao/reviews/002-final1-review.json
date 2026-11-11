@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "spec": "docs/specs/002-dados-iniciais/spec.md",
+  "round": "final1",
+  "sourceHash": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+  "checksHash": "5c5af30c16a24eb1c77530ea290dbdf53bb79da31292549837143100a2d7a05f",
+  "reviewer": {
+    "id": "agent4a9d2",
+    "independent": true,
+    "kind": "subagent"
+  },
+  "scope": "Monolito EmpresTI; unidade/typecheck/build no sandbox sem rede; integrações PostgreSQL/Auth/E2E e produção são evidências externas separadas, não executadas por este runner",
+  "criteria": [
+    {
+      "id": "002/CA-01",
+      "status": "SEM TESTE",
+      "evidence": [],
+      "observation": "Integração real compara conjunto completo e retorno 12 antes da adição legítima. Banco dedicado recebeu migration; não há reset remoto. Aceite semântico histórico somente deste CA estreito. O ATENDIDO semântico histórico do draft NÃO é promovido nesta review: o teste de integração pertinente não consta em report.assertions da final1; falta executor independente de integração PostgreSQL aprovado/isolado e evidência separada assinada/revisada vinculada à fonte congelada. Exigido conjunto completo e contagem12 em banco limpo, não validação unitária do inventário. Final1 tem 58 unitários e checks tests/typecheck/build exit0, mas não executa banco/Auth HTTP/E2E/reload/reinício; Git permanece blocked e pacote/produção NÃO PRONTOS. O draft histórico permanece separado e não alterado."
+    },
+    {
+      "id": "002/CA-02",
+      "status": "SEM TESTE",
+      "evidence": [
+        {
+          "file": "scripts/__tests__/images.test.ts",
+          "line": 98,
+          "test": "002/CA-05 CA-07 local image pipeline test_ca_05_inventory_matches_literal_reference_html",
+          "assertion": "L103 equipment igual JSON do anexo; L104 primeiro nome completo. Comparação de fonte, não de linhas no banco."
+        }
+      ],
+      "observation": "Estados/zero loans demonstrados; nomes/categorias completos não são comparados por patrimônio no banco. Um teste de fonte não substitui a comparação seed/banco requerida. Cobertura acima é somente parcial e efetivamente passada na final1; não satisfaz o critério inteiro. Falta: Comparação de todas as linhas DB com nome/categoria/estado esperados e ausência de projetor no seed. Final1 tem 58 unitários e checks tests/typecheck/build exit0, mas não executa banco/Auth HTTP/E2E/reload/reinício; Git permanece blocked e pacote/produção NÃO PRONTOS. O draft histórico permanece separado e não alterado."
+    },
+    {
+      "id": "002/CA-03",
+      "status": "SEM TESTE",
+      "evidence": [],
+      "observation": "Segunda execução e preservação de equipamento/loan/audit demonstradas, mas chamada usa images=[] nas duas vezes. Equipment DB disponivel + loan aberto é modelo correto, não falha por si só. Cobertura acima é somente parcial e efetivamente passada na final1; não há assertion pertinente nesta rodada. Falta: Reexecução com 12 fotos vinculadas e asserts de preservação/sem duplicação de foto e metadados.; Consulta derivada autenticada mostrando item emprestado após reseed; teste atual só confirma returnedAt=null. Final1 tem 58 unitários e checks tests/typecheck/build exit0, mas não executa banco/Auth HTTP/E2E/reload/reinício; Git permanece blocked e pacote/produção NÃO PRONTOS. O draft histórico permanece separado e não alterado."
+    },
+    {
+      "id": "002/CA-04",
+      "status": "SEM TESTE",
+      "evidence": [],
+      "observation": "UUID aleatório teacher verifica somente membership colaborador e zero loans; não é identity Supabase provisionada nem vínculo comprovado ao e-mail do professor. Não inspecionados .env.local/chaves ou senhas reais. Cobertura acima é somente parcial e efetivamente passada na final1; não há assertion pertinente nesta rodada. Falta: Auth real local seguro, correspondência ID/e-mail professor, login e operações negadas usando aquela sessão.; Inspeção de pacote final/ZIP sem senha real, feita sem divulgar segredo. Final1 tem 58 unitários e checks tests/typecheck/build exit0, mas não executa banco/Auth HTTP/E2E/reload/reinício; Git permanece blocked e pacote/produção NÃO PRONTOS. O draft histórico permanece separado e não alterado."
+    },
+    {
+      "id": "002/CA-05",
+      "status": "SEM TESTE",
+      "evidence": [
+        {
+          "file": "scripts/__tests__/images.test.ts",
+          "line": 272,
+          "test": "002/CA-05 CA-07 local image pipeline test_ca_05_manifest_binds_review_hash_provenance_and_maps_exact_seed_contract",
+          "assertion": "L276 entradas=12; L278–288 mapeamento origem/licença/hash; L290–310 duplica ID/hash, reordena, review inválido e traversal rejeitados; L312 tamper Hash rejeitado."
+        },
+        {
+          "file": "scripts/__tests__/images.test.ts",
+          "line": 314,
+          "test": "002/CA-05 CA-07 local image pipeline test_ca_05_rejects_blank_review_template_and_changed_provenance",
+          "assertion": "L327 review branco rejeitado; L333 fotógrafo alterado rejeitado."
+        }
+      ],
+      "observation": "Fixture gera JPEGs de cor sólida e API injetada; reviewer/inspeções são artificiais. Nenhuma dessas imagens conta como foto real ou licença lida. Cobertura acima é somente parcial e efetivamente passada na final1; não satisfaz o critério inteiro. Falta: 12 respostas reais API sem chave + 12 IDs/arquivos/hashes/dimensões; manifesto real; seleção coerente e revisão visual original/recorte com rejeições reais.; Leitura da licença/direitos aplicáveis por foto; não apenas literal licenseRead=true. Final1 tem 58 unitários e checks tests/typecheck/build exit0, mas não executa banco/Auth HTTP/E2E/reload/reinício; Git permanece blocked e pacote/produção NÃO PRONTOS. O draft histórico permanece separado e não alterado."
+    },
+    {
+      "id": "002/CA-06",
+      "status": "SEM TESTE",
+      "evidence": [],
+      "observation": "Registro explícito correto em spec002:41, ADR003:14 e ENTREGA:7/38. Não reprovo o uso local solicitado de Pixabay. Gate acadêmico continua pendente; documentação não é aprovação do professor nem teste executado. Cobertura acima é somente parcial e efetivamente passada na final1; não há assertion pertinente nesta rodada. Falta: Aprovação acadêmica separada se concedida e conferência do pacote final. Final1 tem 58 unitários e checks tests/typecheck/build exit0, mas não executa banco/Auth HTTP/E2E/reload/reinício; Git permanece blocked e pacote/produção NÃO PRONTOS. O draft histórico permanece separado e não alterado."
+    },
+    {
+      "id": "002/CA-07",
+      "status": "SEM TESTE",
+      "evidence": [
+        {
+          "file": "scripts/__tests__/images.test.ts",
+          "line": 118,
+          "test": "002/CA-05 CA-07 local image pipeline test_ca_07_rejects_nonpublic_dns_and_allows_global",
+          "assertion": "L130 IPs privados/reservados => false; L131–132 IPs globais => true."
+        },
+        {
+          "file": "scripts/__tests__/images.test.ts",
+          "line": 134,
+          "test": "002/CA-05 CA-07 local image pipeline test_ca_07_validates_each_redirect_and_caps_at_three",
+          "assertion": "L138 host evil rejeitado; L139 uma chamada; L141 loop rejeitado; L142 quatro chamadas; L148–150 terceiro redirect permitido."
+        },
+        {
+          "file": "scripts/__tests__/images.test.ts",
+          "line": 153,
+          "test": "002/CA-05 CA-07 local image pipeline test_ca_07_rejects_mime_size_errors_and_svg_decoding",
+          "assertion": "L159 MIME inválido rejeitado; L165 excesso MAX_BYTES rejeitado; L170 HTTP429 erro sem retry; L177–178 SVG/bytes inválidos rejeitados."
+        },
+        {
+          "file": "scripts/__tests__/images.test.ts",
+          "line": 180,
+          "test": "002/CA-05 CA-07 local image pipeline test_ca_07_timeout_covers_response_body_without_retry",
+          "assertion": "L194–198 timeout rejeitado após relógio sintético; L199 timeout=10000; L200 transport=1."
+        },
+        {
+          "file": "scripts/__tests__/images.test.ts",
+          "line": 205,
+          "test": "002/CA-05 CA-07 local image pipeline test_ca_07_transform_rotates_resizes_and_strips_exif",
+          "assertion": "L210 EXIF fonte existe; L213 final=[800,600,jpeg]; L215 metadados removidos."
+        },
+        {
+          "file": "scripts/__tests__/images.test.ts",
+          "line": 217,
+          "test": "002/CA-05 CA-07 local image pipeline test_ca_05_discover_caches_24h_sanitizes_and_no_key_or_images_in_html",
+          "assertion": "L222 cache evita chamada extra; L229 cache/HTML sem segredo fixture; L230 sem img; L231 sem key."
+        },
+        {
+          "file": "scripts/__tests__/images.test.ts",
+          "line": 269,
+          "test": "002/CA-05 CA-07 local image pipeline test_ca_07_cli_blocks_authenticated_discovery_without_human_tty",
+          "assertion": "L270 main(discover) rejeita ausência --human."
+        },
+        {
+          "file": "scripts/__tests__/images.test.ts",
+          "line": 272,
+          "test": "002/CA-05 CA-07 local image pipeline test_ca_05_manifest_binds_review_hash_provenance_and_maps_exact_seed_contract",
+          "assertion": "L302–303 ../TI-0001.jpg rejeitado; L305–306 gallery local sem hotlink; L312 arquivo adulterado rejeitado."
+        }
+      ],
+      "observation": "Cobertura adversarial forte e recodificação real sharp de bytes sintéticos. CA-07 correto é segurança do pipeline 002, não contador/rate-limit da 004. Não concedo cobertura integral: teste de safeRequest rejeitar não verifica rastreabilidade/ausência de artefato da etapa completa após erro. Cobertura acima é somente parcial e efetivamente passada na final1; não satisfaz o critério inteiro. Falta: Teste efetivo discover/preparePhoto falhando por API inválida e conferindo cache/proveniência preservados, nenhum preparado/manifesto/placeholder declarado pronto.; Prova de exclusão da chave do bundle/crédito efetivos e boundary de transporte DNS/HTTPS; testes atuais injetam transporte. Final1 tem 58 unitários e checks tests/typecheck/build exit0, mas não executa banco/Auth HTTP/E2E/reload/reinício; Git permanece blocked e pacote/produção NÃO PRONTOS. O draft histórico permanece separado e não alterado."
+    },
+    {
+      "id": "002/CA-08",
+      "status": "SEM TESTE",
+      "evidence": [],
+      "observation": "Seed é lido via Prisma owner, não consulta autenticada 12/9/3. Fixtures de isolamento têm sete notebooks, não seed. Query posterior não é reload/reinício. Cobertura acima é somente parcial e efetivamente passada na final1; não há assertion pertinente nesta rodada. Falta: Consulta autenticada dos 12 seedados com dois tenants, contagens 12/9/3 e sem nomes alheios.; Reload e reinício efetivos sem perda. Final1 tem 58 unitários e checks tests/typecheck/build exit0, mas não executa banco/Auth HTTP/E2E/reload/reinício; Git permanece blocked e pacote/produção NÃO PRONTOS. O draft histórico permanece separado e não alterado."
+    }
+  ],
+  "outOfScope": []
+}

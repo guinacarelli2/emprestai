@@ -1,0 +1,86 @@
+{
+  "started_at": "2026-11-10T17:25:29.362966+00:00",
+  "status": "completed",
+  "node": "v22.23.4",
+  "npm": "10.9.9",
+  "installed_versions": {
+    "next": "16.4.4",
+    "react": "19.3.1",
+    "typescript": "5.9.3",
+    "vitest": "5.1.0",
+    "@playwright/test": "1.64.1",
+    "prisma": "6.12.0",
+    "@prisma/client": "6.12.0",
+    "@supabase/ssr": "0.12.7",
+    "@supabase/supabase-js": "2.118.0",
+    "sharp": "0.35.5",
+    "eslint": "10.14.0",
+    "zod": "4.6.7"
+  },
+  "checks": {
+    "lint": {
+      "status": "passed",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "log": "<PROJETO_LOCAL>/.work/release3-lint.log",
+      "exit_code": 0
+    },
+    "typecheck": {
+      "status": "passed",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "log": "<PROJETO_LOCAL>/.work/release3-typecheck.log",
+      "exit_code": 0
+    },
+    "unit": {
+      "status": "passed",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "log": "<PROJETO_LOCAL>/.work/release3-unit.log",
+      "exit_code": 0
+    },
+    "build": {
+      "status": "passed",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "log": "<PROJETO_LOCAL>/.work/release3-build.log",
+      "exit_code": 0
+    },
+    "e2e": {
+      "status": "passed",
+      "command": [
+        "npm",
+        "run",
+        "test:e2e"
+      ],
+      "log": "<PROJETO_LOCAL>/.work/release3-e2e.log",
+      "exit_code": 0
+    }
+  },
+  "integration": {
+    "status": "reused_opsfix_evidence",
+    "tests_passed": 22,
+    "files_passed": 4,
+    "exit_code": 0,
+    "log": "<PROJETO_LOCAL>/.work/ops-fix-integration.log",
+    "results": "<PROJETO_LOCAL>/.work/ops-fix-results.json",
+    "database": "emprestai_local_opsfix_20261110142430"
+  },
+  "harness_selftests": {
+    "status": "previous_evidence",
+    "passed": 8,
+    "log": "<PROJETO_LOCAL>/.work/harness-compat-selftest8.log"
+  },
+  "finished_at": "2026-11-10T17:26:07.714292+00:00"
+}

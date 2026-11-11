@@ -1,0 +1,17 @@
+[1m[38;2;173;127;168m▲ Next.js 16.4.4[39m[22m (webpack)
+- Environments: .env.local
+[32m[1m✓[22m[39m Running next.config.ts took 79ms
+
+[33m[1m⚠[22m[39m The "middleware" file convention is deprecated. Please use "proxy" instead.
+
+  To migrate automatically, run:
+  npx @next/codemod@canary middleware-to-proxy .
+
+  Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[37m[1m [22m[39m Creating an optimized production build ...
+[32m[1m✓[22m[39m Compiled successfully in 5.4s
+[37m[1m [22m[39m Running TypeScript ...
+scripts/equipment-images.ts(101,29): error TS2345: Argument of type 'string | string[] | undefined' is not assignable to parameter of type 'string | URL'.
+  Type 'undefined' is not assignable to type 'string | URL'.
+[31mFailed to type check.
+[39m

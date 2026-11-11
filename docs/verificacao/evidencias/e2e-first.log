@@ -1,0 +1,81 @@
+
+[2mRunning [22m6[2m tests using [22m2[2m workers[22m
+
+  [32m✓[39m  [2m2 [22m[desktop] › e2e/local-boundaries.spec.ts:4:5 › test_ca_10_spec005_login_desktop_mobile_sem_overflow_e_rotulo[2m (220ms)[22m
+  [32m✓[39m  [2m1 [22m[mobile] › e2e/local-boundaries.spec.ts:4:5 › test_ca_10_spec005_login_desktop_mobile_sem_overflow_e_rotulo[2m (193ms)[22m
+  [32m✓[39m  [2m3 [22m[desktop] › e2e/local-boundaries.spec.ts:14:5 › test_ca_01_spec004_anonimo_nao_abre_catalogo_protegido[2m (128ms)[22m
+  [32m✓[39m  [2m4 [22m[mobile] › e2e/local-boundaries.spec.ts:14:5 › test_ca_01_spec004_anonimo_nao_abre_catalogo_protegido[2m (134ms)[22m
+  [31m✘[39m  [2m5 [22m[31m[desktop] › e2e/local-boundaries.spec.ts:20:5 › test_ca_10_spec004_csp_nonce_sem_unsafe_inline_sem_erros_de_script[39m[2m (5.6s)[22m
+  [31m✘[39m  [2m6 [22m[31m[mobile] › e2e/local-boundaries.spec.ts:20:5 › test_ca_10_spec004_csp_nonce_sem_unsafe_inline_sem_erros_de_script[39m[2m (5.6s)[22m
+
+
+[31m  1) [desktop] › e2e/local-boundaries.spec.ts:20:5 › test_ca_10_spec004_csp_nonce_sem_unsafe_inline_sem_erros_de_script [39m
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('alert')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" getByRole('alert') with timeout 5000ms[22m
+    [2m  - waiting for getByRole('alert')[22m
+
+
+    [0m [90m 30 |[39m   [36mawait[39m page[33m.[39mgetByLabel([32m"Senha"[39m)[33m.[39mfill([32m"fixture-local-only"[39m)[33m;[39m
+     [90m 31 |[39m   [36mawait[39m page[33m.[39mgetByRole([32m"button"[39m[33m,[39m { name[33m:[39m [32m"Entrar"[39m })[33m.[39mclick()[33m;[39m
+    [31m[1m>[22m[39m[90m 32 |[39m   [36mawait[39m expect(page[33m.[39mgetByRole([32m"alert"[39m))[33m.[39mtoBeVisible()[33m;[39m
+     [90m    |[39m                                         [31m[1m^[22m[39m
+     [90m 33 |[39m   [36mawait[39m expect(page)[33m.[39mtoHaveURL([35m/\/login$/[39m)[33m;[39m
+     [90m 34 |[39m   expect(errors)[33m.[39mtoEqual([])[33m;[39m
+     [90m 35 |[39m })[33m;[39m[0m
+    [2m    at <PROJETO_LOCAL>/e2e/local-boundaries.spec.ts:32:41[22m
+
+[2m    Error Context: test-results/local-boundaries-test-ca-1-31895--inline-sem-erros-de-script-desktop/error-context.md[22m
+
+[2m    attachment #2: [1mtrace[2m (application/zip) [2m─────────────────────────────────────────────────────────[2m[22m
+[2m    test-results/local-boundaries-test-ca-1-31895--inline-sem-erros-de-script-desktop/trace.zip[22m
+[2m    Usage:[22m
+
+[2m        npx playwright show-trace test-results/local-boundaries-test-ca-1-31895--inline-sem-erros-de-script-desktop/trace.zip[22m
+
+[2m    [2m────────────────────────────────────────────────────────────────────────────────────────────────[2m[22m
+
+[31m  2) [mobile] › e2e/local-boundaries.spec.ts:20:5 › test_ca_10_spec004_csp_nonce_sem_unsafe_inline_sem_erros_de_script [39m
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('alert')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" getByRole('alert') with timeout 5000ms[22m
+    [2m  - waiting for getByRole('alert')[22m
+
+
+    [0m [90m 30 |[39m   [36mawait[39m page[33m.[39mgetByLabel([32m"Senha"[39m)[33m.[39mfill([32m"fixture-local-only"[39m)[33m;[39m
+     [90m 31 |[39m   [36mawait[39m page[33m.[39mgetByRole([32m"button"[39m[33m,[39m { name[33m:[39m [32m"Entrar"[39m })[33m.[39mclick()[33m;[39m
+    [31m[1m>[22m[39m[90m 32 |[39m   [36mawait[39m expect(page[33m.[39mgetByRole([32m"alert"[39m))[33m.[39mtoBeVisible()[33m;[39m
+     [90m    |[39m                                         [31m[1m^[22m[39m
+     [90m 33 |[39m   [36mawait[39m expect(page)[33m.[39mtoHaveURL([35m/\/login$/[39m)[33m;[39m
+     [90m 34 |[39m   expect(errors)[33m.[39mtoEqual([])[33m;[39m
+     [90m 35 |[39m })[33m;[39m[0m
+    [2m    at <PROJETO_LOCAL>/e2e/local-boundaries.spec.ts:32:41[22m
+
+[2m    Error Context: test-results/local-boundaries-test-ca-1-31895--inline-sem-erros-de-script-mobile/error-context.md[22m
+
+[2m    attachment #2: [1mtrace[2m (application/zip) [2m─────────────────────────────────────────────────────────[2m[22m
+[2m    test-results/local-boundaries-test-ca-1-31895--inline-sem-erros-de-script-mobile/trace.zip[22m
+[2m    Usage:[22m
+
+[2m        npx playwright show-trace test-results/local-boundaries-test-ca-1-31895--inline-sem-erros-de-script-mobile/trace.zip[22m
+
+[2m    [2m────────────────────────────────────────────────────────────────────────────────────────────────[2m[22m
+
+[31m  2 failed[39m
+[31m    [desktop] › e2e/local-boundaries.spec.ts:20:5 › test_ca_10_spec004_csp_nonce_sem_unsafe_inline_sem_erros_de_script [39m
+[31m    [mobile] › e2e/local-boundaries.spec.ts:20:5 › test_ca_10_spec004_csp_nonce_sem_unsafe_inline_sem_erros_de_script [39m
+[32m  4 passed[39m[2m (12.5s)[22m

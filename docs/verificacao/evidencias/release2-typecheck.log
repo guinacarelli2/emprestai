@@ -1,0 +1,5 @@
+$ npm run typecheck
+
+> emprestai@0.1.0 typecheck
+> tsc --noEmit
+

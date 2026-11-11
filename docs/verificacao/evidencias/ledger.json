@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "file": "audit-runtime.json",
+      "originalSha256": "cc8a434ff5980f6e95a59076f4579860b583c6376529bddeba844d044c37340b",
+      "packagedSha256": "cc8a434ff5980f6e95a59076f4579860b583c6376529bddeba844d044c37340b",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "audit-second.json",
+      "originalSha256": "a7c3c16e87b0de16e51b550768a617e8eea23e64aa68bf752d87801a31facaeb",
+      "packagedSha256": "a7c3c16e87b0de16e51b550768a617e8eea23e64aa68bf752d87801a31facaeb",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "versions.json",
+      "originalSha256": "16d92f6e390d3fc51f6e9f26d884a158203c2320bc4b54c5ca1d63b0c88681cb",
+      "packagedSha256": "16d92f6e390d3fc51f6e9f26d884a158203c2320bc4b54c5ca1d63b0c88681cb",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "security-versions.json",
+      "originalSha256": "21d0a7fb530614ed152316e01b03aae27cea88ea619d349aa6518f0432daeefb",
+      "packagedSha256": "21d0a7fb530614ed152316e01b03aae27cea88ea619d349aa6518f0432daeefb",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "transitive-versions.json",
+      "originalSha256": "c19b75b862ab4caf54ebd8496bfea2be0165b9cf5719060fbd995a5cdd2d607a",
+      "packagedSha256": "c19b75b862ab4caf54ebd8496bfea2be0165b9cf5719060fbd995a5cdd2d607a",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release-results.json",
+      "originalSha256": "4f131f6db4f3f6e60695471f6f38aabf092a812a48d25f443718b43b763c0e0c",
+      "packagedSha256": "f5e717dac8fdf917b9ef9cec88d87c5278bbb2b8f4b67224172b1d57df172e67",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release2-results.json",
+      "originalSha256": "0741f56abbc39e5ab2688e716d47f2116daf45c79bcded766b224e65afab85dd",
+      "packagedSha256": "861185f86fb0e5e2504ba841ca30cc7aa9952ab45a18734e8fe9e387688751b2",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release-lint.log",
+      "originalSha256": "6c9f4786be56fadd154e21e94e45b9cd0444afaa0c4bf84d7e348ce6f81330ab",
+      "packagedSha256": "b14da325a54c5d610711296d785875ed3f08990ab6c999648ad1276299a7a82d",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release-typecheck.log",
+      "originalSha256": "c7eed08776d44f4de7038fcecd69ab26645c76584667fa007cacc76b6ea229d2",
+      "packagedSha256": "c7eed08776d44f4de7038fcecd69ab26645c76584667fa007cacc76b6ea229d2",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release-build.log",
+      "originalSha256": "fb12677ea20f3ae2b6993f70c21acf7d0b1d3a7cc1432439756dae61dfa0823d",
+      "packagedSha256": "fb12677ea20f3ae2b6993f70c21acf7d0b1d3a7cc1432439756dae61dfa0823d",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release-unit.log",
+      "originalSha256": "0b92b8af4e08f00461f42ea67915fc4e0125bb438f1a6842e1907b1053dc54de",
+      "packagedSha256": "d622040e110e8e804abf6450315be5a0db74830bedc95dd9480bc28104065abb",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release-integration.log",
+      "originalSha256": "9270f959dff3210df7d261e4ae7767e466a6158a90e9e8aa1b0c21880e599a4a",
+      "packagedSha256": "9b44b69b553b20901a1886bf63050319ecb49000d592f1d50e947fb85805f7ff",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release2-lint.log",
+      "originalSha256": "610702e49ee6f5316319d06a9c69e9a87e302d7e9bf9fe195a3f1b0daefac0ec",
+      "packagedSha256": "610702e49ee6f5316319d06a9c69e9a87e302d7e9bf9fe195a3f1b0daefac0ec",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release2-typecheck.log",
+      "originalSha256": "e2ec5cd3d76a25d3656aeab48481f09283590f4c7497c2c5bf4f4765a0590579",
+      "packagedSha256": "e2ec5cd3d76a25d3656aeab48481f09283590f4c7497c2c5bf4f4765a0590579",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release2-unit.log",
+      "originalSha256": "25f772e3b1b7211fb396390a5941487f1d6b02279009a3e7a74ae3d74990313a",
+      "packagedSha256": "93e0c9ccfba5da022067ec7f4c31abf48d14e82c377da3b8a0cb85f4e2158e51",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release2-build.log",
+      "originalSha256": "0962cc312bed96c5364d56dead5e24396afa0a8ef0915eb01a2d8f989390b226",
+      "packagedSha256": "0962cc312bed96c5364d56dead5e24396afa0a8ef0915eb01a2d8f989390b226",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release2-e2e.log",
+      "originalSha256": "e79125d917ae7438079510b0fd692b90a124d3688bb95ab7e9e721d300f56f34",
+      "packagedSha256": "e79125d917ae7438079510b0fd692b90a124d3688bb95ab7e9e721d300f56f34",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "migration-create.log",
+      "originalSha256": "28490bd419a667c83ad7c70331b20c8f87013231ab99ed4ac1828514c834e40b",
+      "packagedSha256": "28490bd419a667c83ad7c70331b20c8f87013231ab99ed4ac1828514c834e40b",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "migration-deploy.log",
+      "originalSha256": "7c8e218c896dba3b729f568e29dfd42d47a9c43d690a3d675c68490fa8c5149f",
+      "packagedSha256": "7c8e218c896dba3b729f568e29dfd42d47a9c43d690a3d675c68490fa8c5149f",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "migration-reset.log",
+      "originalSha256": "f0894335068d88f40eae71d5ef0521d3dbbf6f6ccc5fee2db89542d52793020f",
+      "packagedSha256": "f0894335068d88f40eae71d5ef0521d3dbbf6f6ccc5fee2db89542d52793020f",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "migration-reset-replay.log",
+      "originalSha256": "f0894335068d88f40eae71d5ef0521d3dbbf6f6ccc5fee2db89542d52793020f",
+      "packagedSha256": "f0894335068d88f40eae71d5ef0521d3dbbf6f6ccc5fee2db89542d52793020f",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "integration-final.log",
+      "originalSha256": "bf2e5dfd5fd1289bc7af7adda40a09e5767b46356d4536c0e25ecccc710911da",
+      "packagedSha256": "b49732aa84248a00c6a32c929504c67eb3d7ea4e4169f0f86fd6e56047e8db0d",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "e2e-first.log",
+      "originalSha256": "17cac6733e57cac0d43e04787cf60f8126093ed7dfdc1db0f040cc335f275c06",
+      "packagedSha256": "bfc950911be4296026201b78d5e719527c63133dcf0f8cbe524aa3ede085789e",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "build-final-attempt.log",
+      "originalSha256": "da06fd391a5e0e8c68d4b30c0120e4198cf0c7eb231c932bbf8cd080142d9994",
+      "packagedSha256": "da06fd391a5e0e8c68d4b30c0120e4198cf0c7eb231c932bbf8cd080142d9994",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release-harness-selftest.log",
+      "originalSha256": "443c4b114ad8daff7e35049d8ef041732a03044b9dc298d731fd0c6cab3e2ce2",
+      "packagedSha256": "443c4b114ad8daff7e35049d8ef041732a03044b9dc298d731fd0c6cab3e2ce2",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "prisma-generate-without-env.log",
+      "originalSha256": "17881e770a464b638ae8e41d357a5dc7edd42caf5783d7e965ae803676193354",
+      "packagedSha256": "17881e770a464b638ae8e41d357a5dc7edd42caf5783d7e965ae803676193354",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "clean-typecheck.log",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packagedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "harness-compat-selftest8.log",
+      "originalSha256": "6782ced0d6eb855ba0fd8ae7cba0641f2e5ab5a2956f9c6b5e293a4dd82296bb",
+      "packagedSha256": "6782ced0d6eb855ba0fd8ae7cba0641f2e5ab5a2956f9c6b5e293a4dd82296bb",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "harness-compat-sbpl-probe.log",
+      "originalSha256": "fb6f6ed55737a7d2399dd397a6e350d78eb07f09d0418525512e1c1d3de88ded",
+      "packagedSha256": "fb6f6ed55737a7d2399dd397a6e350d78eb07f09d0418525512e1c1d3de88ded",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "harness-compat-product-probe.log",
+      "originalSha256": "83a428f21eb4b135df53ff1f0c34c7f8bcc4c92fe7766fcb4bfde8d748826bc1",
+      "packagedSha256": "096c0ae39358f0d48e081847fe5785a2e663893ff94491499aac009f37a2757a",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "harness-artifactfix-selftest8.log",
+      "originalSha256": "23504f2cd3db8ec1c96cdbb7fa93591be75ef39bdac600ba4991902e81ee61bf",
+      "packagedSha256": "23504f2cd3db8ec1c96cdbb7fa93591be75ef39bdac600ba4991902e81ee61bf",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "harness-artifactfix-manifest-proof.json",
+      "originalSha256": "377441a5c37c79a3e662dd8576f5e5a53eba733409ada21d98ffe2799cd5cc6f",
+      "packagedSha256": "377441a5c37c79a3e662dd8576f5e5a53eba733409ada21d98ffe2799cd5cc6f",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "ops-fix-unit.log",
+      "originalSha256": "0158e1c13c9bf8c73630ee1f3f2b1ba473bd6dc90e4306cee2efe46200678063",
+      "packagedSha256": "aef8d444f824cb01355082b2bbe56346b2d14aeabb22543fa6b9633bc8285e51",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "ops-fix-unit-results.json",
+      "originalSha256": "16a3528685e87c79fbe128de4a4c885f92ade0cb799412bdd1df41e2e0c675eb",
+      "packagedSha256": "4157cb0970e571d51a1b241c5398f2fa6a8ed2133f162c81ae52753ca05dcc8a",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "ops-fix-typecheck.log",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packagedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "ops-fix-lint.log",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packagedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "ops-fix-integration.log",
+      "originalSha256": "90652e756c588b4f6b3900705bde38ee2b1b69e7e96bbe4f3e5d1cc1d3caa14c",
+      "packagedSha256": "b240f22afc733963986bd4a4f6c276daaae81289f43741d37da0ff8cdba0fa10",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "ops-fix-integration-results.json",
+      "originalSha256": "5e73b7b6e0ce96a60f66695bdd483750ed32c4b761477d0d50cdeb39d4f82245",
+      "packagedSha256": "fe260dcbf0ea09f10e97e75c158cfa216f11b1ffef7ecd3652514c72aa06b86e",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release3-lint.log",
+      "originalSha256": "610702e49ee6f5316319d06a9c69e9a87e302d7e9bf9fe195a3f1b0daefac0ec",
+      "packagedSha256": "610702e49ee6f5316319d06a9c69e9a87e302d7e9bf9fe195a3f1b0daefac0ec",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release3-typecheck.log",
+      "originalSha256": "e2ec5cd3d76a25d3656aeab48481f09283590f4c7497c2c5bf4f4765a0590579",
+      "packagedSha256": "e2ec5cd3d76a25d3656aeab48481f09283590f4c7497c2c5bf4f4765a0590579",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release3-unit.log",
+      "originalSha256": "79df055198243106bb96fe845e0c11df5553fcfdad830af33f5adaaf6b63cb39",
+      "packagedSha256": "0c137750bb2e7a565e151785019d7fba50476b29245ade9172740e9d5b6c86a8",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release3-build.log",
+      "originalSha256": "66f35bd16e2a0bc9d8c47ddd997fff673de864b8223028afdc82f2a0050d97b7",
+      "packagedSha256": "66f35bd16e2a0bc9d8c47ddd997fff673de864b8223028afdc82f2a0050d97b7",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release3-e2e.log",
+      "originalSha256": "557e5a45760b76ee35ec5ddc7323efb466f66d884120e1c8a699b8fe97604801",
+      "packagedSha256": "557e5a45760b76ee35ec5ddc7323efb466f66d884120e1c8a699b8fe97604801",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "release3-results.json",
+      "originalSha256": "c79ef62f20e3f07d7d0c923c9fecc6a94046e5eac076bb05e53f42de4578dbb1",
+      "packagedSha256": "8b5987d4bb947db923770453c8aa4afd4164de6fba7af9151baf3a37de714651",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "ops-fix-results.json",
+      "originalSha256": "ce1310566b7f41cfc3e3a0fcd5a127dc93f0195ebf275fc7f1d0b0066f9cd4ab",
+      "packagedSha256": "23b8455a45fe8a56ff74b12f639af7cc446ce96d358b46d33c466afaa83c7ffb",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "ops-fix-db-name.txt",
+      "originalSha256": "45853f5612a80e584f2738a826f259b41e6cddf39f0d064a657a1d714bb445d3",
+      "packagedSha256": "45853f5612a80e584f2738a826f259b41e6cddf39f0d064a657a1d714bb445d3",
+      "sanitization": "only project-local absolute path replaced"
+    },
+    {
+      "file": "local-postgres-stop.log",
+      "originalSha256": "f6611fb7077cc61728c56dfbc336ac4e803f0360983a667e1918f6e91a412bea",
+      "packagedSha256": "f6611fb7077cc61728c56dfbc336ac4e803f0360983a667e1918f6e91a412bea",
+      "sanitization": "no change; local stop only"
+    }
+  ],
+  "note": "Logs sanitized; no real Auth/Storage/deploy evidence. Integration uses synthetic identities and real local PostgreSQL. Paths in JSON are historical not execution requests."
+}

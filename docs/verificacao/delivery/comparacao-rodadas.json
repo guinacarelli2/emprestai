@@ -1,0 +1,95 @@
+{
+  "sourceHash": "ad3049393c06c4cae314285a238022d104b05c3dbda5670b389c23c9518fe606",
+  "comparisons": [
+    {
+      "spec": "002",
+      "sourceEqual": true,
+      "criteriaEqual": true,
+      "firstChecks": [
+        {
+          "id": "tests",
+          "status": "passed",
+          "exitCode": 0
+        },
+        {
+          "id": "typecheck",
+          "status": "passed",
+          "exitCode": 0
+        },
+        {
+          "id": "build",
+          "status": "passed",
+          "exitCode": 0
+        }
+      ],
+      "secondChecks": [
+        {
+          "id": "tests",
+          "status": "passed",
+          "exitCode": 0
+        },
+        {
+          "id": "typecheck",
+          "status": "passed",
+          "exitCode": 0
+        },
+        {
+          "id": "build",
+          "status": "passed",
+          "exitCode": 0
+        }
+      ],
+      "assertionsEqual": true,
+      "checksDigestDifferent": true,
+      "firstReviewApplied": true,
+      "secondReviewApplied": false,
+      "secondReviewNotCopied": true,
+      "verdict": "Checks reproduzidos; aceite integral continua pendente; revisão final1 não falsificada como execução/revisão final2"
+    },
+    {
+      "spec": "003",
+      "sourceEqual": true,
+      "criteriaEqual": true,
+      "firstChecks": [
+        {
+          "id": "tests",
+          "status": "passed",
+          "exitCode": 0
+        },
+        {
+          "id": "typecheck",
+          "status": "passed",
+          "exitCode": 0
+        },
+        {
+          "id": "build",
+          "status": "passed",
+          "exitCode": 0
+        }
+      ],
+      "secondChecks": [
+        {
+          "id": "tests",
+          "status": "passed",
+          "exitCode": 0
+        },
+        {
+          "id": "typecheck",
+          "status": "passed",
+          "exitCode": 0
+        },
+        {
+          "id": "build",
+          "status": "passed",
+          "exitCode": 0
+        }
+      ],
+      "assertionsEqual": true,
+      "checksDigestDifferent": true,
+      "firstReviewApplied": true,
+      "secondReviewApplied": false,
+      "secondReviewNotCopied": true,
+      "verdict": "Checks reproduzidos; aceite integral continua pendente; revisão final1 não falsificada como execução/revisão final2"
+    }
+  ]
+}

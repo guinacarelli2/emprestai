@@ -1,0 +1,11 @@
+$ npm run lint
+
+> emprestai@0.1.0 lint
+> eslint .
+
+[0m
+[4m<PROJETO_LOCAL>/scripts/human-production.ts[24m
+  [2m9:30[22m  [33mwarning[39m  'SeedImage' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m
+
+[33m[1m✖ 1 problem (0 errors, 1 warning)[22m[39m
+[0m

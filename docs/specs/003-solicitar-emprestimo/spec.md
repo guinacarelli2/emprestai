@@ -1,0 +1,33 @@
+# Spec 003 — Solicitar empréstimo
+
+Status: **CÓDIGO LOCAL IMPLEMENTADO; VERIFICAÇÃO INTEGRAL PENDENTE — produção não pronta**. Checks e limites reais em ENTREGA.md/docs/verificacao. Critérios abaixo permanecem íntegros; implementação não implica aceite.
+
+## Autoridade e aprovação
+Fontes lidas: `references/pratica-sdd.html` (senha redigida), `references/index.html`, PRD, ADR-001/002 e ADR-003/004. O anexo da prática rege a transcrição dos 12 dados; o index é referência visual, não inventário normativo. O contrato realizado foi conferido em `prisma/schema.prisma`; esta correção documental não modifica o modelo nem comprova execução de testes.
+Decisões de implementação: **recomendação do agente incluída no pacote de execução; ratificada de forma geral; Pixabay pedido explícito**. Os planos locais foram aprovados pela instrução completa após o pacote recomendado; não se atribui escolha independente de arquitetura ou regra ao usuário.
+Dependências: **004 → 002 → 003 → 005** (ordem de execução, não ordem numérica). Cada spec tem seus próprios CAs, plano, tarefas e veredito. IDs de CA são locais à spec; referenciar como `002/CA-01`, por exemplo.
+
+## Escopo e contratos
+Catálogo/busca/filtros reais, detalhe, pedido e meus empréstimos persistidos. Depende de 004 e 002. Usar session/tenant/membership resolvidos no servidor, router tRPC → service → Prisma no mesmo Next. Categoria armazenada no singular; labels em pt-BR. Catálogo mostra estados, filtro Só disponíveis exclui manutenção, fora de uso e item com loan aberto. Nunca mostrar nomes de outros colaboradores em cards/histórico ao colaborador.
+
+`dueDate` é data civil `YYYY-MM-DD` (coluna Postgres DATE), não timestamp convertido pelo fuso do navegador. Na confirmação, obter hoje em `America/Sao_Paulo`, somar **14 dias corridos** de calendário. Aberto = `returnedAt IS NULL`; atraso = aberto e hoje local > dueDate. Devolver até a data inclusiva; atraso começa no dia seguinte. `requestedAt`/`returnedAt` são instantes de auditoria. Não usar 14×24h em UTC como regra civil.
+
+Disponibilidade é derivada: equipment com `situacao=disponivel` e sem loan aberto. Equipment possui estados DB `disponivel|manutencao|fora_de_uso`; emprestado é estado de exibição derivado, não quarto estado de cadastro. Pedido não altera manutenção para disponível.
+
+## Critérios de aceitação
+- **CA-01 — catálogo real [API/UI].** Buscar nome/patrimônio, filtrar categoria e Só disponíveis no servidor com filtros combináveis, contagens verdadeiras e estados vazios/loading/erro; detalhe por patrimônio real, sem dependência de static params mock. Evidência: fixture 12/9/3 e consultas combinadas, E2E navegação e indisponibilidade; sem números fixos do mock.
+- **CA-02 — autenticação/tenant [API].** Sem sessão negar pedido/listagem; tenant, borrower e papel sempre do contexto verificado, nunca IDs/papel controlados pelo input; não listar loans de outro colaborador/tenant nem seus nomes em catálogo/detalhe/histórico. Evidência: `createCaller` código e corpo para anônimo, colaborador, IDOR e tenant B por procedimento.
+- **CA-03 — regras de elegibilidade [service/UI].** Abrir empréstimo só de item disponível, com no máximo três abertos por usuário no tenant e nenhum aberto em atraso. Pedido deve revalidar tudo no servidor mesmo se UI antiga permitir clique. Evidência: 0/2/3 abertos, atraso, manutenção, fora de uso, já emprestado e rollback sem mutação parcial.
+- **CA-04 — data civil [service/UI/banco].** Confirmação informa vencimento calculado no servidor: hoje São Paulo +14 corridos, `dueDate` YYYY-MM-DD persistido sem deslocar. Dia do vencimento não bloqueia; dia seguinte bloqueia. Evidência: relógio controlado em meia-noite São Paulo versus UTC, mês/ano/bissexto, comparação antes/no/depois da data e cliente em outro fuso.
+- **CA-05 — concorrência por usuário [transação].** Locks do usuário (membership tenant/user) e item na mesma transação, sempre usuário antes de item e mesma ordem nos fluxos que alteram abertos; contar/revalidar somente depois dos locks. Se usuário com dois abertos solicita simultaneamente dois itens, exatamente um sucesso; total máximo três. Evidência: requests concorrentes em Postgres real, não mock; retries limitados de conflito/transação nunca violam limite.
+- **CA-06 — concorrência por item [constraint/transação].** Dois usuários pedindo mesmo item geram exatamente um aberto, garantido por índice parcial único `(tenant_id, equipment_id) WHERE returned_at IS NULL`, além do lock e rechecagem. Evidência: corrida em Postgres local e tentativa direta de duplicação rejeitada pela constraint; mapear conflito a erro tRPC compreensível sem SQL bruto.
+- **CA-07 — motivo e confirmação [UI].** Exibir motivo específico por atraso, limite, manutenção, fora de uso, outro loan/conflito e sessão expirada; botão desabilitado não basta. Modal mostra prazo verdadeiro, cancela sem gravar, evita envio duplicado durante request e só mostra sucesso depois do commit. Evidência: testes de componentes mais E2E erro/sucesso; não revelar nome do atual tomador ao colaborador.
+- **CA-08 — persistência/auditoria [transação].** Commit cria um loan e audit append-only atomicamente com tenant/ator/recurso; falha audit ou inserção reverte tudo. Meus empréstimos mostra só próprios, abertos e histórico persistido. Evidência: falha induzida audit, reload/reinício e retorno tipado do router.
+- **CA-09 — cache [cliente].** Após sucesso ou conflito revalidar catálogo, detalhe, meus empréstimos, contador e consultas/KPIs operacoes pertinentes; não promover sucesso otimista falso. Evidência: múltiplas telas/consultas previamente em cache, segunda sessão tentando item recém-ocupado e reload.
+- **CA-10 — fotos/crédito [UI].** Catálogo e detalhe usam fotos individuais de 002 com alt e proporção adequada; crédito visível **Fotos: Pixabay** com link `https://pixabay.com/`, mantendo origem por item. Sem hotlinks/placeholder fingindo foto; ausência gera estado honesto. Evidência: 12 associações, link acessível e fallback sem outra fonte.
+
+## Fora de escopo
+Reserva futura, prorrogação, notificações e consumidor externo. A regra civil e os dados reais substituem apenas o comportamento mock correspondente de 001, não seus tokens visuais.
+
+## Conflitos do pedido lido
+Briefing pede cinco abertos e 14 dias úteis; PRD/pacote ratificado mantêm **três abertos e 14 dias corridos**, data civil São Paulo. Solicitação é imediata sem aprovação/fila, como o anexo. Briefing pede sem crédito, mas contrato API/skill exige crédito: **Fotos: Pixabay** com link é mantido, com desvio acadêmico registrado. Essas resoluções vieram da recomendação incluída no pacote ratificado, não escolhas individuais inventadas.
